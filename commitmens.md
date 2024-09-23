@@ -8,16 +8,18 @@
 6. Deltagande/inspiration - vid dåligt deltagande, kontakta personen i fråga.
    Jobbar du snabbt - Hör med gruppkamraterna om dem behöver hjälp/jobba med projektet lokalt för att ge plats.
 7. Respektfullt, mycket feedback, öppen dialog.
-8. G   
-11. Konfiguration - Jennis, kollar om det behövs ändringar vb.  
-12. Hur ofta commit, när en ny feature är klar. 
-13. Merga tillsammans 9.00.
-14. Hantera att göra listan - Följa flödet, Ha två 'issues' åt gången på sitt bord. Assigna issues till sig själv.    
-17. Skriv självförklarande kod, annars kommentarer.
+8. G
+9. Konfiguration - Jennis, kollar om det behövs ändringar vb.
+10. Hur ofta commit, när en ny feature är klar.
+11. Merga tillsammans 9.00.
+12. Hantera att göra listan - Följa flödet, Ha två 'issues' åt gången på sitt bord. Assigna issues till sig själv.
+13. Skriv självförklarande kod, annars kommentarer.
     Dokumentation vid funktioner som är mer komplicerade
 
 Skriva på svenska
 
 ## Underskrivet av
+
 @CeciliaL1
 @JohannaPri
+@Ogen1998
