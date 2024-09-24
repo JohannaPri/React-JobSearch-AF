@@ -1,3 +1,3 @@
-export interface NumberOfHits {
+export interface INumberOfHits {
     value: number;
 }
