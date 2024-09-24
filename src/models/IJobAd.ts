@@ -1,5 +1,10 @@
+import { IApplicationDetails } from "./IApplicationDetails";
+import { IEmployer } from "./IEmployer";
 import { IJobAdDescription } from "./IJobAdDescription";
 import { IJobTechTaxonomyItem } from "./IJobTexhTaxonomyItem";
+import { IRequirements } from "./IRequirements";
+import { IScopeOfWork } from "./IScopeOfWork";
+import { IWorkplaceAddress } from "./IWorkplaceAddress";
 
 export interface IJobAd {
     id: string;
@@ -21,7 +26,7 @@ export interface IJobAd {
     occupation_group: IJobTechTaxonomyItem;
     occupation_field: IJobTechTaxonomyItem;
     occupation_address: IJobTechTaxonomyItem;
-    workplace_address: IWorkPlaceAddress;
+    workplace_address: IWorkplaceAddress;
     must_have: IRequirements;
     nice_to_have: IRequirements;
     publication_date: string;
