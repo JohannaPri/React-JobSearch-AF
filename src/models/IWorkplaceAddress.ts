@@ -11,5 +11,5 @@ export interface IWorkplaceAddress {
     street_address: string;
     postcode: string;
     city: string;
-    coordinates: [number, number];
+    coordinates: [number];
 }
