@@ -16,10 +16,11 @@
 13. Skriv självförklarande kod, annars kommentarer.
     Dokumentation vid funktioner som är mer komplicerade
 
-Skriva på svenska
+Skriva innehållet i applikationen på svenska, all kod på engelska
 
 ## Underskrivet av
 
 @CeciliaL1
 @JohannaPri
 @Ogen1998
+@victorialundberg
