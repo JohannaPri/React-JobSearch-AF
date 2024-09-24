@@ -1,4 +1,5 @@
 import { IJobAdDescription } from "./IJobAdDescription";
+import { IJobTechTaxonomyItem } from "./IJobTexhTaxonomyItem";
 
 export interface IJobAd {
     id: string;
