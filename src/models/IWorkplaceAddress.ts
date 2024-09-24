@@ -1,4 +1,4 @@
-export interface WorkplaceAddress {
+export interface IWorkplaceAddress {
     municipality: string;
     municipality_code: string;
     municipality_concept_id: string;
