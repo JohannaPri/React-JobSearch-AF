@@ -9,7 +9,8 @@ import { jobSearchReducer } from "./reducers/jobSearchReducer";
 
 function App() {
   
-  const [jobs, dispatch] = useReducer(jobSearchReducer, [])
+  // ska ligga i searchApp
+  const [jobs, dispatch] = useReducer(jobSearchReducer, []);
 
   return (
     <>
