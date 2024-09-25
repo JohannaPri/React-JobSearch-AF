@@ -10,6 +10,14 @@
   justify-content: space-evenly;
 }
 
+.digi-logo__img {
+  background-image: url('../public/logo.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 66px; 
+  height: 66px;
+}
+
 .digi-logo svg {
   display: none; 
 }
