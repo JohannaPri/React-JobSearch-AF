@@ -1,30 +1,20 @@
-import { useState, FormEvent } from "react";
+
+import { useReducer } from "react";
 import "./App.css";
-import { getJobs } from "./services/jobSearchService";
+import { jobSearchReducer } from "./reducers/jobSearchReducer";
+
+
+
+
 
 function App() {
-  const [inputsearchText, setInputSearchText] = useState("");
+  
+  const [jobs, dispatch] = useReducer(jobSearchReducer, [])
 
-  const onSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    const userInput = {
-      searchText: inputsearchText,
-      trainee: false,
-      remote: false,
-      experience: false,
-    };
-    const jobs = await getJobs(userInput);
-    console.log(jobs);
-  };
   return (
     <>
-      <form onSubmit={onSubmit}>
-        <input
-          type="text"
-          onChange={(e) => setInputSearchText(e.target.value)}
-        />
-        <button>Sök</button>
-      </form>
+      
+    
     </>
   );
 }
