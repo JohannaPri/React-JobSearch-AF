@@ -3,7 +3,6 @@ import {
   FooterCardVariation,
   LogoVariation,
   LogoColor,
-  TypographyVariation,
 } from "@digi/arbetsformedlingen";
 import {
   DigiHeader,
@@ -19,7 +18,6 @@ import {
   DigiIconGlobe,
   DigiIconSign,
   DigiLogo,
-  DigiTypography,
 } from "@digi/arbetsformedlingen-react";
 import { Link, Outlet } from "react-router-dom";
 

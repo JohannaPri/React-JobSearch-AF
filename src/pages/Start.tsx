@@ -1,13 +1,5 @@
-import {
-  ButtonSize,
-  ButtonVariation,
-  TypographyVariation,
-} from "@digi/arbetsformedlingen";
-import {
-  DigiButton,
-  DigiMediaImage,
-  DigiTypography,
-} from "@digi/arbetsformedlingen-react";
+import { TypographyVariation } from "@digi/arbetsformedlingen";
+import { DigiMediaImage, DigiTypography } from "@digi/arbetsformedlingen-react";
 import { Link } from "react-router-dom";
 
 export const Start = () => {
