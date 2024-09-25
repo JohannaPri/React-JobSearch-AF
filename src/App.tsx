@@ -1,5 +1,7 @@
 import { useReducer } from "react";
 import "./App.css";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./Router";
 import { jobSearchReducer } from "./reducers/jobSearchReducer";
 import { JobsContext } from "./contexts/JobsContext";
 
@@ -9,6 +11,7 @@ function App() {
 
   return (
     <>
+      <RouterProvider router={router}></RouterProvider>
       <JobsContext.Provider value={{ jobs, dispatch }}></JobsContext.Provider>
     </>
   );
