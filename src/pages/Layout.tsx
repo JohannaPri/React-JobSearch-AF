@@ -49,7 +49,7 @@ export const Layout = () => {
               afAlt="Profilbild på Linda Karlsson"
               afName="Linda Karlsson"
               afSignature="KALIA"
-              afIsLoggedIn={true}
+              afIsLoggedIn={false}
               afHideSignature={true}
             ></DigiHeaderAvatar>
           </div>
