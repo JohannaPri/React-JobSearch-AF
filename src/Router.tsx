@@ -12,19 +12,19 @@ export const router = createBrowserRouter ({
             },
             {
                 path: "/searchjobs"
-                element: <SearchJobsApp></SearchJobsApp>,
+                element: <JobsApp></JobsApp>,
             },
             {
                path: "/searchjob/:id",
-               element: <JobDescription></JobDescription>,
+               element: <Job></Job>,
             },
             {
                 path: "/searchstatistics",
-                element: <SearchStatisticApp></SearchStatisticApp>,
+                element: <StatistiscApp></StatisticsApp>,
             },
             {
                 path: "/searchstatistic/:id",
-                element: <StatisticDescription></StatisticDescription>
+                element: <Statistic></Statistic>
             },
         ]
     }
