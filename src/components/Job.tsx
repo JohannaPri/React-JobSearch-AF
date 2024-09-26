@@ -74,7 +74,7 @@ export const Job = () => {
         <DigiLayoutContainer afVerticalPadding>
           <DigiTypography afVariation={TypographyVariation.SMALL}>
             <h2>Om jobbet</h2>
-            <p>{jobAd.description?.company_information ?? "..."}</p>
+            <p>{jobAd.description.text}</p>
           </DigiTypography>
         </DigiLayoutContainer>
       </div>
