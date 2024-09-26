@@ -1,6 +1,5 @@
 @import '@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/digi-arbetsformedlingen.css';
 @import '@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/fonts/src/fonts.css';
-@import 'normalize.css';
 
 :root {
   /* TEXT COLORS */
@@ -18,7 +17,6 @@
 
   background-color: #F3E8E8;
 }
-
 
 /*HEADER*/
 .digi-logo__img {
@@ -41,6 +39,10 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+}
+
+body {
+  margin: 0;
 }
 
 @media only screen and (max-width: 767px) {
