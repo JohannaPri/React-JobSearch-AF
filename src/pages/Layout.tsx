@@ -6,9 +6,6 @@ import {
 } from "@digi/arbetsformedlingen";
 import {
   DigiHeader,
-  DigiHeaderNotification,
-  DigiIconBellFilled,
-  DigiHeaderAvatar,
   DigiHeaderNavigation,
   DigiHeaderNavigationItem,
   DigiFooter,
