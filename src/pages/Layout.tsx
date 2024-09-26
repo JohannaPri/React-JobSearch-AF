@@ -19,9 +19,11 @@ import {
   DigiIconSign,
   DigiLogo,
 } from "@digi/arbetsformedlingen-react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 
 export const Layout = () => {
+  const location = useLocation();
+
   return (
     <>
       <header>
@@ -35,36 +37,26 @@ export const Layout = () => {
             aria-label="Designsystemets startsida"
             href="/"
           ></a>
-          <div slot="header-content">
-            <DigiHeaderNotification afNotificationAmount={8}>
-              <a href="/">
-                <DigiIconBellFilled></DigiIconBellFilled>
-                Notiser
-              </a>
-            </DigiHeaderNotification>
-            <DigiHeaderAvatar
-              afSrc="/assets/images/avatar.svg"
-              afAlt="Profilbild på Linda Karlsson"
-              afName="Linda Karlsson"
-              afSignature="KALIA"
-              afIsLoggedIn={false}
-              afHideSignature={true}
-            ></DigiHeaderAvatar>
-          </div>
           <div slot="header-navigation">
             <DigiHeaderNavigation
               afCloseButtonText="Stäng"
               afCloseButtonAriaLabel="Stäng meny"
               afNavAriaLabel="Huvudmeny"
             >
-              <DigiHeaderNavigationItem afCurrentPage={true}>
-                <a href="/">Startsida</a>
+              <DigiHeaderNavigationItem
+                afCurrentPage={location.pathname === "/"}
+              >
+                <NavLink to={"/"}>Startsida</NavLink>
               </DigiHeaderNavigationItem>
-              <DigiHeaderNavigationItem>
-                <a href="/">Lediga tjänster</a>
+              <DigiHeaderNavigationItem
+                afCurrentPage={location.pathname === "/searchjobs"}
+              >
+                <NavLink to={"/searchjobs"}>Lediga tjänster</NavLink>
               </DigiHeaderNavigationItem>
-              <DigiHeaderNavigationItem>
-                <a href="/">Historik/Statistik</a>
+              <DigiHeaderNavigationItem
+                afCurrentPage={location.pathname === "/searchstatistics"}
+              >
+                <NavLink to={"/searchstatistics"}>Historik/Statistik</NavLink>
               </DigiHeaderNavigationItem>
             </DigiHeaderNavigation>
           </div>
