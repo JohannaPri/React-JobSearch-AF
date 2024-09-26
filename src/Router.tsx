@@ -3,7 +3,7 @@ import { NotFound } from "./pages/NotFound";
 import { Layout } from "./pages/Layout";
 import { Start } from "./pages/Start";
 import { JobsApp } from "./pages/JobsApp";
-import { Job } from "./pages/Job";
+import { Job } from "./components/Job";
 import { StatisticsApp } from "./pages/StatisticsApp";
 import { Statistic } from "./pages/Statistic";
 
