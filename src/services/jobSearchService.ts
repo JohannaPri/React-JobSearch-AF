@@ -4,7 +4,7 @@ import { IUserFilter } from "../models/IUserFilter"
 
 const BASE_URL = "https://jobsearch.api.jobtechdev.se/search?"
 
-export const getJobs = async (userInput: IUserFilter): Promise<IJobSearchResults> => {
+export const getJobs = async (userInput: IUserFilter): Promise<IJobSearchResults[]> => {
     const queryParams: string[] = [];
 
     if (userInput.searchText) {
@@ -25,7 +25,7 @@ export const getJobs = async (userInput: IUserFilter): Promise<IJobSearchResults
     const finalUrl = `${BASE_URL}${queryParams.join("&")}`;
 
     try {
-        const response = await get<IJobSearchResults>(finalUrl);
+        const response = await get<IJobSearchResults[]>(finalUrl);
         return response.data;
     } catch (error) {
         console.error("Error fetching jobs:", error);

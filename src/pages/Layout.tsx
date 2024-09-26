@@ -19,7 +19,7 @@ import {
   DigiIconSign,
   DigiLogo,
 } from "@digi/arbetsformedlingen-react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 
 export const Layout = () => {
   return (
@@ -61,7 +61,7 @@ export const Layout = () => {
                 <a href="/">Startsida</a>
               </DigiHeaderNavigationItem>
               <DigiHeaderNavigationItem>
-                <a href="/">Lediga tjänster</a>
+                <NavLink to="/searchjobs">Sök jobb</NavLink>
               </DigiHeaderNavigationItem>
               <DigiHeaderNavigationItem>
                 <a href="/">Historik/Statistik</a>

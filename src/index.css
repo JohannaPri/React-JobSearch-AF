@@ -1,6 +1,10 @@
 @import '@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/digi-arbetsformedlingen.css';
 @import '@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/fonts/src/fonts.css';
 
+*{
+  margin:0;
+}
+
 /*HEADER*/
 .start {
   margin-top: 1rem;
@@ -24,6 +28,11 @@
 
 
 
+/* JOBS */
+.search-container{
+  display: block;
+  max-width: 700px;
+}
 
 
 
