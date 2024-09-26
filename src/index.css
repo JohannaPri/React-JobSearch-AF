@@ -19,16 +19,8 @@
   background-color: #F3E8E8;
 }
 
-/*HEADER*/
-.start {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  padding: 2rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
 
+/*HEADER*/
 .digi-logo__img {
   background-image: url('../public/logo.svg');
   background-size: contain;
@@ -39,6 +31,23 @@
 
 .digi-logo svg {
   display: none; 
+}
+
+/* MAIN */
+.start {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+@media only screen and (max-width: 767px) {
+  [class="start"] {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 /* turns the active navbar line -> blue color */
