@@ -2,18 +2,26 @@
 @import '@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/fonts/src/fonts.css';
 
 
+.start {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
 
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+.digi-logo__img {
+  background-image: url('../public/logo.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 66px; 
+  height: 66px;
+}
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+.digi-logo svg {
+  display: none; 
+}
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.digi-footer .digi-logo__img {
+  background-image: url('../public/logo-white.svg');
 }
