@@ -1,7 +1,7 @@
 @import '@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/digi-arbetsformedlingen.css';
 @import '@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/fonts/src/fonts.css';
 
-
+/*HEADER*/
 .start {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -22,6 +22,12 @@
   display: none; 
 }
 
+
+
+
+
+
+/*LOGO*/
 .digi-footer .digi-logo__img {
   background-image: url('../public/logo-white.svg');
 }
