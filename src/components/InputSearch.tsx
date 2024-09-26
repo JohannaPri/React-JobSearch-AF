@@ -31,10 +31,6 @@ export const InputSearch = () => {
 
   const handleClick = async (e: FormEvent) => {
     e.preventDefault();
-    console.log("input", userInput);
-    console.log("experience", experience);
-    console.log("trainee", trainee);
-    console.log("remote", remote);
 
     const userFilter: IUserFilter = {
       searchText: userInput,
@@ -45,6 +41,7 @@ export const InputSearch = () => {
     const searchedJobs = await getJobs(userFilter);
     dispatch({ type: ActionJobSearchType.SEARCH, payload: searchedJobs });
   };
+
   return (
     <>
       <DigiLayoutContainer className="search-container">
