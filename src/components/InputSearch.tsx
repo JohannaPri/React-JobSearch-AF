@@ -7,6 +7,7 @@ import {
 } from "@digi/arbetsformedlingen";
 import {
   DigiFormCheckbox,
+  DigiFormFilter,
   DigiFormInputSearch,
   DigiLayoutColumns,
   DigiLayoutContainer,
@@ -14,32 +15,28 @@ import {
 } from "@digi/arbetsformedlingen-react";
 
 import { DigiFormInputSearchCustomEvent } from "@digi/arbetsformedlingen/dist/types/components";
-import { FormEvent, useContext, useState } from "react";
+import { FormEvent, useState } from "react";
 import { IUserFilter } from "../models/IUserFilter";
-import { getJobs } from "../services/jobSearchService";
-import { JobsContext } from "../contexts/JobsContext";
-import { ActionJobSearchType } from "../reducers/jobSearchReducer";
+//import { getJobs } from "../services/jobSearchService";
+//import { JobsContext } from "../contexts/JobsContext";
+//import { ActionJobSearchType } from "../reducers/jobSearchReducer";
 
 export const InputSearch = () => {
-  const { dispatch } = useContext(JobsContext);
+  // const { dispatch } = useContext(JobsContext);
 
-  const [userInput, setUserInput] = useState("");
-
-  const [experience, setExperience] = useState(false);
-  const [trainee, setTrainee] = useState(false);
-  const [remote, setRemote] = useState(false);
+  const [userFilter, setUserFilter] = useState<IUserFilter>({
+    searchText: "",
+    experience: false,
+    trainee: false,
+    remote: false,
+  });
 
   const handleClick = async (e: FormEvent) => {
     e.preventDefault();
 
-    const userFilter: IUserFilter = {
-      searchText: userInput,
-      experience: experience,
-      trainee: trainee,
-      remote: remote,
-    };
-    const searchedJobs = await getJobs(userFilter);
-    dispatch({ type: ActionJobSearchType.SEARCH, payload: searchedJobs });
+    console.log(userFilter);
+    //const searchedJobs = await getJobs(userFilter);
+    //dispatch({ type: ActionJobSearchType.SEARCH, payload: searchedJobs });
   };
 
   return (
@@ -55,30 +52,34 @@ export const InputSearch = () => {
           afButtonText="Sök"
           afButtonType={ButtonType.SUBMIT}
           afButtonAriaLabel="Sökfält för att söka jobb"
-          afValue={userInput}
+          afValue={userFilter.searchText}
           onAfOnChange={(e: DigiFormInputSearchCustomEvent<string>) => {
-            setUserInput(e.target.value);
+            userFilter.searchText = e.target.value;
           }}
           onClick={handleClick}
         ></DigiFormInputSearch>
 
-        <DigiLayoutColumns afElement={LayoutColumnsElement.DIV}>
-          <DigiFormCheckbox
-            afLabel="Erfarenhet"
-            afVariation={FormCheckboxVariation.PRIMARY}
-            onAfOnChange={() => setExperience(!experience)}
-          />
-          <DigiFormCheckbox
-            afLabel="Distans arbete"
-            afVariation={FormCheckboxVariation.PRIMARY}
-            onAfOnChange={() => setRemote(!remote)}
-          />
-          <DigiFormCheckbox
-            afLabel="Praktikant/LIA"
-            afVariation={FormCheckboxVariation.PRIMARY}
-            onAfOnChange={() => setTrainee(!trainee)}
-          />
-        </DigiLayoutColumns>
+        <DigiFormFilter
+          afFilterButtonText="Filter"
+          afSubmitButtonText="Filtrera"
+          afListItems={[
+            { id: "experience", label: "Experience" },
+            { id: "remote", label: "Remote" },
+            { id: "trainee", label: "Trainee" },
+          ]}
+          onAfChangeFilter={(e) => console.log(e.detail.id, e.detail.isChecked)}
+          onAfResetFilter={() => console.log("reset filter")}
+          onAfSubmitFilter={(e) =>
+            e.detail.checked.forEach((check) => {
+              if (check === "experience") userFilter.experience = true;
+              if (check === "remote") userFilter.remote = true;
+              if (check === "trainee") userFilter.trainee = true;
+            })
+          }
+          onAfCloseFilter={(e) =>
+            console.log("submit filter", e.detail.listItems, e.detail.checked)
+          }
+        ></DigiFormFilter>
       </DigiLayoutContainer>
     </>
   );
