@@ -15,20 +15,37 @@ import {
 } from "@digi/arbetsformedlingen-react";
 
 import { DigiFormInputSearchCustomEvent } from "@digi/arbetsformedlingen/dist/types/components";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { IUserFilter } from "../models/IUserFilter";
+import { getTaxonomyRegions } from "../services/jobSearchService";
+import { TaxonomyRegions } from "../models/ITaxonomyRegion";
 //import { getJobs } from "../services/jobSearchService";
 //import { JobsContext } from "../contexts/JobsContext";
 //import { ActionJobSearchType } from "../reducers/jobSearchReducer";
 
 export const InputSearch = () => {
   // const { dispatch } = useContext(JobsContext);
+  const [taxonomy, setTaxonomy] = useState<TaxonomyRegions[] | undefined>([]);
+  const [fetched, setFetched] =useState(false);
+
+  useEffect(() => {
+    if(fetched) return
+    const getRegions = async () => {
+      const data = await getTaxonomyRegions();
+      setTaxonomy(data)
+      setFetched(true)
+    }
+
+    getRegions()
+  })
+  
 
   const [userFilter, setUserFilter] = useState<IUserFilter>({
     searchText: "",
     experience: false,
     trainee: false,
     remote: false,
+    region: []
   });
 
   const handleClick = async (e: FormEvent) => {
@@ -58,6 +75,18 @@ export const InputSearch = () => {
           }}
           onClick={handleClick}
         ></DigiFormInputSearch>
+
+<DigiFormFilter
+          afFilterButtonText="Välj Län"
+          afSubmitButtonText="Filtrera"
+          afListItems={taxonomy?.map((tax) => ( {id: tax['taxonomy/id'], label: tax["taxonomy/preferred-label"]}))}
+          onAfChangeFilter={(e) => console.log(e.detail.id, e.detail.isChecked)}
+          onAfResetFilter={() => console.log("reset filter")}
+          onAfSubmitFilter={(e) => userFilter.region = e.detail.checked}
+          onAfCloseFilter={(e) =>
+            console.log("submit filter", e.detail.listItems, e.detail.checked)
+          }
+        ></DigiFormFilter>
 
         <DigiFormFilter
           afFilterButtonText="Filter"

@@ -1,6 +1,7 @@
 import { get } from "./serviceBase"
 import { IJobSearchResults } from "../models/IJobSearchResult"
 import { IUserFilter } from "../models/IUserFilter"
+import { TaxonomyRegions } from "../models/ITaxonomyRegion";
 
 const BASE_URL = "https://jobsearch.api.jobtechdev.se/search?"
 
@@ -32,3 +33,14 @@ export const getJobs = async (userInput: IUserFilter): Promise<IJobSearchResults
         throw new Error("Failed to fetch jobs.");
     }
 };
+
+
+
+export const getTaxonomyRegions = async () => {
+    try {
+        const response = await get<TaxonomyRegions[]>('https://taxonomy.api.jobtechdev.se/v1/taxonomy/specific/concepts/region?limit=20');
+        return response.data
+    } catch (error) {
+        console.log(error)
+    }
+}
