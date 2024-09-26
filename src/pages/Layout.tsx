@@ -118,7 +118,7 @@ export const Layout = () => {
               </Link>
             </div>
             <div>
-              <h1 className="footerBrandName">Jobbnavigator</h1>
+              <h1 className="footerBrandName">JobbNavigator</h1>
             </div>
           </div>
           <div slot="content-bottom-right">
