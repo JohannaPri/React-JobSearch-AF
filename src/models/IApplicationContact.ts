@@ -1,8 +1,8 @@
 export interface IApplicationContact {
-  information: string;
-  reference: string;
-  email: string;
+  information: string | null;
+  reference: string | null;
+  email: string | null;
   via_af: boolean;
-  url: string;
-  other: string;
+  url: string | null;
+  other: string | null;
 }

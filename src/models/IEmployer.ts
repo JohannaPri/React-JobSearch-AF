@@ -1,8 +1,8 @@
 export interface IEmployer {
-  phone_number: string;
-  email: string;
-  url: string;
-  organization_number: string;
-  name: string;
-  workplace: string;
+  phone_number: string | null;
+  email: string | null;
+  url: string | null;
+  organization_number: string | null;
+  name: string | null;
+  workplace: string | null;
 }

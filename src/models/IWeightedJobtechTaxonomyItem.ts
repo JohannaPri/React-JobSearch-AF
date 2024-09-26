@@ -1,7 +1,6 @@
 export interface IWeightedJobtechTaxonomyItem {
-    concept_id: string;
-    label: string;
-    legacy_ams_taxonomy_id: string;
-    weight: number;
-  }
-  
+  concept_id: string | null;
+  label: string | null;
+  legacy_ams_taxonomy_id: string | null;
+  weight: number;
+}
