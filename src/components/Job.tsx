@@ -4,12 +4,14 @@ import axios from "axios";
 import { IJobAd } from "../models/IJobAd";
 import {
   LayoutBlockVariation,
+  LoaderSkeletonVariation,
   TypographyVariation,
 } from "@digi/arbetsformedlingen";
 import {
   DigiTypography,
   DigiLayoutBlock,
   DigiLayoutContainer,
+  DigiLoaderSkeleton,
 } from "@digi/arbetsformedlingen-react";
 
 const jobId = "29082265";
@@ -46,7 +48,16 @@ export const Job = () => {
     fetchJobData();
   }, [jobId]);
 
-  if (loading) return <div>Laddar...</div>;
+  if (loading) {
+    return (
+      <div>
+        <DigiLoaderSkeleton 
+          afVariation={LoaderSkeletonVariation.TEXT} 
+          afCount={4}
+        />
+      </div>
+    );
+  }
   if (error) return <div>Error: {error}</div>;
   if (!jobAd) return <div>Annonsen kunde inte hittas.</div>;
 
