@@ -58,13 +58,13 @@ export const Layout = () => {
               afNavAriaLabel="Huvudmeny"
             >
               <DigiHeaderNavigationItem afCurrentPage={true}>
-                <a href="/">Mina bokningar</a>
+                <a href="/">Startsida</a>
               </DigiHeaderNavigationItem>
               <DigiHeaderNavigationItem>
-                <a href="/">Grupper</a>
+                <a href="/">Lediga tjänster</a>
               </DigiHeaderNavigationItem>
               <DigiHeaderNavigationItem>
-                <a href="/">Kontakt</a>
+                <a href="/">Historik/Statistik</a>
               </DigiHeaderNavigationItem>
             </DigiHeaderNavigation>
           </div>
@@ -118,7 +118,7 @@ export const Layout = () => {
             </div>
             <div>
               <DigiFooterCard afType={FooterCardVariation.BORDER}>
-                <a href="#">Kontakta servicdolores</a>
+                <a href="#">Kontakta oss</a>
                 <p>
                   Telefon: 0771-60 0001 <br /> Öppettider: Vardagar 08:00-16:30
                 </p>

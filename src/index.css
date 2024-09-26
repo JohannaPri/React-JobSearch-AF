@@ -21,3 +21,7 @@
 .digi-logo svg {
   display: none; 
 }
+
+.digi-footer .digi-logo__img {
+  background-image: url('../public/logo-white.svg');
+}
