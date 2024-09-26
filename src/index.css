@@ -22,12 +22,18 @@
   display: none; 
 }
 
-
-
-
-
-
 /*LOGO*/
 .digi-footer .digi-logo__img {
   background-image: url('../public/logo-white.svg');
+}
+
+/*JOBAD FIRST SECTION*/
+.job-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.job-info-margin {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
