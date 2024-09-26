@@ -97,30 +97,29 @@ export const Layout = () => {
                 </ul>
               </DigiFooterCard>
             </div>
-            <div>
-              <DigiFooterCard afType={FooterCardVariation.BORDER}>
-                <a href="#">Om tjänsten dolores</a>
-                <p>
-                  Systemversion: 1.4.0 <br /> Ansvarig: Jenny Svensson
-                </p>
-              </DigiFooterCard>
-            </div>
+
             <div>
               <DigiFooterCard afType={FooterCardVariation.BORDER}>
                 <a href="#">Kontakta oss</a>
                 <p>
-                  Telefon: 0771-60 0001 <br /> Öppettider: Vardagar 08:00-16:30
+                  Telefon: 0777-00 0000 <br /> Öppettider: Vardagar 08:00-16:30
                 </p>
               </DigiFooterCard>
             </div>
           </div>
-          <div slot="content-bottom-left">
-            <Link to="/">
-              <DigiLogo
-                afVariation={LogoVariation.LARGE}
-                afColor={LogoColor.SECONDARY}
-              ></DigiLogo>
-            </Link>
+          <div className="footerLogo" slot="content-bottom-left">
+            <div>
+              {" "}
+              <Link to="/">
+                <DigiLogo
+                  afVariation={LogoVariation.LARGE}
+                  afColor={LogoColor.SECONDARY}
+                ></DigiLogo>
+              </Link>
+            </div>
+            <div>
+              <h1 className="footerBrandName">Jobbnavigator</h1>
+            </div>
           </div>
           <div slot="content-bottom-right">
             <p>Följ oss på</p>

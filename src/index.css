@@ -45,13 +45,6 @@ body {
   margin: 0;
 }
 
-@media only screen and (max-width: 767px) {
-  [class="start"] {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-}
 
 /* turns the active navbar line -> blue color */
 .digi-header-navigation-item--active.sc-digi-header-navigation-item-s>a {
@@ -62,4 +55,39 @@ body {
 /*footer logo*/
 .digi-footer .digi-logo__img {
   background-image: url('../public/logo-white.svg');
+}
+
+.footerLogo {
+  display: flex;
+  color: white;
+}
+
+.footerBrandName {
+  padding: .5rem;
+}
+
+/* TABLET */
+@media only screen and (max-width: 992px) {
+  [class="footerBrandName"] {
+    position: relative;
+    padding: 1.3rem;
+    right: 1rem;
+  }
+}
+
+/* MOBILE */
+@media only screen and (max-width: 767px) {
+  [class="start"] {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  [class="footerBrandName"] {
+    display: none;
+  }
+
+  [class="footerLogo"] {
+    padding: 1.5rem;
+  }
 }
