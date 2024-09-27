@@ -3,6 +3,11 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { IJobAd } from "../models/IJobAd";
 import {
+  InfoCardBorderPosition,
+  InfoCardHeadingLevel,
+  InfoCardSize,
+  InfoCardType,
+  InfoCardVariation,
   LayoutBlockVariation,
   LoaderSkeletonVariation,
   TypographyVariation,
@@ -13,6 +18,7 @@ import {
   DigiLayoutContainer,
   DigiLoaderSkeleton,
   DigiNavigationBreadcrumbs,
+  DigiInfoCard,
 } from "@digi/arbetsformedlingen-react";
 
 export const Job = () => {
@@ -32,21 +38,21 @@ export const Job = () => {
   useEffect(() => {
     const fetchJobData = async () => {
       if (id) {
-      try {
-        const data = await fetchJobAd(id);
-        setJobAd(data);
-      } catch (err) {
-        if (axios.isAxiosError(err) && err.response) {
-          setError(err.response.data.message);
-        } else {
-          setError("An unexpected error occurred");
+        try {
+          const data = await fetchJobAd(id);
+          setJobAd(data);
+        } catch (err) {
+          if (axios.isAxiosError(err) && err.response) {
+            setError(err.response.data.message);
+          } else {
+            setError("An unexpected error occurred");
+          }
+        } finally {
+          setLoading(false);
         }
-      } finally {
-        setLoading(false);
+      } else {
+        console.log("Error: id is undefined.");
       }
-    } else {
-      console.log("Error: id is undefined.");
-    }
     };
 
     fetchJobData();
@@ -55,8 +61,8 @@ export const Job = () => {
   if (loading) {
     return (
       <div>
-        <DigiLoaderSkeleton 
-          afVariation={LoaderSkeletonVariation.TEXT} 
+        <DigiLoaderSkeleton
+          afVariation={LoaderSkeletonVariation.TEXT}
           afCount={4}
         />
       </div>
@@ -68,15 +74,13 @@ export const Job = () => {
   return (
     <div>
       <div className="breadcrumb-spacing">
-        <DigiNavigationBreadcrumbs
-          afCurrentPage="Nuvarande sida"
-        >
+        <DigiNavigationBreadcrumbs afCurrentPage="Nuvarande sida">
           <a href="/">Start</a>
           <a href="/searchjobs">Sök jobb</a>
         </DigiNavigationBreadcrumbs>
       </div>
       <div className="job-info-margin">
-      <DigiLayoutBlock afVariation={LayoutBlockVariation.TRANSPARENT}>
+        <DigiLayoutBlock afVariation={LayoutBlockVariation.TRANSPARENT}>
           <DigiTypography afVariation={TypographyVariation.SMALL}>
             <div className="job-info-padding">
               <h1>{jobAd.headline}</h1>
@@ -86,12 +90,39 @@ export const Job = () => {
               <div className="job-info">
                 <span>Omfattning: {jobAd.working_hours_type.label}</span>
                 <span>Varaktighet: {jobAd.duration.label}</span>
-                <span>Anställningsform: {jobAd.description.conditions ?? "Enligt överenskommelse"}</span>
+                <span>
+                  Anställningsform:{" "}
+                  {jobAd.description.conditions ?? "Enligt överenskommelse"}
+                </span>
                 <span>Antal jobb: {jobAd.number_of_vacancies}</span>
               </div>
             </div>
           </DigiTypography>
         </DigiLayoutBlock>
+      </div>
+      <div>
+        <DigiInfoCard
+          afHeading="Jag är ett infokort"
+          afHeadingLevel={InfoCardHeadingLevel.H2}
+          afType={InfoCardType.TIP}
+          afVariation={InfoCardVariation.SECONDARY}
+          afSize={InfoCardSize.STANDARD}
+        >
+          <p>kvalifikationer</p>
+        </DigiInfoCard>
+      </div>
+      <div>
+        <DigiInfoCard
+          afHeading="Jag är ett infokort"
+          afHeadingLevel={InfoCardHeadingLevel.H2}
+          afType={InfoCardType.RELATED}
+          afVariation={InfoCardVariation.SECONDARY}
+          afBorderPosition={InfoCardBorderPosition.LEFT}
+        >
+          <p>
+            Sök Jobbet
+          </p>
+        </DigiInfoCard>
       </div>
       <div>
         <DigiLayoutContainer afVerticalPadding>
