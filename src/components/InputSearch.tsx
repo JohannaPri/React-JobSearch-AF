@@ -44,7 +44,7 @@ export const InputSearch = () => {
     region: []
   });
 
-  const handleClick = async (e: FormEvent) => {
+  const handleClick = async (e: DigiFormInputSearchCustomEvent<object>) => {
     e.preventDefault();
 
     console.log(userFilter);
@@ -69,7 +69,7 @@ export const InputSearch = () => {
           onAfOnChange={(e: DigiFormInputSearchCustomEvent<string>) => {
             userFilter.searchText = e.target.value;
           }}
-          onClick={handleClick}
+          onAfOnClick={handleClick}
         ></DigiFormInputSearch>
 
 <DigiFormFilter

@@ -12,7 +12,8 @@ export const Jobs = () => {
       <div>
         {jobs.hits.map((job) => (
           <div key={job.id}>
-            <Link to={`/searchjob/${job.id}`}></Link>
+
+            <Link to={`/searchjob/${job.id}`}>{job.headline}</Link>
           </div>
         ))}
       </div>
