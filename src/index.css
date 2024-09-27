@@ -42,7 +42,7 @@
 
 
 .digi-logo__img {
-  background-image: url('../public/logo.svg');
+  background-image: url('/logo.svg');
   background-size: contain;
   background-repeat: no-repeat;
   width: 66px; 
@@ -122,7 +122,7 @@ body {
 
 /*LOGO*/
 .digi-footer .digi-logo__img {
-  background-image: url('../public/logo-white.svg');
+  background-image: url('/logo-white.svg');
 }
 
 /*JOBAD FIRST SECTION*/

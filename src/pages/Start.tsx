@@ -45,7 +45,7 @@ export const Start = () => {
           afUnlazy
           afHeight="370"
           afWidth="370"
-          afSrc="../public/start-page.png"
+          afSrc="/start-page.png"
           afAlt="Arbetsförmedlingens logotyp som en fasadskyld"
         ></DigiMediaImage>{" "}
       </div>
