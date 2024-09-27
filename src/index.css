@@ -90,6 +90,27 @@ body {
   padding: .5rem;
 }
 
+
+/* NOT FOUND */
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  
+}
+
+.brokenCompass {
+  -webkit-animation: rotate-center 1s linear infinite both;
+  animation: rotate-center 1s linear infinite both;
+}
+
+.sc-digi-notification-error-page svg{
+display: none;
+}
+
 /* TABLET */
 @media only screen and (max-width: 992px) {
   [class="footerBrandName"] {
@@ -115,3 +136,28 @@ body {
     padding: 1.5rem;
   }
 }
+
+/** ANIMATIONS **/
+
+    /** NOT FOUND COMPASS ANIMATION **/
+    @-webkit-keyframes rotate-center {
+      0% {
+        -webkit-transform: rotate(0);
+                transform: rotate(0);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+      }
+    }
+    @keyframes rotate-center {
+      0% {
+        -webkit-transform: rotate(0);
+                transform: rotate(0);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+      }
+    }
+    
