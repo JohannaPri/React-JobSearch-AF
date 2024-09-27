@@ -63,12 +63,10 @@ body {
   max-width: 700px;
 }
 
-
 /*LOGO*/
 .digi-footer .digi-logo__img {
   background-image: url('../public/logo-white.svg');
 }
-
 
 /*JOBAD FIRST SECTION*/
 .job-info {
@@ -77,10 +75,29 @@ body {
 }
 
 .job-info-margin {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin: .5rem;
 }
 
+.job-info-padding {
+  padding: 1rem 0 1rem 0;
+}
+
+.breadcrumb-spacing {
+  padding: .5rem;
+  margin-bottom: 0.5rem;
+  background-color: var(--digi--color--background--secondary);
+  
+}
+
+a:link {
+  color: black !important;
+}
+
+a:visited {
+  color: black !important;
+}
+
+/*FOOTER*/
 .footerLogo {
   display: flex;
   color: white;

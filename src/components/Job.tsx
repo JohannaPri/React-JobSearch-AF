@@ -12,27 +12,28 @@ import {
   DigiLayoutBlock,
   DigiLayoutContainer,
   DigiLoaderSkeleton,
+  DigiNavigationBreadcrumbs,
 } from "@digi/arbetsformedlingen-react";
-
-const jobId = "29082265";
-//const { jobId } = useParams();
-
-const fetchJobAd = async (jobId: string): Promise<IJobAd> => {
-  const response = await axios.get<IJobAd>(
-    `https://jobsearch.api.jobtechdev.se/ad/${jobId}`
-  );
-  return response.data;
-};
 
 export const Job = () => {
   const [jobAd, setJobAd] = useState<IJobAd | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  const { id } = useParams<{ id: string }>();
+
+  const fetchJobAd = async (id: string): Promise<IJobAd> => {
+    const response = await axios.get<IJobAd>(
+      `https://jobsearch.api.jobtechdev.se/ad/${id}`
+    );
+    return response.data;
+  };
+
   useEffect(() => {
     const fetchJobData = async () => {
+      if (id) {
       try {
-        const data = await fetchJobAd(jobId);
+        const data = await fetchJobAd(id);
         setJobAd(data);
       } catch (err) {
         if (axios.isAxiosError(err) && err.response) {
@@ -43,10 +44,13 @@ export const Job = () => {
       } finally {
         setLoading(false);
       }
+    } else {
+      console.log("Error: id is undefined.");
+    }
     };
 
     fetchJobData();
-  }, [jobId]);
+  }, [id]);
 
   if (loading) {
     return (
@@ -63,20 +67,28 @@ export const Job = () => {
 
   return (
     <div>
+      <div className="breadcrumb-spacing">
+        <DigiNavigationBreadcrumbs
+          afCurrentPage="Nuvarande sida"
+        >
+          <a href="/">Start</a>
+          <a href="/searchjobs">Sök jobb</a>
+        </DigiNavigationBreadcrumbs>
+      </div>
       <div className="job-info-margin">
-        <DigiLayoutBlock afVariation={LayoutBlockVariation.PRIMARY}>
+      <DigiLayoutBlock afVariation={LayoutBlockVariation.TRANSPARENT}>
           <DigiTypography afVariation={TypographyVariation.SMALL}>
-            <h1>{jobAd.headline}</h1>
-            <h2>{jobAd.employer.name}</h2>
-            <h3>{jobAd.occupation.label}</h3>
-            <h3>Kommun: {jobAd.workplace_address.municipality}</h3>
-            <div className="job-info">
-              <span>Omfattning: {jobAd.working_hours_type.label}</span>
-              <span>Varaktighet: {jobAd.duration.label}</span>
-              <span>
-                Anställningsform: {jobAd.description.conditions ?? "..."}
-              </span>
-              <span>Antal jobb: {jobAd.number_of_vacancies}</span>
+            <div className="job-info-padding">
+              <h1>{jobAd.headline}</h1>
+              <h2>{jobAd.employer.name}</h2>
+              <h3>{jobAd.occupation.label}</h3>
+              <h3>Kommun: {jobAd.workplace_address.municipality}</h3>
+              <div className="job-info">
+                <span>Omfattning: {jobAd.working_hours_type.label}</span>
+                <span>Varaktighet: {jobAd.duration.label}</span>
+                <span>Anställningsform: {jobAd.description.conditions ?? "Enligt överenskommelse"}</span>
+                <span>Antal jobb: {jobAd.number_of_vacancies}</span>
+              </div>
             </div>
           </DigiTypography>
         </DigiLayoutBlock>
