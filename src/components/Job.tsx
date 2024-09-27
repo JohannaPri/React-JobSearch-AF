@@ -123,7 +123,7 @@ export const Job = () => {
         <div>
           <DigiLayoutContainer>
             <DigiInfoCard
-              afHeading="Sök jobet"
+              afHeading="Sök jobbet"
               afHeadingLevel={InfoCardHeadingLevel.H2}
               afType={InfoCardType.TIP}
               afVariation={InfoCardVariation.SECONDARY}
