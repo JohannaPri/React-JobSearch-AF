@@ -16,7 +16,7 @@ import {
   DigiIconSign,
   DigiLogo,
 } from "@digi/arbetsformedlingen-react";
-import { Link, NavLink, NavLink, Outlet, useLocation } from "react-router-dom";
+import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { Main } from "../components/styled/Wrappers";
 
 export const Layout = () => {

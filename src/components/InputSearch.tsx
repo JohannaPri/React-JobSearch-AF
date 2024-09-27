@@ -1,30 +1,26 @@
 import {
   ButtonType,
-  FormCheckboxVariation,
   FormInputSearchVariation,
   FormInputType,
-  LayoutColumnsElement,
 } from "@digi/arbetsformedlingen";
 import {
-  DigiFormCheckbox,
   DigiFormFilter,
   DigiFormInputSearch,
-  DigiLayoutColumns,
   DigiLayoutContainer,
   DigiTypography,
 } from "@digi/arbetsformedlingen-react";
 
 import { DigiFormInputSearchCustomEvent } from "@digi/arbetsformedlingen/dist/types/components";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useContext, useEffect, useState } from "react";
 import { IUserFilter } from "../models/IUserFilter";
 import { getTaxonomyRegions } from "../services/jobSearchService";
 import { TaxonomyRegions } from "../models/ITaxonomyRegion";
-//import { getJobs } from "../services/jobSearchService";
-//import { JobsContext } from "../contexts/JobsContext";
-//import { ActionJobSearchType } from "../reducers/jobSearchReducer";
+import { getJobs } from "../services/jobSearchService";
+import { JobsContext } from "../contexts/JobsContext";
+import { ActionJobSearchType } from "../reducers/jobSearchReducer";
 
 export const InputSearch = () => {
-  // const { dispatch } = useContext(JobsContext);
+   const { dispatch } = useContext(JobsContext);
   const [taxonomy, setTaxonomy] = useState<TaxonomyRegions[] | undefined>([]);
   const [fetched, setFetched] =useState(false);
 
@@ -52,8 +48,8 @@ export const InputSearch = () => {
     e.preventDefault();
 
     console.log(userFilter);
-    //const searchedJobs = await getJobs(userFilter);
-    //dispatch({ type: ActionJobSearchType.SEARCH, payload: searchedJobs });
+    const searchedJobs = await getJobs(userFilter);
+    dispatch({ type: ActionJobSearchType.SEARCH, payload: searchedJobs });
   };
 
   return (
