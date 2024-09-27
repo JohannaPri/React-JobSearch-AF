@@ -1,9 +1,10 @@
 
 
 export interface IUserFilter {
-    searchText: string;
-    trainee: boolean;
-    experience: boolean;
-    remote: boolean;
-    region: string[]
+
+  searchText: string | null;
+  trainee: boolean;
+  experience: boolean;
+  remote: boolean;
 }
+

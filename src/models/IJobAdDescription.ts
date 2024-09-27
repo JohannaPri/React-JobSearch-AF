@@ -1,8 +1,8 @@
 export interface IJobAdDescription {
-  text: string;
-  text_formatted: string;
-  company_information: string;
-  needs: string;
-  requirements: string;
-  conditions: string;
+  text: string | null;
+  text_formatted: string | null;
+  company_information: string | null;
+  needs: string | null;
+  requirements: string | null;
+  conditions: string | null;
 }
