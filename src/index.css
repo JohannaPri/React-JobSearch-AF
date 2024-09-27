@@ -1,15 +1,25 @@
 @import '@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/digi-arbetsformedlingen.css';
 @import '@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/fonts/src/fonts.css';
 
-/*HEADER*/
-.start {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+
+:root {
+  /* TEXT COLORS */
+  --digi--color--text--primary: black;
+  --digi--color--text--secondary: white;
+
+  /* LINK COLORS */
+  --digi--color--text--link: black;
+
+  /* BACKGROUND COLORS */
+  --digi--color--background--primary: #526D9C;
+  --digi--color--background--secondary: #6D8FB6;
+  --digi--color--background--tertiary: #DBD1CD;
+  --digi--color--background--inverted-1: #6D8FB6;
+
+  background-color: #F3E8E8;
 }
 
+/*HEADER*/
 .digi-logo__img {
   background-image: url('../public/logo.svg');
   background-size: contain;
@@ -22,10 +32,43 @@
   display: none; 
 }
 
+
+/* MAIN */
+.start {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+body {
+  margin: 0;
+}
+
+
+/* turns the active navbar line -> blue color */
+.digi-header-navigation-item--active.sc-digi-header-navigation-item-s>a {
+  font-weight: bold;
+  box-shadow: inset 0 -4px 0 0 #526D9C;
+}
+
+/*footer logo*/
+
+
+/* JOBS */
+.search-container{
+  display: block;
+  max-width: 700px;
+}
+
+
 /*LOGO*/
 .digi-footer .digi-logo__img {
   background-image: url('../public/logo-white.svg');
 }
+
 
 /*JOBAD FIRST SECTION*/
 .job-info {
@@ -36,4 +79,39 @@
 .job-info-margin {
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+.footerLogo {
+  display: flex;
+  color: white;
+}
+
+.footerBrandName {
+  padding: .5rem;
+}
+
+/* TABLET */
+@media only screen and (max-width: 992px) {
+  [class="footerBrandName"] {
+    position: relative;
+    padding: 1.3rem;
+    right: 1rem;
+  }
+}
+
+/* MOBILE */
+@media only screen and (max-width: 767px) {
+  [class="start"] {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  [class="footerBrandName"] {
+    display: none;
+  }
+
+  [class="footerLogo"] {
+    padding: 1.5rem;
+  }
 }
