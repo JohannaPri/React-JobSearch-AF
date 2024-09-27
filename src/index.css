@@ -142,11 +142,10 @@ body {
 .breadcrumb-spacing {
   padding: .5rem;
   margin-bottom: 0.5rem;
-  background-color: var(--digi--color--background--secondary);
-  
+  background-color: var(--digi--color--background--secondary); 
 }
 
-a:visited {
+.breadcrumb-spacing a:visited {
   color: black !important;
 }
 

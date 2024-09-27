@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { IJobAd } from "../models/IJobAd";
 import {
+  InfoCardBorderPosition,
   InfoCardHeadingLevel,
-  InfoCardSize,
   InfoCardType,
   InfoCardVariation,
   LayoutBlockVariation,
@@ -112,22 +112,46 @@ export const Job = () => {
             <DigiInfoCard
               afHeading="Kvalifikationer"
               afHeadingLevel={InfoCardHeadingLevel.H2}
-              afType={InfoCardType.TIP}
+              afType={InfoCardType.RELATED}
               afVariation={InfoCardVariation.SECONDARY}
-              afSize={InfoCardSize.STANDARD}
+              afBorderPosition={InfoCardBorderPosition.LEFT}
             >
-              <span>DATA IN HÄR</span>
+              <div>
+                <span>
+                  <h3>Arbetslivserfarenheter:</h3>
+                </span>
+                {jobAd.must_have.work_experiences &&
+                jobAd.must_have.work_experiences.length > 0 ? (
+                  jobAd.must_have.work_experiences.map((work, index) => (
+                    <p key={index}>{work.label}</p>
+                  ))
+                ) : (
+                  <p>Inga krav</p>
+                )}
+
+                <span>
+                  <h3>Språk:</h3>
+                </span>
+                {jobAd.must_have.languages &&
+                jobAd.must_have.languages.length > 0 ? (
+                  jobAd.must_have.languages.map((lang, index) => (
+                    <p key={index}>{lang.label}</p>
+                  ))
+                ) : (
+                  <p>Inga krav</p>
+                )}
+              </div>
             </DigiInfoCard>
           </DigiLayoutContainer>
         </div>
         <div>
           <DigiLayoutContainer>
             <DigiInfoCard
-              afHeading="Sök jobbet"
+              afHeading="Sök Jobbet"
               afHeadingLevel={InfoCardHeadingLevel.H2}
-              afType={InfoCardType.TIP}
+              afType={InfoCardType.RELATED}
               afVariation={InfoCardVariation.SECONDARY}
-              afSize={InfoCardSize.STANDARD}
+              afBorderPosition={InfoCardBorderPosition.LEFT}
             >
               <p>DATA IN HÄR</p>
             </DigiInfoCard>
