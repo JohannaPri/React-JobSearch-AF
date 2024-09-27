@@ -43,8 +43,8 @@ export const Start = () => {
         </DigiTypography>
         <DigiMediaImage
           afUnlazy
-          afHeight="300"
-          afWidth="300"
+          afHeight="370"
+          afWidth="370"
           afSrc="../public/start-page.png"
           afAlt="Arbetsförmedlingens logotyp som en fasadskyld"
         ></DigiMediaImage>{" "}

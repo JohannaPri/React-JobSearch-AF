@@ -16,10 +16,17 @@
   --digi--color--background--tertiary: #DBD1CD;
   --digi--color--background--inverted-1: #6D8FB6;
 
+  /*HOVER */
+  --digi--global--color--cta--hover--base: white;
+
   background-color: #F3E8E8;
 }
 
 /*HEADER*/
+
+.digi-button__icon .sc-digi-button .sc-digi-button-s {
+  --digi--global--color--cta--hover--base: black;
+}
 
 .digi-header .sc-digi-header{     
    background-color: var(--digi--color--background--inverted-1);
@@ -42,6 +49,17 @@
   display: none; 
 }
 
+/* MENU */
+
+.sc-digi-header-navigation-h .digi-header-navigation__wrapper.sc-digi-header-navigation{ 
+   background-color: var(--digi--color--background--tertiary);
+
+}
+
+.sc-digi-header-navigation-h {
+  --digi--header--border-color: #DBD1CD;
+}
+
 
 /* MAIN */
 .start {
@@ -51,6 +69,10 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+}
+
+.sc-digi-link-button {
+   --BACKGROUND--HOVER: var(  --digi--color--background--secondary);
 }
 
 body {
