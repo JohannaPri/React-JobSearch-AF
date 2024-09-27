@@ -20,6 +20,9 @@ export const getJobs = async (userInput: IUserFilter): Promise<IJobSearchResults
     if (userInput.remote) {
         queryParams.push("remote=true");
     }
+    if (userInput.region.length > 0){
+        queryParams.push(`region=${userInput.region}`)
+    }
 
     queryParams.push("limit=5");
 
