@@ -6,5 +6,6 @@ export interface IUserFilter {
   trainee: boolean;
   experience: boolean;
   remote: boolean;
+  region: [];
 }
 
