@@ -20,6 +20,16 @@
 }
 
 /*HEADER*/
+
+.digi-header .sc-digi-header{     
+   background-color: var(--digi--color--background--inverted-1);
+}
+
+.sc-digi-logo-h .digi-logo__system-name.sc-digi-logo::before{
+    display: none;
+}
+
+
 .digi-logo__img {
   background-image: url('../public/logo.svg');
   background-size: contain;

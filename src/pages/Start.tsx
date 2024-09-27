@@ -35,7 +35,7 @@ export const Start = () => {
             <DigiLinkButton
               afHref="#"
               afSize={LinkButtonSize.LARGE}
-              afVariation={LinkButtonVariation.PRIMARY}
+              afVariation={LinkButtonVariation.SECONDARY}
             >
               Lediga tjänster
             </DigiLinkButton>
