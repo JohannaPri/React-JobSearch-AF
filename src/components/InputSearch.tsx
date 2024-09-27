@@ -4,37 +4,22 @@ import {
   FormInputType,
 } from "@digi/arbetsformedlingen";
 import {
-  DigiFormFilter,
   DigiFormInputSearch,
   DigiLayoutContainer,
   DigiTypography,
 } from "@digi/arbetsformedlingen-react";
 
 import { DigiFormInputSearchCustomEvent } from "@digi/arbetsformedlingen/dist/types/components";
-import { FormEvent, useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { IUserFilter } from "../models/IUserFilter";
-import { getTaxonomyRegions } from "../services/jobSearchService";
-import { TaxonomyRegions } from "../models/ITaxonomyRegion";
 import { getJobs } from "../services/jobSearchService";
 import { JobsContext } from "../contexts/JobsContext";
 import { ActionJobSearchType } from "../reducers/jobSearchReducer";
+import { RegionFilter } from "./RegionFilter";
+import { OtherFilter } from "./OtherFilter";
 
 export const InputSearch = () => {
    const { dispatch } = useContext(JobsContext);
-  const [taxonomy, setTaxonomy] = useState<TaxonomyRegions[] | undefined>([]);
-  const [fetched, setFetched] =useState(false);
-
-  useEffect(() => {
-    if(fetched) return
-    const getRegions = async () => {
-      const data = await getTaxonomyRegions();
-      setTaxonomy(data)
-      setFetched(true)
-    }
-
-    getRegions()
-  })
-  
 
   const [userFilter, setUserFilter] = useState<IUserFilter>({
     searchText: "",
@@ -46,8 +31,7 @@ export const InputSearch = () => {
 
   const handleClick = async (e: DigiFormInputSearchCustomEvent<object>) => {
     e.preventDefault();
-
-    console.log(userFilter);
+    
     const searchedJobs = await getJobs(userFilter);
     dispatch({ type: ActionJobSearchType.SEARCH, payload: searchedJobs });
   };
@@ -71,40 +55,10 @@ export const InputSearch = () => {
           }}
           onAfOnClick={handleClick}
         ></DigiFormInputSearch>
+      <RegionFilter userFilter={userFilter}></RegionFilter>
+      <OtherFilter userFilter={userFilter}></OtherFilter>
 
-<DigiFormFilter
-          afFilterButtonText="Välj Län"
-          afSubmitButtonText="Filtrera"
-          afListItems={taxonomy?.map((tax) => ( {id: tax['taxonomy/id'], label: tax["taxonomy/preferred-label"]}))}
-          onAfChangeFilter={(e) => console.log(e.detail.id, e.detail.isChecked)}
-          onAfResetFilter={() => console.log("reset filter")}
-          onAfSubmitFilter={(e) => userFilter.region = e.detail.checked}
-          onAfCloseFilter={(e) =>
-            console.log("submit filter", e.detail.listItems, e.detail.checked)
-          }
-        ></DigiFormFilter>
-
-        <DigiFormFilter
-          afFilterButtonText="Filter"
-          afSubmitButtonText="Filtrera"
-          afListItems={[
-            { id: "experience", label: "Experience" },
-            { id: "remote", label: "Remote" },
-            { id: "trainee", label: "Trainee" },
-          ]}
-          onAfChangeFilter={(e) => console.log(e.detail.id, e.detail.isChecked)}
-          onAfResetFilter={() => console.log("reset filter")}
-          onAfSubmitFilter={(e) =>
-            e.detail.checked.forEach((check) => {
-              if (check === "experience") userFilter.experience = true;
-              if (check === "remote") userFilter.remote = true;
-              if (check === "trainee") userFilter.trainee = true;
-            })
-          }
-          onAfCloseFilter={(e) =>
-            console.log("submit filter", e.detail.listItems, e.detail.checked)
-          }
-        ></DigiFormFilter>
+       
       </DigiLayoutContainer>
     </>
   );
