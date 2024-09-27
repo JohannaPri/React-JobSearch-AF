@@ -64,7 +64,6 @@
   --digi--header--border-color: #DBD1CD;
 }
 
-
 /* MAIN */
 .start {
   margin-top: 1rem;
@@ -83,7 +82,6 @@ body {
   margin: 0;
 }
 
-
 /* turns the active navbar line -> blue color */
 .digi-header-navigation-item--active.sc-digi-header-navigation-item-s>a {
   font-weight: bold;
@@ -98,6 +96,7 @@ body {
   display: block;
   max-width: 700px;
 }
+
 
 .digi-form-filter__dropdown .sc-digi-form-filter-presentational {
   background-color: #DBD1CD;
@@ -126,7 +125,6 @@ body {
   background-image: url('../public/logo-white.svg');
 }
 
-
 /*JOBAD FIRST SECTION*/
 .job-info {
   display: flex;
@@ -134,10 +132,29 @@ body {
 }
 
 .job-info-margin {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin: .5rem;
 }
 
+.job-info-padding {
+  padding: 1rem 0 1rem 0;
+}
+
+.breadcrumb-spacing {
+  padding: .5rem;
+  margin-bottom: 0.5rem;
+  background-color: var(--digi--color--background--secondary);
+  
+}
+
+a:link {
+  color: black !important;
+}
+
+a:visited {
+  color: black !important;
+}
+
+/*FOOTER*/
 .footerLogo {
   display: flex;
   color: white;
@@ -145,6 +162,27 @@ body {
 
 .footerBrandName {
   padding: .5rem;
+}
+
+
+/* NOT FOUND */
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  
+}
+
+.brokenCompass {
+  -webkit-animation: rotate-center 1s linear infinite both;
+  animation: rotate-center 1s linear infinite both;
+}
+
+.sc-digi-notification-error-page svg{
+display: none;
 }
 
 /* TABLET */
@@ -172,3 +210,28 @@ body {
     padding: 1.5rem;
   }
 }
+
+/** ANIMATIONS **/
+
+    /** NOT FOUND COMPASS ANIMATION **/
+    @-webkit-keyframes rotate-center {
+      0% {
+        -webkit-transform: rotate(0);
+                transform: rotate(0);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+      }
+    }
+    @keyframes rotate-center {
+      0% {
+        -webkit-transform: rotate(0);
+                transform: rotate(0);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+      }
+    }
+    
