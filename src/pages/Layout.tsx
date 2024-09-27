@@ -17,6 +17,7 @@ import {
   DigiLogo,
 } from "@digi/arbetsformedlingen-react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
+import { Main } from "../components/styled/Wrappers";
 
 export const Layout = () => {
   const location = useLocation();
@@ -60,9 +61,9 @@ export const Layout = () => {
         </DigiHeader>
       </header>
 
-      <main>
+      <Main>
         <Outlet></Outlet>
-      </main>
+      </Main>
 
       <footer>
         <DigiFooter afVariation={FooterVariation.SMALL}>

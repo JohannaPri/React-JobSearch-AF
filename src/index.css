@@ -1,6 +1,7 @@
 @import '@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/digi-arbetsformedlingen.css';
 @import '@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/fonts/src/fonts.css';
 
+
 :root {
   /* TEXT COLORS */
   --digi--color--text--primary: black;
@@ -53,6 +54,17 @@ body {
 }
 
 /*footer logo*/
+
+
+/* JOBS */
+.search-container{
+  display: block;
+  max-width: 700px;
+}
+
+
+
+/*LOGO*/
 .digi-footer .digi-logo__img {
   background-image: url('../public/logo-white.svg');
 }
