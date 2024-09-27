@@ -3,12 +3,13 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { IJobAd } from "../models/IJobAd";
 import {
-  InfoCardBorderPosition,
   InfoCardHeadingLevel,
   InfoCardSize,
   InfoCardType,
   InfoCardVariation,
   LayoutBlockVariation,
+  LayoutColumnsElement,
+  LayoutColumnsVariation,
   LoaderSkeletonVariation,
   TypographyVariation,
 } from "@digi/arbetsformedlingen";
@@ -19,6 +20,7 @@ import {
   DigiLoaderSkeleton,
   DigiNavigationBreadcrumbs,
   DigiInfoCard,
+  DigiLayoutColumns,
 } from "@digi/arbetsformedlingen-react";
 
 export const Job = () => {
@@ -100,30 +102,39 @@ export const Job = () => {
           </DigiTypography>
         </DigiLayoutBlock>
       </div>
-      <div>
-        <DigiInfoCard
-          afHeading="Jag är ett infokort"
-          afHeadingLevel={InfoCardHeadingLevel.H2}
-          afType={InfoCardType.TIP}
-          afVariation={InfoCardVariation.SECONDARY}
-          afSize={InfoCardSize.STANDARD}
-        >
-          <p>kvalifikationer</p>
-        </DigiInfoCard>
-      </div>
-      <div>
-        <DigiInfoCard
-          afHeading="Jag är ett infokort"
-          afHeadingLevel={InfoCardHeadingLevel.H2}
-          afType={InfoCardType.RELATED}
-          afVariation={InfoCardVariation.SECONDARY}
-          afBorderPosition={InfoCardBorderPosition.LEFT}
-        >
-          <p>
-            Sök Jobbet
-          </p>
-        </DigiInfoCard>
-      </div>
+
+      <DigiLayoutColumns
+        afElement={LayoutColumnsElement.DIV}
+        afVariation={LayoutColumnsVariation.TWO}
+      >
+        <div>
+          <DigiLayoutContainer>
+            <DigiInfoCard
+              afHeading="Kvalifikationer"
+              afHeadingLevel={InfoCardHeadingLevel.H2}
+              afType={InfoCardType.TIP}
+              afVariation={InfoCardVariation.SECONDARY}
+              afSize={InfoCardSize.STANDARD}
+            >
+              <span>DATA IN HÄR</span>
+            </DigiInfoCard>
+          </DigiLayoutContainer>
+        </div>
+        <div>
+          <DigiLayoutContainer>
+            <DigiInfoCard
+              afHeading="Sök jobet"
+              afHeadingLevel={InfoCardHeadingLevel.H2}
+              afType={InfoCardType.TIP}
+              afVariation={InfoCardVariation.SECONDARY}
+              afSize={InfoCardSize.STANDARD}
+            >
+              <p>DATA IN HÄR</p>
+            </DigiInfoCard>
+          </DigiLayoutContainer>
+        </div>
+      </DigiLayoutColumns>
+
       <div>
         <DigiLayoutContainer afVerticalPadding>
           <DigiTypography afVariation={TypographyVariation.SMALL}>
@@ -131,6 +142,11 @@ export const Job = () => {
             <p>{jobAd.description.text}</p>
           </DigiTypography>
         </DigiLayoutContainer>
+      </div>
+      <div>
+        <DigiLayoutBlock
+          afVariation={LayoutBlockVariation.TRANSPARENT}
+        ></DigiLayoutBlock>
       </div>
     </div>
   );

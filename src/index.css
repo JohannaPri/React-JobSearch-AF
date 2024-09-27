@@ -32,7 +32,6 @@
   display: none; 
 }
 
-
 /* MAIN */
 .start {
   margin-top: 1rem;
@@ -46,7 +45,6 @@
 body {
   margin: 0;
 }
-
 
 /* turns the active navbar line -> blue color */
 .digi-header-navigation-item--active.sc-digi-header-navigation-item-s>a {
