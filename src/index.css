@@ -19,6 +19,10 @@
   /*HOVER */
   --digi--global--color--cta--hover--base: white;
 
+  --digi--form-filter--footer--background: #DBD1CD;
+  --digi--form-filter--dropdown--background: #DBD1CD;
+
+
   background-color: #F3E8E8;
 }
 
@@ -95,6 +99,27 @@ body {
   max-width: 700px;
 }
 
+.digi-form-filter__dropdown .sc-digi-form-filter-presentational {
+  background-color: #DBD1CD;
+}
+
+.digi-form-checkbox__box.sc-digi-form-checkbox {
+  background-color: white;
+}
+
+.sc-digi-form-filter-presentational-h .digi-form-filter__footer.sc-digi-form-filter-presentational {
+  background-color: #DBD1CD;
+}
+
+.digi-form-input__input.sc-digi-form-input {
+  background: #DBD1CD;
+}
+
+.formFilterInput {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
 
 /*LOGO*/
 .digi-footer .digi-logo__img {

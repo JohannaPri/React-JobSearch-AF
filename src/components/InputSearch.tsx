@@ -20,28 +20,27 @@ import { JobsContext } from "../contexts/JobsContext";
 import { ActionJobSearchType } from "../reducers/jobSearchReducer";
 
 export const InputSearch = () => {
-   const { dispatch } = useContext(JobsContext);
+  const { dispatch } = useContext(JobsContext);
   const [taxonomy, setTaxonomy] = useState<TaxonomyRegions[] | undefined>([]);
-  const [fetched, setFetched] =useState(false);
+  const [fetched, setFetched] = useState(false);
 
   useEffect(() => {
-    if(fetched) return
+    if (fetched) return;
     const getRegions = async () => {
       const data = await getTaxonomyRegions();
-      setTaxonomy(data)
-      setFetched(true)
-    }
+      setTaxonomy(data);
+      setFetched(true);
+    };
 
-    getRegions()
-  })
-  
+    getRegions();
+  });
 
   const [userFilter, setUserFilter] = useState<IUserFilter>({
     searchText: "",
     experience: false,
     trainee: false,
     remote: false,
-    region: []
+    region: [],
   });
 
   const handleClick = async (e: DigiFormInputSearchCustomEvent<object>) => {
@@ -71,40 +70,61 @@ export const InputSearch = () => {
           }}
           onAfOnClick={handleClick}
         ></DigiFormInputSearch>
-
-<DigiFormFilter
-          afFilterButtonText="Välj Län"
-          afSubmitButtonText="Filtrera"
-          afListItems={taxonomy?.map((tax) => ( {id: tax['taxonomy/id'], label: tax["taxonomy/preferred-label"]}))}
-          onAfChangeFilter={(e) => console.log(e.detail.id, e.detail.isChecked)}
-          onAfResetFilter={() => console.log("reset filter")}
-          onAfSubmitFilter={(e) => userFilter.region = e.detail.checked}
-          onAfCloseFilter={(e) =>
-            console.log("submit filter", e.detail.listItems, e.detail.checked)
-          }
-        ></DigiFormFilter>
-
-        <DigiFormFilter
-          afFilterButtonText="Filter"
-          afSubmitButtonText="Filtrera"
-          afListItems={[
-            { id: "experience", label: "Experience" },
-            { id: "remote", label: "Remote" },
-            { id: "trainee", label: "Trainee" },
-          ]}
-          onAfChangeFilter={(e) => console.log(e.detail.id, e.detail.isChecked)}
-          onAfResetFilter={() => console.log("reset filter")}
-          onAfSubmitFilter={(e) =>
-            e.detail.checked.forEach((check) => {
-              if (check === "experience") userFilter.experience = true;
-              if (check === "remote") userFilter.remote = true;
-              if (check === "trainee") userFilter.trainee = true;
-            })
-          }
-          onAfCloseFilter={(e) =>
-            console.log("submit filter", e.detail.listItems, e.detail.checked)
-          }
-        ></DigiFormFilter>
+        <div className="formFilterInput">
+          <div>
+            {" "}
+            <DigiFormFilter
+              afFilterButtonText="Välj Län"
+              afSubmitButtonText="Filtrera"
+              afListItems={taxonomy?.map((tax) => ({
+                id: tax["taxonomy/id"],
+                label: tax["taxonomy/preferred-label"],
+              }))}
+              onAfChangeFilter={(e) =>
+                console.log(e.detail.id, e.detail.isChecked)
+              }
+              onAfResetFilter={() => console.log("reset filter")}
+              onAfSubmitFilter={(e) => (userFilter.region = e.detail.checked)}
+              onAfCloseFilter={(e) =>
+                console.log(
+                  "submit filter",
+                  e.detail.listItems,
+                  e.detail.checked
+                )
+              }
+            ></DigiFormFilter>
+          </div>
+          <div>
+            {" "}
+            <DigiFormFilter
+              afFilterButtonText="Filter"
+              afSubmitButtonText="Filtrera"
+              afListItems={[
+                { id: "experience", label: "Experience" },
+                { id: "remote", label: "Remote" },
+                { id: "trainee", label: "Trainee" },
+              ]}
+              onAfChangeFilter={(e) =>
+                console.log(e.detail.id, e.detail.isChecked)
+              }
+              onAfResetFilter={() => console.log("reset filter")}
+              onAfSubmitFilter={(e) =>
+                e.detail.checked.forEach((check) => {
+                  if (check === "experience") userFilter.experience = true;
+                  if (check === "remote") userFilter.remote = true;
+                  if (check === "trainee") userFilter.trainee = true;
+                })
+              }
+              onAfCloseFilter={(e) =>
+                console.log(
+                  "submit filter",
+                  e.detail.listItems,
+                  e.detail.checked
+                )
+              }
+            ></DigiFormFilter>
+          </div>
+        </div>
       </DigiLayoutContainer>
     </>
   );
