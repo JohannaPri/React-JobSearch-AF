@@ -2,9 +2,11 @@ import {
   ButtonType,
   FormInputSearchVariation,
   FormInputType,
+  LayoutBlockVariation
 } from "@digi/arbetsformedlingen";
 import {
   DigiFormInputSearch,
+  DigiLayoutBlock,
   DigiLayoutContainer,
   DigiTypography,
 } from "@digi/arbetsformedlingen-react";
@@ -31,14 +33,17 @@ export const InputSearch = () => {
 
   const handleClick = async (e: DigiFormInputSearchCustomEvent<object>) => {
     e.preventDefault();
-    
+    console.log(userFilter)
     const searchedJobs = await getJobs(userFilter);
     dispatch({ type: ActionJobSearchType.SEARCH, payload: searchedJobs });
   };
 
   return (
     <>
-      <DigiLayoutContainer className="search-container">
+      <DigiLayoutContainer>
+        <DigiLayoutBlock
+        afMarginBottom={true}
+        afVariation={LayoutBlockVariation.TRANSPARENT}>
         <DigiTypography>
           <h1>Sök på jobb</h1>
         </DigiTypography>
@@ -58,7 +63,7 @@ export const InputSearch = () => {
       <RegionFilter userFilter={userFilter}></RegionFilter>
       <OtherFilter userFilter={userFilter}></OtherFilter>
 
-       
+      </DigiLayoutBlock>
       </DigiLayoutContainer>
     </>
   );
