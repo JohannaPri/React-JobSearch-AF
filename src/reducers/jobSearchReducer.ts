@@ -2,7 +2,7 @@ import { IJobSearchResults } from "../models/IJobSearchResult";
 
 export interface IActionJobSearch {
   type: ActionJobSearchType;
-  payload: IJobSearchResults[];
+  payload: IJobSearchResults;
 }
 
 export enum ActionJobSearchType {
@@ -10,9 +10,9 @@ export enum ActionJobSearchType {
 }
 
 export const jobSearchReducer = (
-  jobs: IJobSearchResults[],
+  jobs: IJobSearchResults,
   action: IActionJobSearch
-): IJobSearchResults[] => {
+): IJobSearchResults => {
   switch (action.type) {
     case ActionJobSearchType.SEARCH: {
       return action.payload;
