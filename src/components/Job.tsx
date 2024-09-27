@@ -5,12 +5,14 @@ import { IJobAd } from "../models/IJobAd";
 import {
   InfoCardBorderPosition,
   InfoCardHeadingLevel,
+  InfoCardSize,
   InfoCardType,
   InfoCardVariation,
   LayoutBlockVariation,
   LayoutColumnsElement,
   LayoutColumnsVariation,
   LoaderSkeletonVariation,
+  TypographyTimeVariation,
   TypographyVariation,
 } from "@digi/arbetsformedlingen";
 import {
@@ -21,6 +23,7 @@ import {
   DigiNavigationBreadcrumbs,
   DigiInfoCard,
   DigiLayoutColumns,
+  DigiTypographyTime,
 } from "@digi/arbetsformedlingen-react";
 
 export const Job = () => {
@@ -112,14 +115,15 @@ export const Job = () => {
             <DigiInfoCard
               afHeading="Kvalifikationer"
               afHeadingLevel={InfoCardHeadingLevel.H2}
-              afType={InfoCardType.RELATED}
+              afType={InfoCardType.TIP}
               afVariation={InfoCardVariation.SECONDARY}
-              afBorderPosition={InfoCardBorderPosition.LEFT}
+              afSize={InfoCardSize.STANDARD}
             >
               <div>
                 <span>
                   <h3>Arbetslivserfarenheter:</h3>
                 </span>
+
                 {jobAd.must_have.work_experiences &&
                 jobAd.must_have.work_experiences.length > 0 ? (
                   jobAd.must_have.work_experiences.map((work, index) => (
@@ -130,8 +134,9 @@ export const Job = () => {
                 )}
 
                 <span>
-                  <h3>Språk:</h3>
+                  <h3>Språk</h3>
                 </span>
+
                 {jobAd.must_have.languages &&
                 jobAd.must_have.languages.length > 0 ? (
                   jobAd.must_have.languages.map((lang, index) => (
@@ -144,6 +149,7 @@ export const Job = () => {
             </DigiInfoCard>
           </DigiLayoutContainer>
         </div>
+
         <div>
           <DigiLayoutContainer>
             <DigiInfoCard
@@ -153,7 +159,48 @@ export const Job = () => {
               afVariation={InfoCardVariation.SECONDARY}
               afBorderPosition={InfoCardBorderPosition.LEFT}
             >
-              <p>DATA IN HÄR</p>
+              <div>
+                <span>
+                  <h3>Ansök Senast</h3>
+                </span>
+
+                {jobAd.last_publication_date ? (
+                  <DigiTypographyTime
+                    afVariation={TypographyTimeVariation.DISTANCE}
+                    afDateTime={new Date(
+                      jobAd.last_publication_date
+                    ).toISOString()}
+                  >
+                    {new Date(jobAd.last_publication_date).toLocaleDateString(
+                      "sv-SE",
+                      {
+                        month: "long",
+                        day: "numeric",
+                      }
+                    )}{" "}
+                  </DigiTypographyTime>
+                ) : (
+                  <p>Inget publiceringsdatum tillgängligt</p>
+                )}
+                
+                <span>
+                  <h3>Kontakt till Företag</h3>
+                </span>
+
+                {jobAd.application_details.email ? (
+                  <p>{jobAd.application_details.email}</p>
+                ) : jobAd.application_details.url ? (
+                  <a
+                    href={jobAd.application_details.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Besök företagets hemsida
+                  </a>
+                ) : (
+                  <p>Kontakt ej tillgänglig</p>
+                )}
+              </div>
             </DigiInfoCard>
           </DigiLayoutContainer>
         </div>
