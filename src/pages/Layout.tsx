@@ -6,9 +6,6 @@ import {
 } from "@digi/arbetsformedlingen";
 import {
   DigiHeader,
-  DigiHeaderNotification,
-  DigiIconBellFilled,
-  DigiHeaderAvatar,
   DigiHeaderNavigation,
   DigiHeaderNavigationItem,
   DigiFooter,
@@ -19,10 +16,12 @@ import {
   DigiIconSign,
   DigiLogo,
 } from "@digi/arbetsformedlingen-react";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, NavLink, Outlet, useLocation } from "react-router-dom";
 import { Main } from "../components/styled/Wrappers";
 
 export const Layout = () => {
+  const location = useLocation();
+
   return (
     <>
       <header>
@@ -36,36 +35,26 @@ export const Layout = () => {
             aria-label="Designsystemets startsida"
             href="/"
           ></a>
-          <div slot="header-content">
-            <DigiHeaderNotification afNotificationAmount={8}>
-              <a href="/">
-                <DigiIconBellFilled></DigiIconBellFilled>
-                Notiser
-              </a>
-            </DigiHeaderNotification>
-            <DigiHeaderAvatar
-              afSrc="/assets/images/avatar.svg"
-              afAlt="Profilbild på Linda Karlsson"
-              afName="Linda Karlsson"
-              afSignature="KALIA"
-              afIsLoggedIn={false}
-              afHideSignature={true}
-            ></DigiHeaderAvatar>
-          </div>
           <div slot="header-navigation">
             <DigiHeaderNavigation
               afCloseButtonText="Stäng"
               afCloseButtonAriaLabel="Stäng meny"
               afNavAriaLabel="Huvudmeny"
             >
-              <DigiHeaderNavigationItem afCurrentPage={true}>
-                <a href="/">Startsida</a>
+              <DigiHeaderNavigationItem
+                afCurrentPage={location.pathname === "/"}
+              >
+                <NavLink to={"/"}>Startsida</NavLink>
               </DigiHeaderNavigationItem>
-              <DigiHeaderNavigationItem>
-                <NavLink to="/searchjobs">Sök jobb</NavLink>
+              <DigiHeaderNavigationItem
+                afCurrentPage={location.pathname === "/searchjobs"}
+              >
+                <NavLink to={"/searchjobs"}>Lediga tjänster</NavLink>
               </DigiHeaderNavigationItem>
-              <DigiHeaderNavigationItem>
-                <a href="/">Historik/Statistik</a>
+              <DigiHeaderNavigationItem
+                afCurrentPage={location.pathname === "/searchstatistics"}
+              >
+                <NavLink to={"/searchstatistics"}>Historik/Statistik</NavLink>
               </DigiHeaderNavigationItem>
             </DigiHeaderNavigation>
           </div>
@@ -109,30 +98,29 @@ export const Layout = () => {
                 </ul>
               </DigiFooterCard>
             </div>
-            <div>
-              <DigiFooterCard afType={FooterCardVariation.BORDER}>
-                <a href="#">Om tjänsten dolores</a>
-                <p>
-                  Systemversion: 1.4.0 <br /> Ansvarig: Jenny Svensson
-                </p>
-              </DigiFooterCard>
-            </div>
+
             <div>
               <DigiFooterCard afType={FooterCardVariation.BORDER}>
                 <a href="#">Kontakta oss</a>
                 <p>
-                  Telefon: 0771-60 0001 <br /> Öppettider: Vardagar 08:00-16:30
+                  Telefon: 0777-00 0000 <br /> Öppettider: Vardagar 08:00-16:30
                 </p>
               </DigiFooterCard>
             </div>
           </div>
-          <div slot="content-bottom-left">
-            <Link to="/">
-              <DigiLogo
-                afVariation={LogoVariation.LARGE}
-                afColor={LogoColor.SECONDARY}
-              ></DigiLogo>
-            </Link>
+          <div className="footerLogo" slot="content-bottom-left">
+            <div>
+              {" "}
+              <Link to="/">
+                <DigiLogo
+                  afVariation={LogoVariation.LARGE}
+                  afColor={LogoColor.SECONDARY}
+                ></DigiLogo>
+              </Link>
+            </div>
+            <div>
+              <h1 className="footerBrandName">JobbNavigator</h1>
+            </div>
           </div>
           <div slot="content-bottom-right">
             <p>Följ oss på</p>

@@ -1,5 +1,13 @@
-import { TypographyVariation } from "@digi/arbetsformedlingen";
-import { DigiMediaImage, DigiTypography } from "@digi/arbetsformedlingen-react";
+import {
+  LinkButtonSize,
+  LinkButtonVariation,
+  TypographyVariation,
+} from "@digi/arbetsformedlingen";
+import {
+  DigiLinkButton,
+  DigiMediaImage,
+  DigiTypography,
+} from "@digi/arbetsformedlingen-react";
 import { Link } from "react-router-dom";
 
 export const Start = () => {
@@ -20,10 +28,18 @@ export const Start = () => {
             jobbmarknaden - se hur många jobb som funnits ute och följ trender
             inom olika branscher.
           </p>
-          <h3>
-            Redo att hitta ditt nästa drömjobb?{" "}
-            <Link to="/searchjobs">SÖK HÄR</Link>
-          </h3>
+          <h3>Redo att hitta ditt nästa drömjobb? </h3>
+
+          <Link to="/searchjobs">
+            {" "}
+            <DigiLinkButton
+              afHref="#"
+              afSize={LinkButtonSize.LARGE}
+              afVariation={LinkButtonVariation.PRIMARY}
+            >
+              Lediga tjänster
+            </DigiLinkButton>
+          </Link>
         </DigiTypography>
         <DigiMediaImage
           afUnlazy
