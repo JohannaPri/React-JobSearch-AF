@@ -21,14 +21,16 @@ import { RegionFilter } from "./RegionFilter";
 import { OtherFilter } from "./OtherFilter";
 
 export const InputSearch = () => {
+
    const { dispatch } = useContext(JobsContext);
+
 
   const [userFilter, setUserFilter] = useState<IUserFilter>({
     searchText: "",
     experience: false,
     trainee: false,
     remote: false,
-    region: []
+    region: [],
   });
 
   const handleClick = async (e: DigiFormInputSearchCustomEvent<object>) => {
@@ -60,6 +62,7 @@ export const InputSearch = () => {
           }}
           onAfOnClick={handleClick}
         ></DigiFormInputSearch>
+
       <RegionFilter userFilter={userFilter}></RegionFilter>
       <OtherFilter userFilter={userFilter}></OtherFilter>
 
