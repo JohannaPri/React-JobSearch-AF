@@ -8,6 +8,12 @@ const BASE_URL = "https://jobsearch.api.jobtechdev.se/search?"
 export const getJobs = async (userInput: IUserFilter): Promise<IJobSearchResults> => {
     const queryParams: string[] = [];
 
+    if (userInput.region){
+        userInput.region.map((region) => {
+            queryParams.push(`region=${region}`)
+        })
+    }
+
     if (userInput.searchText) {
         queryParams.push(`q=${encodeURIComponent(userInput.searchText)}`);
     }
@@ -20,13 +26,12 @@ export const getJobs = async (userInput: IUserFilter): Promise<IJobSearchResults
     if (userInput.remote) {
         queryParams.push("remote=true");
     }
-    if (userInput.region.length > 0){
-        queryParams.push(`region=${userInput.region}`)
-    }
+  
 
     queryParams.push("limit=5");
 
     const finalUrl = `${BASE_URL}${queryParams.join("&")}`;
+    console.log(finalUrl)
 
     try {
         const response = await get<IJobSearchResults>(finalUrl);
