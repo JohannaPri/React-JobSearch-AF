@@ -1,8 +1,6 @@
-// import { useContext } from "react";
 import { useContext } from "react";
 import { JobsContext } from "../contexts/JobsContext";
-import { Link } from "react-router-dom";
-
+import { JobsPresentation } from "./JobsPresentation";
 
 export const Jobs = () => {
   const { jobs } = useContext(JobsContext);
@@ -12,8 +10,7 @@ export const Jobs = () => {
       <div>
         {jobs.hits.map((job) => (
           <div key={job.id}>
-
-            <Link to={`/searchjob/${job.id}`}>{job.headline}</Link>
+            <JobsPresentation jobAd={job}></JobsPresentation>
           </div>
         ))}
       </div>
