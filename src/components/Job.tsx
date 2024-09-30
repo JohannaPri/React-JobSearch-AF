@@ -208,6 +208,7 @@ export const Job = () => {
           </div>
         </DigiLayoutColumns>
       </DigiLayoutContainer>
+
       <div>
         <DigiLayoutContainer afVerticalPadding>
           <DigiTypography afVariation={TypographyVariation.SMALL}>
@@ -215,9 +216,14 @@ export const Job = () => {
             {jobAd.description && jobAd.description.text_formatted ? (
               <>
                 {jobAd.description.text_formatted.includes("\n") ? (
-                  jobAd.description.text_formatted
-                    .split("\n")
-                    .map((line, index) => <p key={index}>{line}</p>)
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: jobAd.description.text_formatted.replace(
+                        /\n/g,
+                        "<br />"
+                      ),
+                    }}
+                  />
                 ) : (
                   <div
                     dangerouslySetInnerHTML={{
