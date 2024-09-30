@@ -134,6 +134,18 @@ body {
   margin-top: 1rem;
 }
 
+.historical-job-presentation {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 0.75rem;
+  margin-top: 0.75rem;
+  padding: 1rem;
+
+}
+
+
 /*LOGO*/
 .digi-footer .digi-logo__img {
   background-image: url('../public/logo-white.svg');
