@@ -11,6 +11,8 @@ import {
 import { Link } from "react-router-dom";
 
 export const Start = () => {
+  localStorage.clear();
+
   return (
     <>
       {" "}

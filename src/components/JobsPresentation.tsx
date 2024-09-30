@@ -38,9 +38,6 @@ export const JobsPresentation = (props: IJobPresentationProps) => {
                   <p>{props.jobAd.employer.name}</p>
                   <p slot="secondary">{props.jobAd.occupation.label}</p>
                 </DigiTypographyMeta>
-                {/* <p>{props.jobAd.employer.name}</p>
-                <p>{props.jobAd.occupation.label}</p> */}
-
                 {props.jobAd.publication_date ? (
                   <div className="publication-date">
                     <span>Publicerades </span>
