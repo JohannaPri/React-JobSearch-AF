@@ -110,9 +110,9 @@ export const Job = () => {
 
       <DigiLayoutColumns
         afElement={LayoutColumnsElement.DIV}
-        afVariation={LayoutColumnsVariation.TWO}
+        afVariation={LayoutColumnsVariation.ONE}
       >
-        <div>
+        <div className="size-info-card">
           <DigiLayoutContainer>
             <DigiInfoCard
               afHeading="Kvalifikationer"
@@ -152,7 +152,7 @@ export const Job = () => {
           </DigiLayoutContainer>
         </div>
 
-        <div>
+        <div className="size-info-card">
           <DigiLayoutContainer>
             <DigiInfoCard
               afHeading="Sök Jobbet"
@@ -206,8 +206,9 @@ export const Job = () => {
             </DigiInfoCard>
           </DigiLayoutContainer>
         </div>
+        
       </DigiLayoutColumns>
-
+      
       <div>
         <DigiLayoutContainer afVerticalPadding>
           <DigiTypography afVariation={TypographyVariation.SMALL}>

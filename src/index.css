@@ -149,6 +149,13 @@ body {
   color: black !important;
 }
 
+/*JOBAD DIGI INFO CARD*/
+
+.size-info-card {
+  max-width: 45%;
+  min-width: fit-content;
+}
+
 /*JOBAD LAST SECTION*/
 
 .salary-type {
