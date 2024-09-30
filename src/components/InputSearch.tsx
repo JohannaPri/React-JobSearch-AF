@@ -35,7 +35,7 @@ export const InputSearch = () => {
 
   const handleClick = async (e: DigiFormInputSearchCustomEvent<object>) => {
     e.preventDefault();
-    setUserFilter(userFilter)
+    setUserFilter(userFilter);
     const searchedJobs = await getJobs(userFilter);
     dispatch({ type: ActionJobSearchType.SEARCH, payload: searchedJobs });
   };

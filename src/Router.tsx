@@ -5,7 +5,7 @@ import { Start } from "./pages/Start";
 import { JobsApp } from "./pages/JobsApp";
 import { Job } from "./components/Job";
 import { StatisticsApp } from "./pages/StatisticsApp";
-import { Statistic } from "./pages/Statistic";
+import { Statistic } from "./components/Statistic";
 
 export const router = createBrowserRouter([
   {
