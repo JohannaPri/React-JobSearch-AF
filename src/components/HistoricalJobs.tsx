@@ -5,7 +5,7 @@ import {
 import { HistoricalJobsPresentation } from "./HistoricalJobsPresentation";
 
 export const HistoricalJobs = () => {
-  // hämta contextext
+  // hämta contextext istället för mockData
 
   const mockData = {
     total: {
