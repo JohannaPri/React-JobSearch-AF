@@ -1,6 +1,5 @@
 import {
   LayoutBlockVariation,
-  LinkVariation,
   TypographyMetaVariation,
   TypographyTimeVariation,
 } from "@digi/arbetsformedlingen";
@@ -8,7 +7,6 @@ import {
   DigiLayoutContainer,
   DigiLayoutBlock,
   DigiTypography,
-  DigiLink,
   DigiTypographyMeta,
   DigiTypographyTime,
 } from "@digi/arbetsformedlingen-react";
@@ -26,10 +24,10 @@ export const HistoricalJobsPresentation = ({ job }: IHistoricalJobsProps) => {
           <DigiTypography>
             <div className="historical-job-presentation">
               <div>
-                <h4>{job.headline}</h4>
-                <p>
+                <h3>{job.headline}</h3>
+                <h6>
                   {job.occupation.label} - {job.occupation_group.label}
-                </p>
+                </h6>
                 <p>{job.employer.name}</p>
                 <p>
                   <span>
@@ -40,7 +38,6 @@ export const HistoricalJobsPresentation = ({ job }: IHistoricalJobsProps) => {
               </div>
 
               <div>
-                <h6></h6>
                 <p>{job.working_hours_type.label}</p>
                 {job.publication_date ? (
                   <div className="publication-date">
