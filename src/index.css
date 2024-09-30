@@ -42,7 +42,7 @@
 
 
 .digi-logo__img {
-  background-image: url('../public/logo.svg');
+  background-image: url('/logo.svg');
   background-size: contain;
   background-repeat: no-repeat;
   width: 66px; 
@@ -160,7 +160,7 @@ body {
 
 /*LOGO*/
 .digi-footer .digi-logo__img {
-  background-image: url('../public/logo-white.svg');
+  background-image: url('/logo-white.svg');
 }
 
 /*JOBAD FIRST SECTION*/
@@ -180,16 +180,40 @@ body {
 .breadcrumb-spacing {
   padding: .5rem;
   margin-bottom: 0.5rem;
-  background-color: var(--digi--color--background--secondary);
-  
+  background-color: var(--digi--color--background--secondary); 
 }
 
-a:link {
+.breadcrumb-spacing a:visited {
   color: black !important;
 }
 
-a:visited {
-  color: black !important;
+/*JOBAD DIGI INFO CARD*/
+
+.size-info-card {
+  max-width: 45%;
+  min-width: fit-content;
+}
+
+/*JOBAD LAST SECTION*/
+
+.salary-type {
+  margin-bottom: 1rem;
+}
+
+.workplace-address {
+  display: flex;
+  flex-direction: column;
+}
+
+.workplace-address-specific {
+  margin-bottom: 1rem;
+}
+
+.id-date {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 /*FOOTER*/
