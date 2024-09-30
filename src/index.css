@@ -16,10 +16,31 @@
   --digi--color--background--tertiary: #DBD1CD;
   --digi--color--background--inverted-1: #6D8FB6;
 
+  /*HOVER */
+  --digi--global--color--cta--hover--base: white;
+
+  --digi--form-filter--footer--background: #DBD1CD;
+  --digi--form-filter--dropdown--background: #DBD1CD;
+
+
   background-color: #F3E8E8;
 }
 
 /*HEADER*/
+
+.digi-button__icon .sc-digi-button .sc-digi-button-s {
+  --digi--global--color--cta--hover--base: black;
+}
+
+.digi-header .sc-digi-header{     
+   background-color: var(--digi--color--background--inverted-1);
+}
+
+.sc-digi-logo-h .digi-logo__system-name.sc-digi-logo::before{
+    display: none;
+}
+
+
 .digi-logo__img {
   background-image: url('../public/logo.svg');
   background-size: contain;
@@ -32,6 +53,16 @@
   display: none; 
 }
 
+/* MENU */
+
+.sc-digi-header-navigation-h .digi-header-navigation__wrapper.sc-digi-header-navigation{ 
+   background-color: var(--digi--color--background--tertiary);
+
+}
+
+.sc-digi-header-navigation-h {
+  --digi--header--border-color: #DBD1CD;
+}
 
 /* MAIN */
 .start {
@@ -43,10 +74,13 @@
   justify-content: space-evenly;
 }
 
+.sc-digi-link-button {
+   --BACKGROUND--HOVER: var(  --digi--color--background--secondary);
+}
+
 body {
   margin: 0;
 }
-
 
 /* turns the active navbar line -> blue color */
 .digi-header-navigation-item--active.sc-digi-header-navigation-item-s>a {
@@ -64,11 +98,32 @@ body {
 }
 
 
+.digi-form-filter__dropdown .sc-digi-form-filter-presentational {
+  background-color: #DBD1CD;
+}
+
+.digi-form-checkbox__box.sc-digi-form-checkbox {
+  background-color: white;
+}
+
+.sc-digi-form-filter-presentational-h .digi-form-filter__footer.sc-digi-form-filter-presentational {
+  background-color: #DBD1CD;
+}
+
+.digi-form-input__input.sc-digi-form-input {
+  background: #DBD1CD;
+}
+
+.formFilterInput {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
 /*LOGO*/
 .digi-footer .digi-logo__img {
   background-image: url('../public/logo-white.svg');
 }
-
 
 /*JOBAD FIRST SECTION*/
 .job-info {
@@ -77,10 +132,29 @@ body {
 }
 
 .job-info-margin {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin: .5rem;
 }
 
+.job-info-padding {
+  padding: 1rem 0 1rem 0;
+}
+
+.breadcrumb-spacing {
+  padding: .5rem;
+  margin-bottom: 0.5rem;
+  background-color: var(--digi--color--background--secondary);
+  
+}
+
+a:link {
+  color: black !important;
+}
+
+a:visited {
+  color: black !important;
+}
+
+/*FOOTER*/
 .footerLogo {
   display: flex;
   color: white;
