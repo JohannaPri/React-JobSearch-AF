@@ -134,13 +134,22 @@ body {
   margin-top: 1rem;
 }
 
+.total-presentation{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+.total-presentation p {
+  font-weight: 600;
+}
 .historical-job-presentation {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
   margin-bottom: 0.75rem;
-  margin-top: 0.75rem;
   padding: 1rem;
 
 }

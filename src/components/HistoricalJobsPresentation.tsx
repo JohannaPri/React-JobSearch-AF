@@ -27,13 +27,21 @@ export const HistoricalJobsPresentation = ({ job }: IHistoricalJobsProps) => {
             <div className="historical-job-presentation">
               <div>
                 <h4>{job.headline}</h4>
-                <p>{job.employer.workplace}</p>
-                <span>{job.scope_of_work.max}%</span>
-                <span>{job.duration.label}</span>
+                <p>
+                  {job.occupation.label} - {job.occupation_group.label}
+                </p>
+                <p>{job.employer.name}</p>
+                <p>
+                  <span>
+                    {job.duration.label} - {job.scope_of_work.max}%
+                  </span>
+                </p>
                 <p></p>
               </div>
 
               <div>
+                <h6></h6>
+                <p>{job.working_hours_type.label}</p>
                 {job.publication_date ? (
                   <div className="publication-date">
                     <span>Publicerades </span>
