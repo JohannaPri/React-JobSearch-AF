@@ -107,108 +107,107 @@ export const Job = () => {
           </DigiTypography>
         </DigiLayoutBlock>
       </div>
+      <DigiLayoutContainer>
+        <DigiLayoutColumns
+          afElement={LayoutColumnsElement.DIV}
+          afVariation={LayoutColumnsVariation.ONE}
+        >
+          <div className="size-info-card">
+            <DigiLayoutContainer>
+              <DigiInfoCard
+                afHeading="Kvalifikationer"
+                afHeadingLevel={InfoCardHeadingLevel.H2}
+                afType={InfoCardType.TIP}
+                afVariation={InfoCardVariation.SECONDARY}
+                afSize={InfoCardSize.STANDARD}
+              >
+                <div>
+                  <span>
+                    <h3>Arbetslivserfarenheter:</h3>
+                  </span>
 
-      <DigiLayoutColumns
-        afElement={LayoutColumnsElement.DIV}
-        afVariation={LayoutColumnsVariation.ONE}
-      >
-        <div className="size-info-card">
-          <DigiLayoutContainer>
-            <DigiInfoCard
-              afHeading="Kvalifikationer"
-              afHeadingLevel={InfoCardHeadingLevel.H2}
-              afType={InfoCardType.TIP}
-              afVariation={InfoCardVariation.SECONDARY}
-              afSize={InfoCardSize.STANDARD}
-            >
-              <div>
-                <span>
-                  <h3>Arbetslivserfarenheter:</h3>
-                </span>
+                  {jobAd.must_have.work_experiences &&
+                  jobAd.must_have.work_experiences.length > 0 ? (
+                    jobAd.must_have.work_experiences.map((work, index) => (
+                      <p key={index}>{work.label}</p>
+                    ))
+                  ) : (
+                    <p>Inga krav</p>
+                  )}
 
-                {jobAd.must_have.work_experiences &&
-                jobAd.must_have.work_experiences.length > 0 ? (
-                  jobAd.must_have.work_experiences.map((work, index) => (
-                    <p key={index}>{work.label}</p>
-                  ))
-                ) : (
-                  <p>Inga krav</p>
-                )}
+                  <span>
+                    <h3>Språk</h3>
+                  </span>
 
-                <span>
-                  <h3>Språk</h3>
-                </span>
+                  {jobAd.must_have.languages &&
+                  jobAd.must_have.languages.length > 0 ? (
+                    jobAd.must_have.languages.map((lang, index) => (
+                      <p key={index}>{lang.label}</p>
+                    ))
+                  ) : (
+                    <p>Inga krav</p>
+                  )}
+                </div>
+              </DigiInfoCard>
+            </DigiLayoutContainer>
+          </div>
 
-                {jobAd.must_have.languages &&
-                jobAd.must_have.languages.length > 0 ? (
-                  jobAd.must_have.languages.map((lang, index) => (
-                    <p key={index}>{lang.label}</p>
-                  ))
-                ) : (
-                  <p>Inga krav</p>
-                )}
-              </div>
-            </DigiInfoCard>
-          </DigiLayoutContainer>
-        </div>
+          <div className="size-info-card">
+            <DigiLayoutContainer>
+              <DigiInfoCard
+                afHeading="Sök Jobbet"
+                afHeadingLevel={InfoCardHeadingLevel.H2}
+                afType={InfoCardType.RELATED}
+                afVariation={InfoCardVariation.SECONDARY}
+                afBorderPosition={InfoCardBorderPosition.LEFT}
+              >
+                <div>
+                  <span>
+                    <h3>Ansök Senast</h3>
+                  </span>
 
-        <div className="size-info-card">
-          <DigiLayoutContainer>
-            <DigiInfoCard
-              afHeading="Sök Jobbet"
-              afHeadingLevel={InfoCardHeadingLevel.H2}
-              afType={InfoCardType.RELATED}
-              afVariation={InfoCardVariation.SECONDARY}
-              afBorderPosition={InfoCardBorderPosition.LEFT}
-            >
-              <div>
-                <span>
-                  <h3>Ansök Senast</h3>
-                </span>
+                  {jobAd.last_publication_date ? (
+                    <DigiTypographyTime
+                      afVariation={TypographyTimeVariation.DISTANCE}
+                      afDateTime={new Date(
+                        jobAd.last_publication_date
+                      ).toISOString()}
+                    >
+                      {new Date(jobAd.last_publication_date).toLocaleDateString(
+                        "sv-SE",
+                        {
+                          month: "long",
+                          day: "numeric",
+                        }
+                      )}{" "}
+                    </DigiTypographyTime>
+                  ) : (
+                    <p>Inget publiceringsdatum tillgängligt</p>
+                  )}
 
-                {jobAd.last_publication_date ? (
-                  <DigiTypographyTime
-                    afVariation={TypographyTimeVariation.DISTANCE}
-                    afDateTime={new Date(
-                      jobAd.last_publication_date
-                    ).toISOString()}
-                  >
-                    {new Date(jobAd.last_publication_date).toLocaleDateString(
-                      "sv-SE",
-                      {
-                        month: "long",
-                        day: "numeric",
-                      }
-                    )}{" "}
-                  </DigiTypographyTime>
-                ) : (
-                  <p>Inget publiceringsdatum tillgängligt</p>
-                )}
+                  <span>
+                    <h3>Kontakt till Företag</h3>
+                  </span>
 
-                <span>
-                  <h3>Kontakt till Företag</h3>
-                </span>
-
-                {jobAd.application_details.email ? (
-                  <p>{jobAd.application_details.email}</p>
-                ) : jobAd.application_details.url ? (
-                  <a
-                    href={jobAd.application_details.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Besök företagets hemsida
-                  </a>
-                ) : (
-                  <p>Kontakt ej tillgänglig</p>
-                )}
-              </div>
-            </DigiInfoCard>
-          </DigiLayoutContainer>
-        </div>
-        
-      </DigiLayoutColumns>
-      
+                  {jobAd.application_details.email ? (
+                    <p>{jobAd.application_details.email}</p>
+                  ) : jobAd.application_details.url ? (
+                    <a
+                      href={jobAd.application_details.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Besök företagets hemsida
+                    </a>
+                  ) : (
+                    <p>Kontakt ej tillgänglig</p>
+                  )}
+                </div>
+              </DigiInfoCard>
+            </DigiLayoutContainer>
+          </div>
+        </DigiLayoutColumns>
+      </DigiLayoutContainer>
       <div>
         <DigiLayoutContainer afVerticalPadding>
           <DigiTypography afVariation={TypographyVariation.SMALL}>
@@ -233,6 +232,7 @@ export const Job = () => {
           </DigiTypography>
         </DigiLayoutContainer>
       </div>
+
       <div>
         <DigiLayoutContainer>
           <DigiTypography afVariation={TypographyVariation.SMALL}>
