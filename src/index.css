@@ -119,6 +119,20 @@ body {
   flex-direction: row;
   gap: 2rem;
 }
+/*JOBS PRESENTATION*/
+.jobs-presentation-item {
+  padding: 1.5rem 0;
+  margin-bottom: 0.75rem;
+
+}
+
+.jobs-presentation-wrapper {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.publication-date {
+  margin-top: 1rem;
+}
 
 /*LOGO*/
 .digi-footer .digi-logo__img {
