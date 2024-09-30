@@ -149,6 +149,28 @@ body {
   color: black !important;
 }
 
+/*JOBAD LAST SECTION*/
+
+.salary-type {
+  margin-bottom: 1rem;
+}
+
+.workplace-address {
+  display: flex;
+  flex-direction: column;
+}
+
+.workplace-address-specific {
+  margin-bottom: 1rem;
+}
+
+.id-date {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
 /*FOOTER*/
 .footerLogo {
   display: flex;

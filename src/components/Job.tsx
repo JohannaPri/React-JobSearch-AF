@@ -12,6 +12,7 @@ import {
   LayoutColumnsElement,
   LayoutColumnsVariation,
   LoaderSkeletonVariation,
+  TypographyMetaVariation,
   TypographyTimeVariation,
   TypographyVariation,
 } from "@digi/arbetsformedlingen";
@@ -24,6 +25,7 @@ import {
   DigiInfoCard,
   DigiLayoutColumns,
   DigiTypographyTime,
+  DigiTypographyMeta,
 } from "@digi/arbetsformedlingen-react";
 
 export const Job = () => {
@@ -182,7 +184,7 @@ export const Job = () => {
                 ) : (
                   <p>Inget publiceringsdatum tillgängligt</p>
                 )}
-                
+
                 <span>
                   <h3>Kontakt till Företag</h3>
                 </span>
@@ -210,14 +212,119 @@ export const Job = () => {
         <DigiLayoutContainer afVerticalPadding>
           <DigiTypography afVariation={TypographyVariation.SMALL}>
             <h2>Om jobbet</h2>
-            <p>{jobAd.description.text}</p>
+            {jobAd.description && jobAd.description.text_formatted ? (
+              <>
+                {jobAd.description.text_formatted.includes("\n") ? (
+                  jobAd.description.text_formatted
+                    .split("\n")
+                    .map((line, index) => <p key={index}>{line}</p>)
+                ) : (
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: jobAd.description.text_formatted,
+                    }}
+                  />
+                )}
+              </>
+            ) : (
+              <p>Ingen beskrivning tillgänglig</p>
+            )}
           </DigiTypography>
         </DigiLayoutContainer>
       </div>
       <div>
-        <DigiLayoutBlock
-          afVariation={LayoutBlockVariation.TRANSPARENT}
-        ></DigiLayoutBlock>
+        <DigiLayoutContainer>
+          <DigiTypography afVariation={TypographyVariation.SMALL}>
+            <div>
+              <span>
+                <h2>Om Anställningen</h2>
+              </span>
+              <span>
+                <h3>Lön</h3>
+              </span>
+              <div className="salary-type">
+                <DigiTypographyMeta
+                  afVariation={TypographyMetaVariation.PRIMARY}
+                >
+                  <p slot="secondary">
+                    <strong>Lönetyp:</strong>{" "}
+                    {jobAd.salary_type.label || "Enligt överenskommelse"}
+                  </p>
+                </DigiTypographyMeta>
+              </div>
+            </div>
+            <div className="workplace-address">
+              <span>
+                <h3>Var ligger arbetsplatsen?</h3>
+              </span>
+
+              <div className="workplace-address-specific">
+                <DigiTypographyMeta
+                  afVariation={TypographyMetaVariation.SECONDARY}
+                >
+                  {jobAd.workplace_address ? (
+                    <>
+                      {jobAd.workplace_address.street_address ? (
+                        <p>{jobAd.workplace_address.street_address}</p>
+                      ) : (
+                        <p>Adress är inte tillgänglig</p>
+                      )}
+                      {jobAd.workplace_address.postcode ||
+                      jobAd.workplace_address.city ? (
+                        <p>
+                          {jobAd.workplace_address.postcode ||
+                            "Postkod är inte tillgänglig"}{" "}
+                          {jobAd.workplace_address.city ||
+                            "Stad är inte tillgänglig"}
+                        </p>
+                      ) : null}
+                    </>
+                  ) : (
+                    <p>Ingen adress är tillgänglig</p>
+                  )}
+                </DigiTypographyMeta>
+              </div>
+            </div>
+            <div>
+              <span>
+                <h3>Arbetsgivaren</h3>
+              </span>
+              <div className="employer-name-last-section">
+                <DigiTypographyMeta
+                  afVariation={TypographyMetaVariation.SECONDARY}
+                >
+                  <p>{jobAd.employer.name}</p>
+                </DigiTypographyMeta>
+              </div>
+            </div>
+            <div className="id-date">
+              <DigiTypographyMeta afVariation={TypographyMetaVariation.PRIMARY}>
+                <p>Annons-Id: {jobAd.id}</p>
+                <p slot="secondary">
+                  Publicerad:{" "}
+                  {jobAd.publication_date
+                    ? new Date(jobAd.publication_date).toLocaleDateString(
+                        "sv-SE",
+                        {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                        }
+                      ) +
+                      ", kl. " +
+                      new Date(jobAd.publication_date).toLocaleTimeString(
+                        "sv-SE",
+                        {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        }
+                      )
+                    : "Datum ej tillgängligt"}
+                </p>
+              </DigiTypographyMeta>
+            </div>
+          </DigiTypography>
+        </DigiLayoutContainer>
       </div>
     </div>
   );
