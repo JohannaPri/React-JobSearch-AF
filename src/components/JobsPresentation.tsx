@@ -26,6 +26,9 @@ export const JobsPresentation = (props: IJobPresentationProps) => {
             <DigiTypography>
               <div className="jobs-presentation-item">
 
+                <div className="link-jobs-presentation">
+
+
                 <div className="jobs-image-logo-container">
                   <img
                     src={
@@ -36,30 +39,35 @@ export const JobsPresentation = (props: IJobPresentationProps) => {
                   ></img>
                 </div>
                 <div>
+
                   <DigiLink
                     afHref={`/searchjob/${props.jobAd.id}`}
                     afVariation={LinkVariation.LARGE}
                   >
                     {props.jobAd.headline}
                   </DigiLink>
-                  <DigiTypographyMeta
-                    afVariation={TypographyMetaVariation.PRIMARY}
-                  >
-                    <p>{props.jobAd.employer.name}</p>
-                    <p slot="secondary">{props.jobAd.occupation.label}</p>
-                  </DigiTypographyMeta>
-                  {props.jobAd.publication_date ? (
-                    <div className="publication-date">
-                      <span>Publicerades </span>
-                      <DigiTypographyTime
-                        afVariation={TypographyTimeVariation.PRETTY}
-                        afDateTime="Fri Sep 27 2024 13:03:57 GMT+0200 (centraleuropeisk sommartid)"
-                      ></DigiTypographyTime>
-                    </div>
-                  ) : (
-                    <p>Publikationsdatum ej tillgänligt</p>
-                  )}
+
                 </div>
+                <DigiTypographyMeta
+                  afVariation={TypographyMetaVariation.PRIMARY}
+                >
+                  <p>{props.jobAd.employer.name}</p>
+                  <p slot="secondary">{props.jobAd.occupation.label}</p>
+                </DigiTypographyMeta>
+                {props.jobAd.publication_date ? (
+                  <div className="publication-date">
+                    <span>Publicerades </span>
+                    <DigiTypographyTime
+                      afVariation={TypographyTimeVariation.PRETTY}
+                      afDateTime="Fri Sep 27 2024 13:03:57 GMT+0200 (centraleuropeisk sommartid)"
+                    ></DigiTypographyTime>
+                  </div>
+                ) : (
+                  <p>Publikationsdatum ej tillgänligt</p>
+                )}
+
+                </div>
+
               </div>
             </DigiTypography>
           </DigiLayoutBlock>

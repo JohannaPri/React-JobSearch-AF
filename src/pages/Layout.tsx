@@ -54,7 +54,7 @@ export const Layout = () => {
               <DigiHeaderNavigationItem
                 afCurrentPage={location.pathname === "/searchstatistics"}
               >
-                <NavLink to={"/searchstatistics"}>Historik/Statistik</NavLink>
+                <NavLink to={"/searchstatistics"}>Historiska tjänster</NavLink>
               </DigiHeaderNavigationItem>
             </DigiHeaderNavigation>
           </div>
