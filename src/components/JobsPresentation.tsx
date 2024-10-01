@@ -27,12 +27,12 @@ export const JobsPresentation = (props: IJobPresentationProps) => {
             <DigiTypography>
               <div className="jobs-presentation-item">
                 <div className="link-jobs-presentation">
-                <DigiLink
-                  afHref={`/searchjob/${props.jobAd.id}`}
-                  afVariation={LinkVariation.LARGE}
-                >
-                  {props.jobAd.headline} 
-                </DigiLink>
+                  <DigiLink
+                    afHref={`/searchjob/${props.jobAd.id}`}
+                    afVariation={LinkVariation.LARGE}
+                  >
+                    {props.jobAd.headline}
+                  </DigiLink>
                 </div>
                 <DigiTypographyMeta
                   afVariation={TypographyMetaVariation.PRIMARY}
