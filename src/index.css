@@ -144,11 +144,24 @@ body {
 .jobs-presentation-item {
   padding: 1.5rem 0;
   margin-bottom: 0.75rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 150px;
 
+}
+.jobs-image-logo-container  {
+ height: 50px;
+ width: 100px;
+}
+.jobs-image-logo-container img {
+  width: 100%;
+  height: 100%;
 }
 
 .jobs-presentation-wrapper {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+ 
 }
 
 .publication-date {
@@ -180,9 +193,16 @@ body {
   margin: 2px;
 }
 
+
 .link-jobs-presentation a:visited {
   color: var(--digi--form-filter--dropdown--background);
 }
+
+.historical-job-presentation img {
+  width: 60px;
+}
+
+
 
 /*LOGO*/
 .digi-footer .digi-logo__img {
