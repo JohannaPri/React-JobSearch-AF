@@ -123,11 +123,24 @@ body {
 .jobs-presentation-item {
   padding: 1.5rem 0;
   margin-bottom: 0.75rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 150px;
 
+}
+.jobs-image-logo-container  {
+ height: 50px;
+ width: 100px;
+}
+.jobs-image-logo-container img {
+  width: 100%;
+  height: 100%;
 }
 
 .jobs-presentation-wrapper {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+ 
 }
 
 .publication-date {
@@ -155,6 +168,10 @@ body {
 
 .historical-job-presentation p {
   margin: 2px;
+}
+
+.historical-job-presentation img {
+  width: 60px;
 }
 
 
