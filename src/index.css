@@ -194,6 +194,12 @@ body {
   min-width: fit-content;
 }
 
+/*JOBAD MIDDLE SECTION*/
+
+.width-text {
+  max-width: 45%;
+}
+
 /*JOBAD LAST SECTION*/
 
 .salary-type {
@@ -239,8 +245,9 @@ body {
 }
 
 .brokenCompass {
-  -webkit-animation: rotate-center 1s linear infinite both;
-  animation: rotate-center 1s linear infinite both;
+  -webkit-animation: rotate-center 4s linear both;
+  animation: rotate-center 4s linear both;
+  animation-iteration-count: 3;
 }
 
 .sc-digi-notification-error-page svg{

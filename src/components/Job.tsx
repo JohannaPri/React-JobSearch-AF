@@ -212,6 +212,7 @@ export const Job = () => {
       <div>
         <DigiLayoutContainer afVerticalPadding>
           <DigiTypography afVariation={TypographyVariation.SMALL}>
+            <div className="width-text">
             <h2>Om jobbet</h2>
             {jobAd.description && jobAd.description.text_formatted ? (
               <>
@@ -235,6 +236,7 @@ export const Job = () => {
             ) : (
               <p>Ingen beskrivning tillgänglig</p>
             )}
+            </div>
           </DigiTypography>
         </DigiLayoutContainer>
       </div>
