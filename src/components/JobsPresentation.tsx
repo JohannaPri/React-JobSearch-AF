@@ -1,18 +1,17 @@
 import { IJobAd } from "../models/IJobAd";
 import {
   LayoutBlockVariation,
-  LinkVariation,
   TypographyMetaVariation,
   TypographyTimeVariation,
 } from "@digi/arbetsformedlingen";
 import {
   DigiLayoutBlock,
   DigiLayoutContainer,
-  DigiLink,
   DigiTypography,
   DigiTypographyMeta,
   DigiTypographyTime,
 } from "@digi/arbetsformedlingen-react";
+import { Link } from "react-router-dom";
 
 interface IJobPresentationProps {
   jobAd: IJobAd;
@@ -26,6 +25,7 @@ export const JobsPresentation = (props: IJobPresentationProps) => {
           <DigiLayoutBlock afVariation={LayoutBlockVariation.SECONDARY}>
             <DigiTypography>
               <div className="jobs-presentation-item">
+
                 <div className="jobs-image-logo-container">
                   <img
                     src={
