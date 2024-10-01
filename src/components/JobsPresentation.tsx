@@ -36,7 +36,9 @@ export const JobsPresentation = (props: IJobPresentationProps) => {
                     ></img>
                   </div>
                   <div>
-                    <Link to={`/searchjob/${props.jobAd.id}`}></Link>
+                    <Link to={`/searchjob/${props.jobAd.id}`}>
+                      {props.jobAd.headline}
+                    </Link>
                   </div>
                   <DigiTypographyMeta
                     afVariation={TypographyMetaVariation.PRIMARY}
