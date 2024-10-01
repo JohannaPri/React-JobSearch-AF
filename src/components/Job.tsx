@@ -83,7 +83,7 @@ export const Job = () => {
       <div className="breadcrumb-spacing">
         <DigiNavigationBreadcrumbs afCurrentPage="Nuvarande sida">
           <a href="/">Start</a>
-          <a href="/searchjobs">Sök jobb</a>
+          <a href="/searchjobs">Lediga tjänster</a>
         </DigiNavigationBreadcrumbs>
       </div>
       <div className="job-info-margin">

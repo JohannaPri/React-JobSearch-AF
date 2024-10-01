@@ -157,6 +157,10 @@ body {
   margin: 2px;
 }
 
+.link-jobs-presentation a:visited {
+  color: var(--digi--form-filter--dropdown--background);
+}
+
 
 /*LOGO*/
 .digi-footer .digi-logo__img {
@@ -242,6 +246,10 @@ body {
   align-items: center;
   text-align: center;
   
+}
+
+.link-notfound a:visited {
+  color: var(--digi--color--background--primary);
 }
 
 .brokenCompass {

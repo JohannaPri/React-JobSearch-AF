@@ -26,12 +26,14 @@ export const JobsPresentation = (props: IJobPresentationProps) => {
           <DigiLayoutBlock afVariation={LayoutBlockVariation.SECONDARY}>
             <DigiTypography>
               <div className="jobs-presentation-item">
+                <div className="link-jobs-presentation">
                 <DigiLink
                   afHref={`/searchjob/${props.jobAd.id}`}
                   afVariation={LinkVariation.LARGE}
                 >
-                  {props.jobAd.headline}
+                  {props.jobAd.headline} 
                 </DigiLink>
+                </div>
                 <DigiTypographyMeta
                   afVariation={TypographyMetaVariation.PRIMARY}
                 >
