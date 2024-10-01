@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { IJobAd } from "../models/IJobAd";
 import {
   InfoCardBorderPosition,
@@ -24,7 +24,6 @@ import {
   DigiTypographyMeta,
 } from "@digi/arbetsformedlingen-react";
 import { IWeightedJobtechTaxonomyItem } from "../models/IWeightedJobtechTaxonomyItem";
-import { useState } from "react";
 
 export const Job = () => {
   const { id } = useParams<{ id: string }>();
@@ -47,8 +46,8 @@ export const Job = () => {
     <div>
       <div className="breadcrumb-spacing">
         <DigiNavigationBreadcrumbs afCurrentPage="Nuvarande sida">
-          <a href="/">Start</a>
-          <a href="/searchjobs">Sök jobb</a>
+          <Link to="/">Start</Link>
+          <Link to="/searchjobs">Sök jobb</Link>
         </DigiNavigationBreadcrumbs>
       </div>
       <div className="job-info-margin">
