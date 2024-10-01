@@ -14,7 +14,7 @@ export const TotalPositionsSearchResult = ({ job }: ITotalPositionsProps) => {
       <DigiLayoutContainer>
         <DigiTypography>
           <div className="total-presentation">
-            <p>Totalt antal anonser : {job.total.value}</p>
+            <p>Totalt antal annonser: {job.total.value}</p>
             <p>Totalt antal jobb: {job.positions}</p>
           </div>
         </DigiTypography>

@@ -145,14 +145,14 @@ export const Job = () => {
                         jobAd.last_publication_date
                       ).toISOString()}
                     >
-                      {new Date(jobAd.last_publication_date).toLocaleDateString(
-                        "sv-SE",
-                        {
-                          month: "long",
-                          day: "numeric",
-                        }
-                      )}{" "}
-                    </DigiTypographyTime>
+                        {new Date(jobAd.last_publication_date).toLocaleDateString(
+                          "sv-SE",
+                          {
+                            month: "long",
+                            day: "numeric",
+                          }
+                        )}{" "}
+                      </DigiTypographyTime>
                   ) : (
                     <p>Inget publiceringsdatum tillgängligt</p>
                   )}

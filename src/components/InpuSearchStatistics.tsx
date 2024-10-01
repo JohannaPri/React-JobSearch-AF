@@ -56,7 +56,7 @@ export const InputSearchStatistics = () => {
             <h1>Sök på historiska jobbannonser</h1>
           </DigiTypography>
           <DigiFormInputSearch
-            afLabel="Skriv in sökord och välj datumimtervall"
+            afLabel="Skriv in sökord och välj datumintervall"
             afVariation={FormInputSearchVariation.SMALL}
             afType={FormInputType.SEARCH}
             afButtonText="Sök"

@@ -71,6 +71,10 @@
   justify-content: space-evenly;
 }
 
+.heading-start {
+  margin-bottom: 1.5rem;
+}
+
 .sc-digi-link-button {
    --BACKGROUND--HOVER: var(  --digi--color--background--secondary);
 }
@@ -119,6 +123,10 @@ body {
   height: 2.2rem !important;
 }
 
+.search-container label {
+  color: #4a4a4a !important;
+}
+
 .search-container button {
   background-color: var(--digi--color--background--primary) !important;
   padding-left: 1.8rem !important;
@@ -148,7 +156,6 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   gap: 150px;
-
 }
 .jobs-image-logo-container  {
  height: 50px;
@@ -161,7 +168,6 @@ body {
 
 .jobs-presentation-wrapper {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
- 
 }
 
 .publication-date {
@@ -171,9 +177,13 @@ body {
 .total-presentation{
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin-top: 30px;
+  justify-content: center;
+  gap: 6rem;
+  text-transform: capitalize;
+  letter-spacing: 0.02rem;
+  margin-top: 40px;
+  font-weight: bold;
+  color: #4a4a4a;
 }
 
 .total-presentation p {
@@ -209,8 +219,6 @@ body {
   width: 60px;
 }
 
-
-
 /*LOGO*/
 .digi-footer .digi-logo__img {
   background-image: url('/logo-white.svg');
@@ -242,13 +250,14 @@ body {
 
 /*JOBAD DIGI INFO CARD*/
 .size-info-card {
-  max-width: 45%;
+  max-width: 50%;
   min-width: fit-content;
+  
 }
 
 /*JOBAD MIDDLE SECTION*/
 .width-text {
-  max-width: 45%;
+  max-width: 50%;
 }
 
 /*JOBAD LAST SECTION*/
