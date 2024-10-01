@@ -10,10 +10,10 @@ import {
   DigiTypographyMeta,
   DigiTypographyTime,
 } from "@digi/arbetsformedlingen-react";
-import { IJobHistoricalAd } from "../models/IJobHistoricalAd";
+import { IJobAd } from "../models/IJobAd";
 
 interface IHistoricalJobsProps {
-  job: IJobHistoricalAd;
+  job: IJobAd;
 }
 
 export const HistoricalJobsPresentation = ({ job }: IHistoricalJobsProps) => {

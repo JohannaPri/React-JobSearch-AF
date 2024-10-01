@@ -11,6 +11,7 @@ import {
   DigiTypographyMeta,
   DigiTypographyTime,
 } from "@digi/arbetsformedlingen-react";
+
 import { Link } from "react-router-dom";
 
 interface IJobPresentationProps {
@@ -52,7 +53,7 @@ export const JobsPresentation = (props: IJobPresentationProps) => {
                       <span>Publicerades </span>
                       <DigiTypographyTime
                         afVariation={TypographyTimeVariation.PRETTY}
-                        afDateTime="Fri Sep 27 2024 13:03:57 GMT+0200 (centraleuropeisk sommartid)"
+                        afDateTime={props.jobAd.publication_date}
                       ></DigiTypographyTime>
                     </div>
                   ) : (
