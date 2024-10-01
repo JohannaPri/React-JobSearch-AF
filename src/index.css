@@ -114,14 +114,15 @@ body {
 }
 
 .search-container input {
-  max-width: 70%;
+  max-width: 75%;
   min-width: fit-content;
+  height: 2.2rem !important;
 }
 
 .search-container button {
   background-color: var(--digi--color--background--primary) !important;
   padding-left: 1.8rem !important;
-  padding-right: 1.8rem !important;
+  padding-right: 1.8rem !important; 
 }
 
 .search-container button:hover {
