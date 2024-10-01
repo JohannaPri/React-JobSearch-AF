@@ -33,6 +33,12 @@ export const InputSearchStatistics = () => {
 
   const handleClick = async (e: DigiFormInputSearchCustomEvent<object>) => {
     e.preventDefault();
+
+    if (!historicalSearchFilter.searchText.trim()) {
+      alert("Du måste ange sökord för att utföra en sökning.");
+      return;
+    }
+
     setHistoricalSearchFilter(historicalSearchFilter);
     const searchedHistoricalJobs = await getHistoricalJobs(
       historicalSearchFilter
