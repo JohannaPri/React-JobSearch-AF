@@ -25,26 +25,41 @@ export const JobsPresentation = (props: IJobPresentationProps) => {
           <DigiLayoutBlock afVariation={LayoutBlockVariation.SECONDARY}>
             <DigiTypography>
               <div className="jobs-presentation-item">
-                <Link to={`/searchjob/${props.jobAd.id}`}>
-                  {props.jobAd.headline}
-                </Link>
-                <DigiTypographyMeta
-                  afVariation={TypographyMetaVariation.PRIMARY}
-                >
-                  <p>{props.jobAd.employer.name}</p>
-                  <p slot="secondary">{props.jobAd.occupation.label}</p>
-                </DigiTypographyMeta>
-                {props.jobAd.publication_date ? (
-                  <div className="publication-date">
-                    <span>Publicerades </span>
-                    <DigiTypographyTime
-                      afVariation={TypographyTimeVariation.PRETTY}
-                      afDateTime="Fri Sep 27 2024 13:03:57 GMT+0200 (centraleuropeisk sommartid)"
-                    ></DigiTypographyTime>
-                  </div>
-                ) : (
-                  <p>Publikationsdatum ej tillgänligt</p>
-                )}
+
+                <div className="jobs-image-logo-container">
+                  <img
+                    src={
+                      props.jobAd.logo_url
+                        ? props.jobAd.logo_url
+                        : "placeholder-logo.svg"
+                    }
+                  ></img>
+                </div>
+                <div>
+                  <DigiLink
+                    afHref={`/searchjob/${props.jobAd.id}`}
+                    afVariation={LinkVariation.LARGE}
+                  >
+                    {props.jobAd.headline}
+                  </DigiLink>
+                  <DigiTypographyMeta
+                    afVariation={TypographyMetaVariation.PRIMARY}
+                  >
+                    <p>{props.jobAd.employer.name}</p>
+                    <p slot="secondary">{props.jobAd.occupation.label}</p>
+                  </DigiTypographyMeta>
+                  {props.jobAd.publication_date ? (
+                    <div className="publication-date">
+                      <span>Publicerades </span>
+                      <DigiTypographyTime
+                        afVariation={TypographyTimeVariation.PRETTY}
+                        afDateTime="Fri Sep 27 2024 13:03:57 GMT+0200 (centraleuropeisk sommartid)"
+                      ></DigiTypographyTime>
+                    </div>
+                  ) : (
+                    <p>Publikationsdatum ej tillgänligt</p>
+                  )}
+                </div>
               </div>
             </DigiTypography>
           </DigiLayoutBlock>

@@ -11,6 +11,7 @@ export interface IJobAd {
   headline: string | null;
   application_deadline: string | null;
   number_of_vacancies: number;
+  logo_url: string | null;
   description: IJobAdDescription;
   employment_type: IJobTechTaxonomyItem;
   salary_type: IJobTechTaxonomyItem;
@@ -34,4 +35,5 @@ export interface IJobAd {
   removed: boolean;
   removed_date: string | null;
   timestamp: number;
+  logo?: string | null;
 }

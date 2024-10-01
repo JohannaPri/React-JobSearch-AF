@@ -10,6 +10,7 @@ export interface IJobHistoricalAd {
     id: string | null;
     headline: string | null;
     application_deadline: string | null;
+    logo_url: string;
     number_of_vacancies: number;
     description: IJobAdDescription;
     employment_type: IJobTechTaxonomyItem;
