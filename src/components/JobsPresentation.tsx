@@ -13,6 +13,7 @@ import {
   DigiTypographyMeta,
   DigiTypographyTime,
 } from "@digi/arbetsformedlingen-react";
+import { Link } from "react-router-dom";
 
 interface IJobPresentationProps {
   jobAd: IJobAd;
@@ -26,12 +27,9 @@ export const JobsPresentation = (props: IJobPresentationProps) => {
           <DigiLayoutBlock afVariation={LayoutBlockVariation.SECONDARY}>
             <DigiTypography>
               <div className="jobs-presentation-item">
-                <DigiLink
-                  afHref={`/searchjob/${props.jobAd.id}`}
-                  afVariation={LinkVariation.LARGE}
-                >
+                <Link to={`/searchjob/${props.jobAd.id}`}>
                   {props.jobAd.headline}
-                </DigiLink>
+                </Link>
                 <DigiTypographyMeta
                   afVariation={TypographyMetaVariation.PRIMARY}
                 >
