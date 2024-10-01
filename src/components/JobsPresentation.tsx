@@ -25,7 +25,7 @@ export const JobsPresentation = (props: IJobPresentationProps) => {
           <DigiLayoutBlock afVariation={LayoutBlockVariation.SECONDARY}>
             <DigiTypography>
               <div className="jobs-presentation-item">
-                <div className="link-jobs-presentation">
+                <div>
                   <div className="jobs-image-logo-container">
                     <img
                       src={
@@ -36,7 +36,7 @@ export const JobsPresentation = (props: IJobPresentationProps) => {
                       alt="company logo"
                     ></img>
                   </div>
-                  <div>
+                  <div className="link-jobs-presentation">
                     <Link to={`/searchjob/${props.jobAd.id}`}>
                       {props.jobAd.headline}
                     </Link>

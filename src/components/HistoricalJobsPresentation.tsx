@@ -43,7 +43,7 @@ export const HistoricalJobsPresentation = ({ job }: IHistoricalJobsProps) => {
                   src={job.logo_url ? job.logo_url : "placeholder-logo.svg"}
                   alt=""
                   onError={({ currentTarget }) => {
-                    currentTarget.src = "public/placeholder-logo.svg";
+                    currentTarget.src = "/placeholder-logo.svg";
                   }}
                 ></img>
                 <p>{job.working_hours_type.label}</p>
