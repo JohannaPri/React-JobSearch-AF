@@ -1,14 +1,12 @@
 import { IJobAd } from "../models/IJobAd";
 import {
   LayoutBlockVariation,
-  LinkVariation,
   TypographyMetaVariation,
   TypographyTimeVariation,
 } from "@digi/arbetsformedlingen";
 import {
   DigiLayoutBlock,
   DigiLayoutContainer,
-  DigiLink,
   DigiTypography,
   DigiTypographyMeta,
   DigiTypographyTime,
