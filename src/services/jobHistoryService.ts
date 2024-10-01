@@ -7,20 +7,28 @@ const BASE_URL = "https://historical.api.jobtechdev.se/search?"
 export const getHistoricalJobs = async(userInput: IHistoryUserFilter): Promise<IJobSearchResults> => {
     const queryParams: string[] = [];
 
+    const formatDate = (date: Date): string => {
+        return date.toISOString().split('T')[0];
+    };
+
     if (userInput.searchText) {
         queryParams.push(`q=${encodeURIComponent(userInput.searchText)}`);
     }
 
     if (userInput.dateFrom) {
-        queryParams.push(`historical-from=${encodeURIComponent(userInput.dateFrom)}T00%3A00%3A00`);
+        const formattedDateFrom = formatDate(userInput.dateFrom);
+        queryParams.push(`historical-from=${encodeURIComponent(formattedDateFrom)}T00%3A00%3A01`);
     }
     if (userInput.dateTo) {
-        queryParams.push(`historical-to=${encodeURIComponent(userInput.dateTo)}T00%3A00%3A00`);
+        const formattedDateTo = formatDate(userInput.dateTo);
+        queryParams.push(`historical-to=${encodeURIComponent(formattedDateTo)}T00%3A00%3A01`);
     }
 
     queryParams.push("limit=5");
 
     const finalUrl = `${BASE_URL}${queryParams.join("&")}`
+    //Konsol logg för att testa URL:en
+    //console.log("API URL:", finalUrl);
 
     try {
         const response = await get<IJobSearchResults>(finalUrl);
