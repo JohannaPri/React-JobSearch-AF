@@ -33,6 +33,7 @@ export const JobsPresentation = (props: IJobPresentationProps) => {
                           ? props.jobAd.logo_url
                           : "placeholder-logo.svg"
                       }
+                      alt="company logo"
                     ></img>
                   </div>
                   <div>

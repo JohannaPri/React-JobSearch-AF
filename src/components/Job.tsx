@@ -46,16 +46,18 @@ export const Job = () => {
     <div>
       <div className="breadcrumb-spacing">
         <DigiNavigationBreadcrumbs afCurrentPage="Nuvarande sida">
-
           <Link to="/">Start</Link>
           <Link to="/searchjobs">Lediga tjänster</Link>
-
         </DigiNavigationBreadcrumbs>
       </div>
       <div className="job-info-margin">
         <DigiLayoutBlock afVariation={LayoutBlockVariation.TRANSPARENT}>
           <DigiTypography afVariation={TypographyVariation.SMALL}>
             <div className="job-info-padding">
+              <img
+                src={jobAd.logo_url ? jobAd.logo_url : "placeholder-logo.svg"}
+                alt="company logo"
+              ></img>
               <h1>{jobAd.headline}</h1>
               <h2>{jobAd.employer.name}</h2>
               <h3>{jobAd.occupation.label}</h3>
@@ -183,29 +185,29 @@ export const Job = () => {
         <DigiLayoutContainer afVerticalPadding>
           <DigiTypography afVariation={TypographyVariation.SMALL}>
             <div className="width-text">
-            <h2>Om jobbet</h2>
-            {jobAd.description && jobAd.description.text_formatted ? (
-              <>
-                {jobAd.description.text_formatted.includes("\n") ? (
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: jobAd.description.text_formatted.replace(
-                        /\n/g,
-                        "<br />"
-                      ),
-                    }}
-                  />
-                ) : (
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: jobAd.description.text_formatted,
-                    }}
-                  />
-                )}
-              </>
-            ) : (
-              <p>Ingen beskrivning tillgänglig</p>
-            )}
+              <h2>Om jobbet</h2>
+              {jobAd.description && jobAd.description.text_formatted ? (
+                <>
+                  {jobAd.description.text_formatted.includes("\n") ? (
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: jobAd.description.text_formatted.replace(
+                          /\n/g,
+                          "<br />"
+                        ),
+                      }}
+                    />
+                  ) : (
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: jobAd.description.text_formatted,
+                      }}
+                    />
+                  )}
+                </>
+              ) : (
+                <p>Ingen beskrivning tillgänglig</p>
+              )}
             </div>
           </DigiTypography>
         </DigiLayoutContainer>
