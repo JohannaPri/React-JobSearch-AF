@@ -11,6 +11,7 @@ import {
   DigiTypographyMeta,
   DigiTypographyTime,
 } from "@digi/arbetsformedlingen-react";
+
 import { Link } from "react-router-dom";
 
 interface IJobPresentationProps {

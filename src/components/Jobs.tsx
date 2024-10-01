@@ -1,25 +1,17 @@
 import { useContext } from "react";
 import { JobsContext } from "../contexts/JobsContext";
 import { JobsPresentation } from "./JobsPresentation";
-import {
-  DigiLayoutContainer,
-  DigiTypography,
-} from "@digi/arbetsformedlingen-react";
+import { TotalPositionsSearchResult } from "./TotalPositionsSearchResult";
 
 export const Jobs = () => {
   const { jobs } = useContext(JobsContext);
 
   return (
     <>
-      <DigiLayoutContainer>
-        <DigiTypography>
-          <div className="total-presentation">
-            <p>Totalt antal anonser : {jobs.total.value}</p>
-            <p>Totalt antal jobb: {jobs.positions}</p>
-          </div>
-        </DigiTypography>
-      </DigiLayoutContainer>
       <div>
+        {jobs.total.value > 0 && (
+          <TotalPositionsSearchResult job={jobs}></TotalPositionsSearchResult>
+        )}
         {jobs.hits.map((job) => (
           <div key={job.id}>
             <JobsPresentation jobAd={job}></JobsPresentation>
