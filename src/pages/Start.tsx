@@ -30,7 +30,9 @@ export const Start = () => {
             jobbmarknaden - se hur många jobb som funnits ute och följ trender
             inom olika branscher.
           </p>
-          <h3 className="heading-start">Redo att hitta ditt nästa drömjobb? </h3>
+          <h2 className="heading-start">
+            Redo att hitta ditt nästa drömjobb?{" "}
+          </h2>
 
           <Link to="/searchjobs">
             {" "}
@@ -47,7 +49,7 @@ export const Start = () => {
           afUnlazy
           afHeight="370"
           afWidth="370"
-          afSrc="/start-page.png"
+          afSrc="/start-page-smaller.png"
           afAlt="Arbetsförmedlingens logotyp som en fasadskyld"
         ></DigiMediaImage>{" "}
       </div>

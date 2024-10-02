@@ -1,7 +1,7 @@
 //import { DiagramPresentation } from "../components/DiagramPresentation";
 import { useReducer } from "react";
 import { HistoricalJobs } from "../components/HistoricalJobs";
-import { InputSearchStatistics } from "../components/InpuSearchStatistics";
+import { InputSearchStatistics } from "../components/InputSearchStatistics";
 import { JobsHistoryContext } from "../contexts/jobsHistoryContext";
 import { jobSearchReducer } from "../reducers/jobSearchReducer";
 //import { InputSearchStatistics } from "../components/InpuSearchStatistics";
