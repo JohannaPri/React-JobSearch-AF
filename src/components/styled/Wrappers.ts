@@ -1,5 +1,5 @@
 import styled from "styled-components";
 
 export const Main = styled.div`
-    min-height: 50vh;
+    min-height: 300vh;
 `;
