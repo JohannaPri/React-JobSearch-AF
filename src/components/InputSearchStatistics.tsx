@@ -31,13 +31,23 @@ export const InputSearchStatistics = () => {
       dateTo: new Date(),
     });
 
+  const [errorMessage, setErrorMessage] = useState("");
+
   const handleClick = async (e: DigiFormInputSearchCustomEvent<object>) => {
     e.preventDefault();
 
-    if (!historicalSearchFilter.searchText.trim()) {
-      alert("Du måste ange sökord för att utföra en sökning.");
+    const today = new Date().toISOString().split("T")[0];
+
+    if (
+      !historicalSearchFilter.searchText.trim() ||
+      historicalSearchFilter.dateFrom.toISOString().split("T")[0] === today ||
+      historicalSearchFilter.dateTo.toISOString().split("T")[0] === today
+    ) {
+      setErrorMessage("Kontrollera att alla fält är korrekt ifyllda");
       return;
     }
+
+    setErrorMessage("");
 
     setHistoricalSearchFilter(historicalSearchFilter);
     const searchedHistoricalJobs = await getHistoricalJobs(
@@ -48,7 +58,7 @@ export const InputSearchStatistics = () => {
       payload: searchedHistoricalJobs,
     });
 
-    console.log(searchedHistoricalJobs);
+    console.log("sökning gjord");
   };
 
   return (
@@ -59,21 +69,9 @@ export const InputSearchStatistics = () => {
           afVariation={LayoutBlockVariation.TRANSPARENT}
         >
           <DigiTypography>
-            <h1>Sök på historiska jobbannonser</h1>
+            <h1>Sök på historiska jobbannonser (2016-2023)</h1>
           </DigiTypography>
-          <DigiFormInputSearch
-            afLabel="Skriv in sökord och välj datumimtervall"
-            afVariation={FormInputSearchVariation.SMALL}
-            afType={FormInputType.SEARCH}
-            afButtonText="Sök"
-            afButtonType={ButtonType.SUBMIT}
-            afButtonAriaLabel="Sökfält för att söka jobb"
-            afValue={historicalSearchFilter.searchText}
-            onAfOnChange={(e: DigiFormInputSearchCustomEvent<string>) => {
-              historicalSearchFilter.searchText = e.target.value;
-            }}
-            onAfOnClick={handleClick}
-          ></DigiFormInputSearch>
+
           <DigiLayoutContainer>
             <DigiCalendarDatepicker
               afId="dateFrom"
@@ -83,6 +81,7 @@ export const InputSearchStatistics = () => {
               afLabel="Välj ett datum från"
               afLabelDescription="Ex. 2019-03-11"
               afRequired={true}
+              afValidationWrongFormat="Fel datumformat"
               onAfOnDateChange={(
                 e: DigiCalendarDatepickerCustomEvent<object>
               ) =>
@@ -109,6 +108,24 @@ export const InputSearchStatistics = () => {
                 }))
               }
             />
+            <DigiFormInputSearch
+              afLabel="Välj ett datumintervall och skriv in ett sökord (obligatoriskt)"
+              afVariation={FormInputSearchVariation.SMALL}
+              afType={FormInputType.SEARCH}
+              afButtonText="Sök"
+              afButtonType={ButtonType.SUBMIT}
+              afButtonAriaLabel="Sökfält för att söka jobb"
+              afValue={historicalSearchFilter.searchText}
+              onAfOnChange={(e: DigiFormInputSearchCustomEvent<string>) => {
+                historicalSearchFilter.searchText = e.target.value;
+              }}
+              onAfOnClick={handleClick}
+            />
+            {errorMessage && (
+              <DigiTypography>
+                <p>{errorMessage}</p>
+              </DigiTypography>
+            )}
           </DigiLayoutContainer>
         </DigiLayoutBlock>
       </DigiLayoutContainer>
