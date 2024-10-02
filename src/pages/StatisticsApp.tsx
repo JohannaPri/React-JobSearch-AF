@@ -25,6 +25,7 @@ export const StatisticsApp = () => {
     <>
       <JobsHistoryContext.Provider value={{ jobs, dispatch }}>
         <InputSearchStatistics />
+        <DiagramPresentation></DiagramPresentation>
         <HistoricalJobs />
       </JobsHistoryContext.Provider>
     </>

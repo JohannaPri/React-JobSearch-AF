@@ -2,35 +2,32 @@ import {
   DigiBarChart,
   DigiLayoutContainer,
 } from "@digi/arbetsformedlingen-react";
+
 import { ChartLineData } from "@digi/arbetsformedlingen/dist/types/interfaces";
+import { useContext } from "react";
+import { JobsHistoryContext } from "../contexts/jobsHistoryContext";
+import { InfoCardHeadingLevel } from "@digi/arbetsformedlingen";
 
 export const DiagramPresentation = () => {
-  // använd contextet
-  const mockData = {
-    total: {
-      value: 492750,
-    },
-    positions: 1004895,
-    query_time_in_millis: 67,
-    result_time_in_millis: 81,
-    stats: [],
-    freetext_concepts: {},
-    hits: [],
-  };
+  const { jobs } = useContext(JobsHistoryContext);
 
   const chartData: ChartLineData = {
     data: {
       xValues: [2020, 2021],
-      series: [{ yValues: [mockData.total.value, 20], title: "Antal Jobb" }],
+      series: [{ yValues: [10, 20], title: "Antal Jobb" }],
     },
     x: "År",
     y: "Antal Jobb",
     title: "Diagram",
   };
+  console.log(chartData);
   return (
     <>
       <DigiLayoutContainer>
-        <DigiBarChart afChartData={chartData}></DigiBarChart>
+        <DigiBarChart
+          afHeadingLevel={InfoCardHeadingLevel.H2}
+          afChartData={chartData}
+        ></DigiBarChart>
       </DigiLayoutContainer>
     </>
   );
