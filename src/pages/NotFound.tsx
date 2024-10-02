@@ -21,7 +21,9 @@ export const NotFound = () => {
           <ul slot="links">
             <li>
               <DigiLinkInternal afHref="/" afVariation="small">
+                <div className="link-notfound">
                 <NavLink to={"/"}>Gå till startsidan</NavLink>
+                </div>
               </DigiLinkInternal>
             </li>
           </ul>

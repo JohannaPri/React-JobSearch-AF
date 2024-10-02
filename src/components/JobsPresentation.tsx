@@ -1,18 +1,18 @@
 import { IJobAd } from "../models/IJobAd";
 import {
   LayoutBlockVariation,
-  LinkVariation,
   TypographyMetaVariation,
   TypographyTimeVariation,
 } from "@digi/arbetsformedlingen";
 import {
   DigiLayoutBlock,
   DigiLayoutContainer,
-  DigiLink,
   DigiTypography,
   DigiTypographyMeta,
   DigiTypographyTime,
 } from "@digi/arbetsformedlingen-react";
+
+import { Link } from "react-router-dom";
 
 interface IJobPresentationProps {
   jobAd: IJobAd;
@@ -26,29 +26,40 @@ export const JobsPresentation = (props: IJobPresentationProps) => {
           <DigiLayoutBlock afVariation={LayoutBlockVariation.SECONDARY}>
             <DigiTypography>
               <div className="jobs-presentation-item">
-                <DigiLink
-                  afHref={`/searchjob/${props.jobAd.id}`}
-                  afVariation={LinkVariation.LARGE}
-                >
-                  {props.jobAd.headline}
-                </DigiLink>
-                <DigiTypographyMeta
-                  afVariation={TypographyMetaVariation.PRIMARY}
-                >
-                  <p>{props.jobAd.employer.name}</p>
-                  <p slot="secondary">{props.jobAd.occupation.label}</p>
-                </DigiTypographyMeta>
-                {props.jobAd.publication_date ? (
-                  <div className="publication-date">
-                    <span>Publicerades </span>
-                    <DigiTypographyTime
-                      afVariation={TypographyTimeVariation.PRETTY}
-                      afDateTime="Fri Sep 27 2024 13:03:57 GMT+0200 (centraleuropeisk sommartid)"
-                    ></DigiTypographyTime>
+                <div className="link-jobs-presentation">
+                  <div className="jobs-image-logo-container">
+                    <img
+                      src={
+                        props.jobAd.logo_url
+                          ? props.jobAd.logo_url
+                          : "placeholder-logo.svg"
+                      }
+                      alt="company logo"
+                    ></img>
                   </div>
-                ) : (
-                  <p>Publikationsdatum ej tillgänligt</p>
-                )}
+                  <div>
+                    <Link to={`/searchjob/${props.jobAd.id}`}>
+                      {props.jobAd.headline}
+                    </Link>
+                  </div>
+                  <DigiTypographyMeta
+                    afVariation={TypographyMetaVariation.PRIMARY}
+                  >
+                    <p>{props.jobAd.employer.name}</p>
+                    <p slot="secondary">{props.jobAd.occupation.label}</p>
+                  </DigiTypographyMeta>
+                  {props.jobAd.publication_date ? (
+                    <div className="publication-date">
+                      <span>Publicerades </span>
+                      <DigiTypographyTime
+                        afVariation={TypographyTimeVariation.PRETTY}
+                        afDateTime={props.jobAd.publication_date}
+                      ></DigiTypographyTime>
+                    </div>
+                  ) : (
+                    <p>Publikationsdatum ej tillgänligt</p>
+                  )}
+                </div>
               </div>
             </DigiTypography>
           </DigiLayoutBlock>

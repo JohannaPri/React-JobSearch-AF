@@ -10,13 +10,14 @@ import {
   DigiTypographyMeta,
   DigiTypographyTime,
 } from "@digi/arbetsformedlingen-react";
-import { IJobHistoricalAd } from "../models/IJobHistoricalAd";
+import { IJobAd } from "../models/IJobAd";
 
 interface IHistoricalJobsProps {
-  job: IJobHistoricalAd;
+  job: IJobAd;
 }
 
 export const HistoricalJobsPresentation = ({ job }: IHistoricalJobsProps) => {
+  console.log(job.logo_url);
   return (
     <>
       <DigiLayoutContainer>
@@ -38,6 +39,13 @@ export const HistoricalJobsPresentation = ({ job }: IHistoricalJobsProps) => {
               </div>
 
               <div>
+                <img
+                  src={job.logo_url ? job.logo_url : "placeholder-logo.svg"}
+                  alt=""
+                  onError={({ currentTarget }) => {
+                    currentTarget.src = "public/placeholder-logo.svg";
+                  }}
+                ></img>
                 <p>{job.working_hours_type.label}</p>
                 {job.publication_date ? (
                   <div className="publication-date">

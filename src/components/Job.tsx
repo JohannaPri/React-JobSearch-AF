@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
+import { Link, useParams } from "react-router-dom";
 import { IJobAd } from "../models/IJobAd";
 import {
   InfoCardBorderPosition,
@@ -11,7 +9,6 @@ import {
   LayoutBlockVariation,
   LayoutColumnsElement,
   LayoutColumnsVariation,
-  LoaderSkeletonVariation,
   TypographyMetaVariation,
   TypographyTimeVariation,
   TypographyVariation,
@@ -20,76 +17,47 @@ import {
   DigiTypography,
   DigiLayoutBlock,
   DigiLayoutContainer,
-  DigiLoaderSkeleton,
   DigiNavigationBreadcrumbs,
   DigiInfoCard,
   DigiLayoutColumns,
   DigiTypographyTime,
   DigiTypographyMeta,
 } from "@digi/arbetsformedlingen-react";
+import { IWeightedJobtechTaxonomyItem } from "../models/IWeightedJobtechTaxonomyItem";
 
 export const Job = () => {
-  const [jobAd, setJobAd] = useState<IJobAd | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-
   const { id } = useParams<{ id: string }>();
 
-  const fetchJobAd = async (id: string): Promise<IJobAd> => {
-    const response = await axios.get<IJobAd>(
-      `https://jobsearch.api.jobtechdev.se/ad/${id}`
-    );
-    return response.data;
-  };
+  const storedJobs = localStorage.getItem("jobs") as string;
+  const jobs = JSON.parse(storedJobs);
+  const jobAd = jobs.hits.find((job: IJobAd) => job.id === id);
 
-  useEffect(() => {
-    const fetchJobData = async () => {
-      if (id) {
-        try {
-          const data = await fetchJobAd(id);
-          setJobAd(data);
-        } catch (err) {
-          if (axios.isAxiosError(err) && err.response) {
-            setError(err.response.data.message);
-          } else {
-            setError("An unexpected error occurred");
-          }
-        } finally {
-          setLoading(false);
-        }
-      } else {
-        console.log("Error: id is undefined.");
-      }
-    };
-
-    fetchJobData();
-  }, [id]);
-
-  if (loading) {
+  if (!jobAd)
     return (
-      <div>
-        <DigiLoaderSkeleton
-          afVariation={LoaderSkeletonVariation.TEXT}
-          afCount={4}
-        />
-      </div>
+      <>
+        <DigiLayoutContainer>
+          <DigiTypography>
+            <h4>Annonsen hittades inte</h4>
+          </DigiTypography>
+        </DigiLayoutContainer>
+      </>
     );
-  }
-  if (error) return <div>Error: {error}</div>;
-  if (!jobAd) return <div>Annonsen kunde inte hittas.</div>;
-
   return (
     <div>
       <div className="breadcrumb-spacing">
         <DigiNavigationBreadcrumbs afCurrentPage="Nuvarande sida">
-          <a href="/">Start</a>
-          <a href="/searchjobs">Sök jobb</a>
+          <Link to="/">Start</Link>
+          <Link to="/searchjobs">Lediga tjänster</Link>
         </DigiNavigationBreadcrumbs>
       </div>
       <div className="job-info-margin">
         <DigiLayoutBlock afVariation={LayoutBlockVariation.TRANSPARENT}>
           <DigiTypography afVariation={TypographyVariation.SMALL}>
             <div className="job-info-padding">
+              <img
+                src={jobAd.logo_url ? jobAd.logo_url : "placeholder-logo.svg"}
+                alt="company logo"
+              ></img>
               <h1>{jobAd.headline}</h1>
               <h2>{jobAd.employer.name}</h2>
               <h3>{jobAd.occupation.label}</h3>
@@ -128,9 +96,11 @@ export const Job = () => {
 
                   {jobAd.must_have.work_experiences &&
                   jobAd.must_have.work_experiences.length > 0 ? (
-                    jobAd.must_have.work_experiences.map((work, index) => (
-                      <p key={index}>{work.label}</p>
-                    ))
+                    jobAd.must_have.work_experiences.map(
+                      (work: IWeightedJobtechTaxonomyItem, index: number) => (
+                        <p key={index}>{work.label}</p>
+                      )
+                    )
                   ) : (
                     <p>Inga krav</p>
                   )}
@@ -141,9 +111,11 @@ export const Job = () => {
 
                   {jobAd.must_have.languages &&
                   jobAd.must_have.languages.length > 0 ? (
-                    jobAd.must_have.languages.map((lang, index) => (
-                      <p key={index}>{lang.label}</p>
-                    ))
+                    jobAd.must_have.languages.map(
+                      (lang: IWeightedJobtechTaxonomyItem, index: number) => (
+                        <p key={index}>{lang.label}</p>
+                      )
+                    )
                   ) : (
                     <p>Inga krav</p>
                   )}
@@ -208,27 +180,35 @@ export const Job = () => {
           </div>
         </DigiLayoutColumns>
       </DigiLayoutContainer>
+
       <div>
         <DigiLayoutContainer afVerticalPadding>
           <DigiTypography afVariation={TypographyVariation.SMALL}>
-            <h2>Om jobbet</h2>
-            {jobAd.description && jobAd.description.text_formatted ? (
-              <>
-                {jobAd.description.text_formatted.includes("\n") ? (
-                  jobAd.description.text_formatted
-                    .split("\n")
-                    .map((line, index) => <p key={index}>{line}</p>)
-                ) : (
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: jobAd.description.text_formatted,
-                    }}
-                  />
-                )}
-              </>
-            ) : (
-              <p>Ingen beskrivning tillgänglig</p>
-            )}
+            <div className="width-text">
+              <h2>Om jobbet</h2>
+              {jobAd.description && jobAd.description.text_formatted ? (
+                <>
+                  {jobAd.description.text_formatted.includes("\n") ? (
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: jobAd.description.text_formatted.replace(
+                          /\n/g,
+                          "<br />"
+                        ),
+                      }}
+                    />
+                  ) : (
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: jobAd.description.text_formatted,
+                      }}
+                    />
+                  )}
+                </>
+              ) : (
+                <p>Ingen beskrivning tillgänglig</p>
+              )}
+            </div>
           </DigiTypography>
         </DigiLayoutContainer>
       </div>
