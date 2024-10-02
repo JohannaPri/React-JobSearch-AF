@@ -27,16 +27,6 @@ export const JobsPresentation = (props: IJobPresentationProps) => {
             <DigiTypography>
               <div className="jobs-presentation-item">
                 <div>
-                  <div className="jobs-image-logo-container">
-                    <img
-                      src={
-                        props.jobAd.logo_url
-                          ? props.jobAd.logo_url
-                          : "placeholder-logo.svg"
-                      }
-                      alt="company logo"
-                    ></img>
-                  </div>
                   <div className="link-jobs-presentation">
                     <Link to={`/searchjob/${props.jobAd.id}`}>
                       {props.jobAd.headline}

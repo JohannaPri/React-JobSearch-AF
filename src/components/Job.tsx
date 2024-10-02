@@ -64,7 +64,7 @@ export const Job = () => {
                   alt="company logo"
                 ></img>
               </div>
-              <h1>{jobAd.headline}</h1>
+              <h1 className="padding-heading">{jobAd.headline}</h1>
               <h2>{jobAd.employer.name}</h2>
               <h3>{jobAd.occupation.label}</h3>
               <h3>Kommun: {jobAd.workplace_address.municipality}</h3>

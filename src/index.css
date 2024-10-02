@@ -22,6 +22,9 @@
   --digi--form-filter--footer--background: #DBD1CD;
   --digi--form-filter--dropdown--background: #DBD1CD;
 
+  /*FOOTER*/
+  --digi--color--text--inverted: black
+
 
   background-color: #F3E8E8;
 }
@@ -54,7 +57,6 @@
 /* MENU */
 .sc-digi-header-navigation-h .digi-header-navigation__wrapper.sc-digi-header-navigation{ 
    background-color: var(--digi--color--background--tertiary);
-
 }
 
 .sc-digi-header-navigation-h {
@@ -131,10 +133,12 @@ body {
   background-color: var(--digi--color--background--primary) !important;
   padding-left: 1.8rem !important;
   padding-right: 1.8rem !important; 
+  color:  var(--digi--color--text--secondary) !important;
 }
 
 .search-container button:hover {
   background-color: var(--digi--color--background--secondary) !important;
+  
 }
 
 .padding-heading {
@@ -158,12 +162,14 @@ body {
   gap: 150px;
 }
 .jobs-image-logo-container  {
- height: 50px;
- width: 100px;
+ height: 65px;
+ width: 65px;
+ padding-top: 0.5rem;
 }
 .jobs-image-logo-container img {
   width: 100%;
   height: 100%;
+  object-fit: contain;
 }
 
 .jobs-presentation-wrapper {
@@ -221,7 +227,7 @@ body {
 
 /*LOGO*/
 .digi-footer .digi-logo__img {
-  background-image: url('/logo-white.svg');
+  background-image: url('/logo.svg');
 }
 
 /*JOBAD FIRST SECTION*/
@@ -230,17 +236,21 @@ body {
   flex-direction: column;
 }
 
+.padding-heading {
+  margin-bottom: 0.5rem;
+  padding-top: 1rem;
+}
+
 .job-info-margin {
   margin: .5rem;
 }
 
 .job-info-padding {
-  padding: 1rem 0 1rem 0;
+  padding: 0.5rem 0 1.3rem 0;
 }
 
 .breadcrumb-spacing {
   padding: .5rem;
-  margin-bottom: 0.5rem;
   background-color: var(--digi--color--background--secondary); 
 }
 
@@ -251,8 +261,7 @@ body {
 /*JOBAD DIGI INFO CARD*/
 .size-info-card {
   max-width: 50%;
-  min-width: fit-content;
-  
+  min-width: fit-content; 
 }
 
 /*JOBAD MIDDLE SECTION*/
@@ -284,7 +293,7 @@ body {
 /*FOOTER*/
 .footerLogo {
   display: flex;
-  color: white;
+  color: black;
 }
 
 .footerBrandName {
