@@ -54,11 +54,17 @@ export const Job = () => {
         <DigiLayoutBlock afVariation={LayoutBlockVariation.TRANSPARENT}>
           <DigiTypography afVariation={TypographyVariation.SMALL}>
             <div className="job-info-padding">
-              <img
-                src={jobAd.logo_url ? jobAd.logo_url : "placeholder-logo.svg"}
-                alt="company logo"
-              ></img>
-              <h1>{jobAd.headline}</h1>
+              <div className="jobs-image-logo-container">
+                <img
+                  src={
+                    jobAd.logo_url 
+                    ? jobAd.logo_url 
+                    : "/placeholder-logo.svg"
+                  }
+                  alt="company logo"
+                ></img>
+              </div>
+              <h1 className="padding-heading">{jobAd.headline}</h1>
               <h2>{jobAd.employer.name}</h2>
               <h3>{jobAd.occupation.label}</h3>
               <h3>Kommun: {jobAd.workplace_address.municipality}</h3>

@@ -135,7 +135,6 @@ export const Layout = () => {
           </div>
         </DigiFooter>
       </footer>
-      {/* Innehåll här */}
     </>
   );
 };

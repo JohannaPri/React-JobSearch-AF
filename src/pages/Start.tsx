@@ -30,13 +30,15 @@ export const Start = () => {
             jobbmarknaden - se hur många jobb som funnits ute och följ trender
             inom olika branscher.
           </p>
-          <h2>Redo att hitta ditt nästa drömjobb? </h2>
+          <h2 className="heading-start">
+            Redo att hitta ditt nästa drömjobb?{" "}
+          </h2>
 
           <Link to="/searchjobs">
             {" "}
             <DigiLinkButton
               afHref="#"
-              afSize={LinkButtonSize.LARGE}
+              afSize={LinkButtonSize.MEDIUMLARGE}
               afVariation={LinkButtonVariation.SECONDARY}
             >
               Lediga tjänster

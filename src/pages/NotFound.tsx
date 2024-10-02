@@ -33,7 +33,7 @@ export const NotFound = () => {
         <img
           className="brokenCompass"
           height={300}
-          src="../public/not-found-compass.png"
+          src="/not-found-compass.png"
           alt=""
         />
       </div>
