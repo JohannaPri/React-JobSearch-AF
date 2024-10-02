@@ -112,7 +112,10 @@ export const Layout = () => {
           <div className="footerLogo" slot="content-bottom-left">
             <div>
               {" "}
-              <Link to="/">
+              <Link
+                to="/"
+                aria-label="Logotyp som går att trycka på för att komma till startsidan"
+              >
                 <DigiLogo
                   afVariation={LogoVariation.LARGE}
                   afColor={LogoColor.SECONDARY}
