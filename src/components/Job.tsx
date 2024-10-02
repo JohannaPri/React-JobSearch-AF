@@ -54,10 +54,16 @@ export const Job = () => {
         <DigiLayoutBlock afVariation={LayoutBlockVariation.TRANSPARENT}>
           <DigiTypography afVariation={TypographyVariation.SMALL}>
             <div className="job-info-padding">
-              <img
-                src={jobAd.logo_url ? jobAd.logo_url : "placeholder-logo.svg"}
-                alt="company logo"
-              ></img>
+              <div className="jobs-image-logo-container">
+                <img
+                  src={
+                    jobAd.logo_url 
+                    ? jobAd.logo_url 
+                    : "/placeholder-logo.svg"
+                  }
+                  alt="company logo"
+                ></img>
+              </div>
               <h1>{jobAd.headline}</h1>
               <h2>{jobAd.employer.name}</h2>
               <h3>{jobAd.occupation.label}</h3>
@@ -145,14 +151,14 @@ export const Job = () => {
                         jobAd.last_publication_date
                       ).toISOString()}
                     >
-                        {new Date(jobAd.last_publication_date).toLocaleDateString(
-                          "sv-SE",
-                          {
-                            month: "long",
-                            day: "numeric",
-                          }
-                        )}{" "}
-                      </DigiTypographyTime>
+                      {new Date(jobAd.last_publication_date).toLocaleDateString(
+                        "sv-SE",
+                        {
+                          month: "long",
+                          day: "numeric",
+                        }
+                      )}{" "}
+                    </DigiTypographyTime>
                   ) : (
                     <p>Inget publiceringsdatum tillgängligt</p>
                   )}
