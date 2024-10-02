@@ -7,9 +7,21 @@ import { ChartLineData } from "@digi/arbetsformedlingen/dist/types/interfaces";
 import { useContext } from "react";
 import { JobsHistoryContext } from "../contexts/jobsHistoryContext";
 import { BarChartVariation } from "@digi/arbetsformedlingen";
+import { IJobAd } from "../models/IJobAd";
 
 export const DiagramPresentation = () => {
   const { jobs } = useContext(JobsHistoryContext);
+
+  const sorted = jobs.hits.sort((a, b) => {
+    const dateA = a.publication_date
+      ? new Date(a.publication_date).getTime()
+      : 0;
+    const dateB = b.publication_date
+      ? new Date(b.publication_date).getTime()
+      : 0;
+    return dateB - dateA;
+  });
+  console.log(sorted);
 
   const chartData: ChartLineData = {
     data: {
@@ -35,7 +47,7 @@ export const DiagramPresentation = () => {
       },
     },
   };
-  console.log(chartData);
+
   return (
     <>
       <DigiLayoutContainer>

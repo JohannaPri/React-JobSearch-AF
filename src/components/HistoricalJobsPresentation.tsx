@@ -17,7 +17,6 @@ interface IHistoricalJobsProps {
 }
 
 export const HistoricalJobsPresentation = ({ job }: IHistoricalJobsProps) => {
-  console.log(job.logo_url);
   return (
     <>
       <DigiLayoutContainer>
