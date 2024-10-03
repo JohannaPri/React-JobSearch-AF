@@ -19,6 +19,7 @@ import { JobsContext } from "../contexts/JobsContext";
 import { ActionJobSearchType } from "../reducers/jobSearchReducer";
 import { RegionFilter } from "./RegionFilter";
 import { OtherFilter } from "./OtherFilter";
+import { NoAds } from "./NoAds";
 
 export const InputSearch = () => {
   const { dispatch } = useContext(JobsContext);
@@ -31,11 +32,17 @@ export const InputSearch = () => {
     region: [],
   });
 
+  const [noResults, setNoResults] = useState(false);
+
   const handleClick = async (e: DigiFormInputSearchCustomEvent<object>) => {
     e.preventDefault();
     setUserFilter(userFilter);
     const searchedJobs = await getJobs(userFilter);
     dispatch({ type: ActionJobSearchType.SEARCH, payload: searchedJobs });
+
+    if (searchedJobs.hits.length === 0) {
+      setNoResults(true);
+    } else setNoResults(false);
   };
 
   return (
@@ -72,6 +79,7 @@ export const InputSearch = () => {
           </div>
         </DigiLayoutBlock>
       </DigiLayoutContainer>
+      {noResults && <NoAds></NoAds>}
     </>
   );
 };

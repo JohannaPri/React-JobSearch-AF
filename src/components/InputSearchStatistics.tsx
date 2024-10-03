@@ -20,6 +20,7 @@ import { IHistoricalSearchFilter } from "../models/IHistoricalSearchFilter";
 import { JobsHistoryContext } from "../contexts/jobsHistoryContext";
 import { ActionJobSearchType } from "../reducers/jobHistorySearchReducer";
 import { getHistoricalJobs } from "../services/jobHistoryService";
+import { NoAds } from "./NoAds";
 
 export const InputSearchStatistics = () => {
   const { dispatch } = useContext(JobsHistoryContext);
@@ -32,6 +33,7 @@ export const InputSearchStatistics = () => {
     });
 
   const [errorMessage, setErrorMessage] = useState("");
+  const [noResults, setNoResults] = useState(false);
 
   const handleClick = async (e: DigiFormInputSearchCustomEvent<object>) => {
     e.preventDefault();
@@ -57,6 +59,10 @@ export const InputSearchStatistics = () => {
       type: ActionJobSearchType.SEARCH,
       payload: searchedHistoricalJobs,
     });
+
+    if (searchedHistoricalJobs.hits.length === 0) {
+      setNoResults(true);
+    } else setNoResults(false);
 
     console.log("sökning gjord");
   };
@@ -142,6 +148,7 @@ export const InputSearchStatistics = () => {
           </div>
         </DigiLayoutBlock>
       </DigiLayoutContainer>
+      {noResults && <NoAds></NoAds>}
     </>
   );
 };

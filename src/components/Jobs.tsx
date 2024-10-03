@@ -8,7 +8,6 @@ export const Jobs = () => {
 
   return (
     <>
-      {jobs.total.value === 0 && <p>inga annonser</p>}
       <div>
         {jobs.total.value > 0 && (
           <TotalPositionsSearchResult job={jobs}></TotalPositionsSearchResult>

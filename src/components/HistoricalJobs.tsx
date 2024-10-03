@@ -8,7 +8,6 @@ export const HistoricalJobs = () => {
 
   return (
     <>
-      {jobs.total.value === 0 && <p>inga annonser</p>}
       {jobs.total.value > 0 && (
         <TotalPositionsSearchResult job={jobs}></TotalPositionsSearchResult>
       )}
