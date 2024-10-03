@@ -13,30 +13,26 @@ import {
 
 import { DigiFormInputSearchCustomEvent } from "@digi/arbetsformedlingen/dist/types/components";
 import { useContext, useState } from "react";
-import { IUserFilter } from "../models/IUserFilter";
 import { getJobs } from "../services/jobSearchService";
 import { JobsContext } from "../contexts/JobsContext";
 import { ActionJobSearchType } from "../reducers/jobSearchReducer";
 import { RegionFilter } from "./RegionFilter";
 import { OtherFilter } from "./OtherFilter";
 import { NoAds } from "./NoAds";
+import { UserFilterJobSearchContext } from "../contexts/UserFilterJobSearchContext";
+import { ActionUserFilterType } from "../reducers/UserFilterJobReducer";
 
 export const InputSearch = () => {
   const { dispatch } = useContext(JobsContext);
-
-  const [userFilter, setUserFilter] = useState<IUserFilter>({
-    searchText: "",
-    experience: false,
-    trainee: false,
-    remote: false,
-    region: [],
-  });
-
+  const { userFilter, filterDispatch } = useContext(UserFilterJobSearchContext);
   const [noResults, setNoResults] = useState(false);
 
   const handleClick = async (e: DigiFormInputSearchCustomEvent<object>) => {
     e.preventDefault();
-    setUserFilter(userFilter);
+    filterDispatch({
+      type: ActionUserFilterType.CHANGE_PAGE,
+      payload: userFilter,
+    });
     const searchedJobs = await getJobs(userFilter);
     dispatch({ type: ActionJobSearchType.SEARCH, payload: searchedJobs });
 

@@ -20,7 +20,8 @@ export const getJobs = async (userInput: IUserFilter): Promise<IJobSearchResults
     if (userInput.remote) {
         queryParams.push("remote=true");
     }
-    queryParams.push("limit=5");
+    queryParams.push(`offset=${userInput.offset}`)
+    queryParams.push("limit=10");
   
     if (userInput.region && userInput.region.length > 0) {
         const jobResults = await Promise.all(userInput.region.map((r) => {

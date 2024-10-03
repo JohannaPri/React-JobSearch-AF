@@ -1,7 +1,4 @@
-import {
-  DigiBarChart,
-  DigiLayoutContainer,
-} from "@digi/arbetsformedlingen-react";
+import { DigiBarChart } from "@digi/arbetsformedlingen-react";
 
 import { ChartLineData } from "@digi/arbetsformedlingen/dist/types/interfaces";
 import { useContext } from "react";
@@ -57,18 +54,16 @@ export const DiagramPresentation = () => {
 
   return (
     <>
-      <DigiLayoutContainer>
-        <div
-          className="bar-container"
-          style={{ width: "700px", height: "400px" }}
-        >
-          <DigiBarChart
-            afHeadingLevel="h2"
-            afChartData={chartData}
-            afVariation={BarChartVariation.Vertical}
-          ></DigiBarChart>
-        </div>
-      </DigiLayoutContainer>
+      <div
+        className="bar-container"
+        style={{ width: "500px", height: "400px" }}
+      >
+        <DigiBarChart
+          afHeadingLevel="h2"
+          afChartData={chartData}
+          afVariation={BarChartVariation.Vertical}
+        ></DigiBarChart>
+      </div>
     </>
   );
 };
