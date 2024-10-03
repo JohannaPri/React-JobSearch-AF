@@ -142,7 +142,7 @@ body {
 }
 
 .padding-heading {
-  padding-top: 2rem;
+  margin-top: 1rem;
 }
 
 .filter-button {
@@ -154,18 +154,19 @@ body {
 
 /*JOBS PRESENTATION*/
 .jobs-presentation-item {
-  padding: 1.5rem 0;
   margin-bottom: 0.75rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 150px;
 }
+
 .jobs-image-logo-container  {
  height: 65px;
  width: 65px;
  padding-top: 0.5rem;
 }
+
 .jobs-image-logo-container img {
   width: 100%;
   height: 100%;
@@ -174,20 +175,25 @@ body {
 
 .jobs-presentation-wrapper {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  max-width: 80%;
+  min-width: fit-content;
 }
 
 .publication-date {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
+}
+
+.publication-bold {
+  font-weight: bold;
 }
 
 .total-presentation{
   display: flex;
   flex-direction: row;
-  justify-content: center;
   gap: 6rem;
   text-transform: capitalize;
   letter-spacing: 0.02rem;
-  margin-top: 40px;
+  margin-top: 50px;
   font-weight: bold;
   color: #4a4a4a;
 }
@@ -199,8 +205,8 @@ body {
 .historical-job-presentation {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
   margin-bottom: 0.75rem;
   padding: 1rem;
 }
@@ -209,12 +215,48 @@ body {
   margin: 2px;
 }
 
-.link-jobs-presentation {
-  padding-top: 1rem;
-  padding-bottom: 0.5rem;
-  font-size: 1.1rem;
+.date-search-container {
+  display: flex;
+  flex-direction: row;
+  gap: 6.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.publication-date-historical {
+  display: grid;
+  justify-content: flex-end;
+}
+
+.error-message {
+  margin-top: 0.5rem;
   font-weight: bold;
+  letter-spacing: 0.01rem;
+  transition: all 0.8s ease;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pop-animation {
+  animation: pop 0.8s ease-in-out;
+}
+
+.link-jobs-presentation {
+  padding-bottom: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
   letter-spacing: 0.02rem;
+  max-width: 30rem;
+  min-width: fit-content;
 }
 
 .link-jobs-presentation a:visited {
@@ -330,6 +372,9 @@ display: none;
     padding: 1.3rem;
     right: 1rem;
   }
+  [class="historical-job-presentation"] {
+    width: 30rem;
+  }
 }
 
 /* MOBILE */
@@ -338,6 +383,14 @@ display: none;
     flex-direction: column;
     align-items: center;
     text-align: center;
+  }
+  [class="date-search-container"] {
+    flex-direction: column;
+    gap: 1rem;
+  } 
+
+  [class="historical-job-presentation"] {
+    width: fit-content;
   }
 
   [class="footerBrandName"] {
