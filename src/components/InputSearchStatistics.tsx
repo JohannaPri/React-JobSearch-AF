@@ -36,13 +36,13 @@ export const InputSearchStatistics = () => {
   const handleClick = async (e: DigiFormInputSearchCustomEvent<object>) => {
     e.preventDefault();
 
-    const today = new Date().toISOString().split("T")[0];
-
     if (
       !historicalSearchFilter.searchText.trim() ||
-      historicalSearchFilter.dateFrom.toISOString().split("T")[0] === today ||
-      historicalSearchFilter.dateTo.toISOString().split("T")[0] === today
+      isNaN(historicalSearchFilter.dateFrom.getTime()) ||
+      isNaN(historicalSearchFilter.dateTo.getTime())
     ) {
+      console.log("blev ingen sökning");
+
       setErrorMessage("Kontrollera att alla fält är korrekt ifyllda");
       return;
     }
@@ -69,10 +69,11 @@ export const InputSearchStatistics = () => {
           afVariation={LayoutBlockVariation.TRANSPARENT}
         >
           <DigiTypography>
-            <h1>Sök på historiska jobbannonser (2016-2023)</h1>
+            <div className="padding-heading">
+              <h1>Sök på historiska jobbannonser (2016-2023)</h1>
+            </div>
           </DigiTypography>
-
-          <DigiLayoutContainer>
+          <div className="date-search-container">
             <DigiCalendarDatepicker
               afId="dateFrom"
               afMinDate={new Date("2016-01-01")}
@@ -90,6 +91,9 @@ export const InputSearchStatistics = () => {
                   dateFrom: new Date(e.target.value.toString()),
                 }))
               }
+              onFocus={() => {
+                setErrorMessage("");
+              }}
             />
             <DigiCalendarDatepicker
               afId="dateTo"
@@ -99,6 +103,7 @@ export const InputSearchStatistics = () => {
               afLabel="Välj ett datum till"
               afLabelDescription="Ex. 2020-01-22"
               afRequired={true}
+              afValidationWrongFormat="Fel datumformat"
               onAfOnDateChange={(
                 e: DigiCalendarDatepickerCustomEvent<object>
               ) =>
@@ -107,9 +112,14 @@ export const InputSearchStatistics = () => {
                   dateTo: new Date(e.target.value.toString()),
                 }))
               }
+              onFocus={() => {
+                setErrorMessage("");
+              }}
             />
+          </div>
+          <div className="search-container">
             <DigiFormInputSearch
-              afLabel="Välj ett datumintervall och skriv in ett sökord (obligatoriskt)"
+              afLabel="Ex. Frontend Developer Stockholm (obligatoriskt)"
               afVariation={FormInputSearchVariation.SMALL}
               afType={FormInputType.SEARCH}
               afButtonText="Sök"
@@ -120,13 +130,16 @@ export const InputSearchStatistics = () => {
                 historicalSearchFilter.searchText = e.target.value;
               }}
               onAfOnClick={handleClick}
+              onFocus={() => {
+                setErrorMessage("");
+              }}
             />
             {errorMessage && (
               <DigiTypography>
-                <p>{errorMessage}</p>
+                <p className="error-message pop-animation">{errorMessage}</p>
               </DigiTypography>
             )}
-          </DigiLayoutContainer>
+          </div>
         </DigiLayoutBlock>
       </DigiLayoutContainer>
     </>

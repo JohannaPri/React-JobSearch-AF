@@ -25,7 +25,7 @@ export const JobsPresentation = (props: IJobPresentationProps) => {
         <div className="jobs-presentation-wrapper">
           <DigiLayoutBlock afVariation={LayoutBlockVariation.SECONDARY}>
             <DigiTypography>
-              <div className="jobs-presentation-item">
+              <div className="historical-job-presentation">
                 <div>
                   <div className="link-jobs-presentation">
                     <Link to={`/searchjob/${props.jobAd.id}`}>
@@ -38,13 +38,19 @@ export const JobsPresentation = (props: IJobPresentationProps) => {
                     <p>{props.jobAd.employer.name}</p>
                     <p slot="secondary">{props.jobAd.occupation.label}</p>
                   </DigiTypographyMeta>
+                </div>
+                <div className="publication-date-historical">
                   {props.jobAd.publication_date ? (
                     <div className="publication-date">
-                      <span>Publicerades </span>
-                      <DigiTypographyTime
-                        afVariation={TypographyTimeVariation.PRETTY}
-                        afDateTime={props.jobAd.publication_date}
-                      ></DigiTypographyTime>
+                      <span className="publication-bold">Publicerades</span>
+                      <DigiTypographyMeta
+                        afVariation={TypographyMetaVariation.SECONDARY}
+                      >
+                        <DigiTypographyTime
+                          afVariation={TypographyTimeVariation.PRIMARY}
+                          afDateTime={props.jobAd.publication_date}
+                        ></DigiTypographyTime>
+                      </DigiTypographyMeta>
                     </div>
                   ) : (
                     <p>Publikationsdatum ej tillgänligt</p>

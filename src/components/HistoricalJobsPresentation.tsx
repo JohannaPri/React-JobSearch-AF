@@ -17,63 +17,49 @@ interface IHistoricalJobsProps {
 }
 
 export const HistoricalJobsPresentation = ({ job }: IHistoricalJobsProps) => {
+  // console.log(job.logo_url);
   return (
     <>
       <DigiLayoutContainer>
-        <DigiLayoutBlock afVariation={LayoutBlockVariation.SECONDARY}>
-          <DigiTypography>
-            <div className="historical-job-presentation">
-              <div>
-                <h3>{job.headline}</h3>
-                <h6>
-                  {job.occupation.label} - {job.occupation_group.label}
-                </h6>
-                <p>{job.employer.name}</p>
-                <p>
-                  <span>
-                    {job.duration.label} - {job.scope_of_work.max}%
-                  </span>
-                </p>
-                <p></p>
-              </div>
+        <div className="jobs-presentation-wrapper">
+          <DigiLayoutBlock afVariation={LayoutBlockVariation.SECONDARY}>
+            <DigiTypography>
+              <div className="historical-job-presentation">
+                <div>
+                  <h3>{job.headline}</h3>
+                  <DigiTypographyMeta
+                    afVariation={TypographyMetaVariation.PRIMARY}
+                  >
+                    <p>
+                      {job.occupation.label} - {job.occupation_group.label}
+                    </p>
+                    <p slot="secondary">{job.employer.name}</p>
+                    <p>{job.working_hours_type.label}</p>
+                  </DigiTypographyMeta>
+                </div>
 
-              <div>
-                <img
-                  src={job.logo_url ? job.logo_url : "placeholder-logo.svg"}
-                  alt=""
-                  onError={({ currentTarget }) => {
-                    currentTarget.src = "/placeholder-logo.svg";
-                  }}
-                ></img>
-                <p>{job.working_hours_type.label}</p>
-                {job.publication_date ? (
-                  <div className="publication-date">
-                    <span>Publicerades </span>
-                    <DigiTypographyMeta
-                      afVariation={TypographyMetaVariation.PRIMARY}
-                    >
-                      <DigiTypographyTime
-                        afVariation={TypographyTimeVariation.PRIMARY}
-                        afDateTime={job.publication_date}
-                      ></DigiTypographyTime>
-                    </DigiTypographyMeta>
-                  </div>
-                ) : (
-                  <p>Publikationsdatum ej tillgänligt</p>
-                )}
+                <div className="publication-date-historical">
+                  {job.publication_date ? (
+                    <div>
+                      <span className="publication-bold">Publicerades </span>
+                      <DigiTypographyMeta
+                        afVariation={TypographyMetaVariation.SECONDARY}
+                      >
+                        <DigiTypographyTime
+                          afVariation={TypographyTimeVariation.PRIMARY}
+                          afDateTime={job.publication_date}
+                        ></DigiTypographyTime>
+                      </DigiTypographyMeta>
+                    </div>
+                  ) : (
+                    <p>Publikationsdatum ej tillgänligt</p>
+                  )}
+                </div>
               </div>
-            </div>
-          </DigiTypography>
-        </DigiLayoutBlock>
+            </DigiTypography>
+          </DigiLayoutBlock>
+        </div>
       </DigiLayoutContainer>
     </>
   );
 };
-
-/*
-<DigiLayoutBlock>
-            <DigiTypography>
-              
-            </DigiTypography>
-          </DigiLayoutBlock>
-          */
