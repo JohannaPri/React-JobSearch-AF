@@ -91,6 +91,9 @@ export const InputSearchStatistics = () => {
                   dateFrom: new Date(e.target.value.toString()),
                 }))
               }
+              onFocus={() => {
+                setErrorMessage("");
+              }}
             />
             <DigiCalendarDatepicker
               afId="dateTo"
@@ -109,6 +112,9 @@ export const InputSearchStatistics = () => {
                   dateTo: new Date(e.target.value.toString()),
                 }))
               }
+              onFocus={() => {
+                setErrorMessage("");
+              }}
             />
           </div>
           <div className="search-container">
@@ -124,6 +130,9 @@ export const InputSearchStatistics = () => {
                 historicalSearchFilter.searchText = e.target.value;
               }}
               onAfOnClick={handleClick}
+              onFocus={() => {
+                setErrorMessage("");
+              }}
             />
             {errorMessage && (
               <DigiTypography>
