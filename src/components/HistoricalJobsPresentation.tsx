@@ -27,15 +27,13 @@ export const HistoricalJobsPresentation = ({ job }: IHistoricalJobsProps) => {
               <div className="historical-job-presentation">
                 <div>
                   <h3>{job.headline}</h3>
-                  <DigiTypographyMeta
-                    afVariation={TypographyMetaVariation.PRIMARY}
-                  >
+                  <DigiTypography>
+                    <p className="historical-presentation-employer">{job.employer.name}</p>
                     <p>
                       {job.occupation.label} - {job.occupation_group.label}
                     </p>
-                    <p slot="secondary">{job.employer.name}</p>
                     <p>{job.working_hours_type.label}</p>
-                  </DigiTypographyMeta>
+                  </DigiTypography>
                 </div>
 
                 <div className="publication-date-historical">

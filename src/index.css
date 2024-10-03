@@ -215,6 +215,10 @@ body {
   margin: 2px;
 }
 
+.historical-presentation-employer {
+  font-weight: 600;
+}
+
 .date-search-container {
   display: flex;
   flex-direction: row;
@@ -252,7 +256,7 @@ body {
 
 .link-jobs-presentation {
   padding-bottom: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 600;
   letter-spacing: 0.02rem;
   max-width: 30rem;
@@ -391,6 +395,7 @@ display: none;
 
   [class="historical-job-presentation"] {
     width: fit-content;
+    
   }
 
   [class="footerBrandName"] {
