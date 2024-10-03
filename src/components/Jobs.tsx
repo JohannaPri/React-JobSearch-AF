@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { JobsContext } from "../contexts/JobsContext";
 import { JobsPresentation } from "./JobsPresentation";
 import { TotalPositionsSearchResult } from "./TotalPositionsSearchResult";
+import { Paginator } from "./Paginator";
 
 export const Jobs = () => {
   const { jobs } = useContext(JobsContext);
@@ -17,6 +18,7 @@ export const Jobs = () => {
             <JobsPresentation jobAd={job}></JobsPresentation>
           </div>
         ))}
+        {jobs.total.value > 0 && <Paginator></Paginator>}
       </div>
     </>
   );

@@ -1,5 +1,3 @@
-
-
 export interface IUserFilter {
 
   searchText: string | undefined;
@@ -7,5 +5,5 @@ export interface IUserFilter {
   experience: boolean;
   remote: boolean;
   region: string[];
+  offset: number;
 }
-
