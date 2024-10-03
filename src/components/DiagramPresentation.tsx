@@ -58,7 +58,10 @@ export const DiagramPresentation = () => {
   return (
     <>
       <DigiLayoutContainer>
-        <div style={{ width: "400px", height: "400px" }}>
+        <div
+          className="bar-container"
+          style={{ width: "700px", height: "400px" }}
+        >
           <DigiBarChart
             afHeadingLevel="h2"
             afChartData={chartData}

@@ -289,6 +289,16 @@ body {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
+/* DIAGRAM */
+
+.sc-digi-bar-chart svg .barGroup .bar{
+  fill: var(--digi--color--background--primary) !important
+}
+
+.sc-digi-bar-chart svg .barGroup .bar:hover{
+  fill: var(--digi--color--background--inverted-1) !important
+
+}
 
 /*FOOTER*/
 .footerLogo {
