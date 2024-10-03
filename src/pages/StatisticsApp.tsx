@@ -9,6 +9,7 @@ import { DiagramPresentation } from "../components/DiagramPresentation";
 import { DiagramWrapper } from "../components/styled/Wrappers";
 
 export const StatisticsApp = () => {
+  localStorage.clear();
   const [jobs, dispatch] = useReducer(jobSearchReducer, {
     total: { value: 0 },
     hits: [],
