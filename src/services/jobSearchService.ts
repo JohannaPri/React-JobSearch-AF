@@ -8,8 +8,6 @@ const BASE_URL = "https://jobsearch.api.jobtechdev.se/search?"
 export const getJobs = async (userInput: IUserFilter): Promise<IJobSearchResults> => {
     const queryParams: string[] = [];
 
-
-
     if (userInput.searchText) {
         queryParams.push(`q=${encodeURIComponent(userInput.searchText)}`);
     }
