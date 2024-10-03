@@ -6,6 +6,7 @@ import { Jobs } from "../components/Jobs";
 import { IJobSearchResults } from "../models/IJobSearchResult";
 import { UserFilterReducer } from "../reducers/UserFilterJobReducer";
 import { UserFilterJobSearchContext } from "../contexts/UserFilterJobSearchContext";
+import { DigiLayoutContainer } from "@digi/arbetsformedlingen-react";
 
 export const JobsApp = () => {
   const storedSearch = localStorage.getItem("jobs");
@@ -30,7 +31,7 @@ export const JobsApp = () => {
   console.log(jobs);
 
   return (
-    <>
+    <DigiLayoutContainer>
       <JobsContext.Provider value={{ jobs, dispatch }}>
         <UserFilterJobSearchContext.Provider
           value={{ userFilter, filterDispatch }}
@@ -39,6 +40,6 @@ export const JobsApp = () => {
           {storedSearch !== null && <Jobs></Jobs>}
         </UserFilterJobSearchContext.Provider>
       </JobsContext.Provider>
-    </>
+    </DigiLayoutContainer>
   );
 };

@@ -5,6 +5,7 @@ import { DigiNavigationPaginationCustomEvent } from "@digi/arbetsformedlingen/di
 import { UserFilterJobSearchContext } from "../contexts/UserFilterJobSearchContext";
 import { ActionJobSearchType } from "../reducers/jobSearchReducer";
 import { getJobs } from "../services/jobSearchService";
+import { PaginatorWrapper } from "./styled/Wrappers";
 
 export const Paginator = () => {
   const { jobs, dispatch } = useContext(JobsContext);
@@ -20,15 +21,17 @@ export const Paginator = () => {
   };
   return (
     <>
-      <DigiNavigationPagination
-        afTotalPages={Math.ceil(jobs.total.value / 10)}
-        afInitActive-page={1}
-        afCurrentResultStart={1}
-        afCurrentResultEnd={10}
-        afTotalResults={jobs.total.value}
-        afResultName="annonser"
-        onAfOnPageChange={handleClick}
-      ></DigiNavigationPagination>
+      <PaginatorWrapper>
+        <DigiNavigationPagination
+          afTotalPages={Math.ceil(jobs.total.value / 10)}
+          afInitActive-page={1}
+          afCurrentResultStart={1}
+          afCurrentResultEnd={10}
+          afTotalResults={jobs.total.value}
+          afResultName="annonser"
+          onAfOnPageChange={handleClick}
+        ></DigiNavigationPagination>
+      </PaginatorWrapper>
     </>
   );
 };

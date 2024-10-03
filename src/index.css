@@ -93,6 +93,11 @@ body {
 }
 
 /* JOBS */
+
+.jobs-app-container {
+  max-width: 100%;
+}
+
 .search-container{
   display: block;
   max-width: 700px;
@@ -338,8 +343,9 @@ body {
 }
 /* DIAGRAM */
 .bar-container {
-  margin-top: 70px;
-  margin-bottom: 70px;
+  margin-bottom: 0.3rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
 }
 
 .sc-digi-button-h .digi-button.sc-digi-button:hover {
