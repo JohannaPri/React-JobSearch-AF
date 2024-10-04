@@ -147,8 +147,8 @@ export const InputSearchStatistics = () => {
             )}
           </div>
         </DigiLayoutBlock>
+        {noResults && <NoAds></NoAds>}
       </DigiLayoutContainer>
-      {noResults && <NoAds></NoAds>}
     </>
   );
 };
