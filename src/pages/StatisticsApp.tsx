@@ -7,10 +7,13 @@ import { jobHistorySearchReducer } from "../reducers/jobHistorySearchReducer";
 
 export const StatisticsApp = () => {
   localStorage.clear();
-  const [totalJobs, dispatch] = useReducer(jobHistorySearchReducer, {
-    total: { value: 0 },
-    positions: 0,
-  });
+  const [totalJobs, dispatch] = useReducer(jobHistorySearchReducer, [
+    {
+      key: 0,
+      total: { value: 0 },
+      positions: 0,
+    },
+  ]);
 
   return (
     <div className="jobs-app-container">
@@ -18,9 +21,7 @@ export const StatisticsApp = () => {
         <InputSearchStatistics />
         {
           <DiagramWrapper>
-            {totalJobs.total.value > 0 && (
-              <DiagramPresentation></DiagramPresentation>
-            )}
+            <DiagramPresentation></DiagramPresentation>
           </DiagramWrapper>
         }
       </JobsHistoryContext.Provider>

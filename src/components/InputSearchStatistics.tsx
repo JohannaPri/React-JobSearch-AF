@@ -55,12 +55,13 @@ export const InputSearchStatistics = () => {
     const searchedHistoricalJobs = await getHistoricalJobs(
       historicalSearchFilter
     );
+    console.log(searchedHistoricalJobs);
     dispatch({
       type: ActionJobSearchType.SEARCH,
       payload: searchedHistoricalJobs,
     });
 
-    if (searchedHistoricalJobs.hits.length === 0) {
+    if (searchedHistoricalJobs.length === 0) {
       setNoResults(true);
     } else setNoResults(false);
 

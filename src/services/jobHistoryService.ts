@@ -4,17 +4,10 @@ import { IHistoricalSearchResult } from "../models/IHistoricalSearchResults";
 
 const BASE_URL = "https://historical.api.jobtechdev.se/search?";
 
-// array med daturm 2016-2023
-//plocka ut vilka datum som är sökta på från filtret ur datumArrayn
-
-// hämta ett resulat per datum
-
-//lägga resultatet i en lista med keys för vilket datum det är
-
 export const getHistoricalJobs = async (
   userInput: IHistoricalSearchFilter
-): Promise<IHistoricalSearchResult> => {
-  const queryParams: string[] = [];
+): Promise<IHistoricalSearchResult[]> => {
+ 
   const years = [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023];
   const yearFrom = userInput.dateFrom.getFullYear();
   const yearTo = userInput.dateTo.getFullYear();
@@ -25,11 +18,14 @@ export const getHistoricalJobs = async (
   const filteredYears = years.filter(
     (year) => year >= yearFrom && year <= yearTo
   );
-  if (userInput.searchText) {
-    queryParams.push(`q=${encodeURIComponent(userInput.searchText)}`);
-  }
+
 
   filteredYears.map((year) => {
+    const queryParams: string[] = [];
+
+    if (userInput.searchText) {
+      queryParams.push(`q=${encodeURIComponent(userInput.searchText)}`);
+    }
     if (userInput.dateFrom) {
       queryParams.push(
         `historical-from=${encodeURIComponent(year)}T00%3A00%3A01`
@@ -44,20 +40,18 @@ export const getHistoricalJobs = async (
     queryParams.push("limit=10");
 
     const finalUrl = `${BASE_URL}${queryParams.join("&")}`;
-    console.log(finalUrl)
-    getData(finalUrl, finalData)
+  
+    getData(year, finalUrl, finalData)
   });
 
-  console.log(finalData)
 
-  return { total: { value: 0 }, positions: 0 };
+  return finalData;
 };
 
-const getData = async (finalUrl:string, finalData: IHistoricalSearchResult[]) => {
-
+const getData = async (year:number,finalUrl:string, finalData: IHistoricalSearchResult[]) => {
   try {
     const response = await get<IHistoricalSearchResult>(`${finalUrl}`);
-    finalData.push(response)
+    finalData.push({key: year-1,  total: response.total, positions: response.positions })
   } catch (error) {
     console.log(error);
   }
