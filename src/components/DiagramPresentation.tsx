@@ -38,8 +38,6 @@ export const DiagramPresentation = () => {
     x: "År",
     y: "Antal Jobb",
     title: "Diagram",
-    subTitle: "diagram",
-    infoText: "diagram över historiska jobb",
     meta: {
       numberOfReferenceLines: 50,
       percentage: false,
@@ -56,7 +54,7 @@ export const DiagramPresentation = () => {
     <>
       <div
         className="bar-container"
-        style={{ width: "500px", height: "400px" }}
+        style={{ width: "300px", height: "400px" }}
       >
         <DigiBarChart
           afHeadingLevel="h2"

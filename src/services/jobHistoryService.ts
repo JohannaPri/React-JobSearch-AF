@@ -30,7 +30,7 @@ export const getHistoricalJobs = async (
     );
   }
 
-  queryParams.push("limit=10");
+  queryParams.push("limit=100");
 
   const finalUrl = `${BASE_URL}${queryParams.join("&")}`;
   //Konsol logg för att testa URL:en
