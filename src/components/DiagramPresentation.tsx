@@ -1,3 +1,4 @@
+/*
 import { DigiBarChart } from "@digi/arbetsformedlingen-react";
 
 import { ChartLineData } from "@digi/arbetsformedlingen/dist/types/interfaces";
@@ -8,6 +9,7 @@ import { IJobAd } from "../models/IJobAd";
 
 export const DiagramPresentation = () => {
   const { jobs } = useContext(JobsHistoryContext);
+
 
   const groupedByYear = jobs.hits.reduce(
     (acc: { [key: string]: IJobAd[] }, current: IJobAd) => {
@@ -67,3 +69,4 @@ export const DiagramPresentation = () => {
     </>
   );
 };
+*/
