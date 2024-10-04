@@ -4,16 +4,12 @@ import { HistoricalJobs } from "../components/HistoricalJobs";
 import { InputSearchStatistics } from "../components/InputSearchStatistics";
 import { JobsHistoryContext } from "../contexts/jobsHistoryContext";
 import { jobSearchReducer } from "../reducers/jobSearchReducer";
-//import { InputSearchStatistics } from "../components/InpuSearchStatistics";
+
+import { DiagramPresentation } from "../components/DiagramPresentation";
+import { DiagramWrapper } from "../components/styled/Wrappers";
 
 export const StatisticsApp = () => {
-  // lägg contextet här runt Presentations taggarna. och använd reducern som value
-
-  // hämta data med IJobHistoricalAd niterface com model
-
-  /*<InputSearchStatistics />
-      <DiagramPresentation />*/
-
+  localStorage.clear();
   const [jobs, dispatch] = useReducer(jobSearchReducer, {
     total: { value: 0 },
     hits: [],
@@ -21,11 +17,15 @@ export const StatisticsApp = () => {
   });
 
   return (
-    <>
+    <div className="jobs-app-container">
       <JobsHistoryContext.Provider value={{ jobs, dispatch }}>
-        <InputSearchStatistics />
+        <DiagramWrapper>
+          <InputSearchStatistics />
+          {jobs.total.value > 0 && <DiagramPresentation></DiagramPresentation>}
+        </DiagramWrapper>
+
         <HistoricalJobs />
       </JobsHistoryContext.Provider>
-    </>
+    </div>
   );
 };

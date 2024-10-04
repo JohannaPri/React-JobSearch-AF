@@ -18,6 +18,7 @@
 
   /*HOVER */
   --digi--global--color--cta--hover--base: white;
+  --COLOR--TEXT--HOVER: var(--digi--color--background--primary)
 
   --digi--form-filter--footer--background: #DBD1CD;
   --digi--form-filter--dropdown--background: #DBD1CD;
@@ -92,6 +93,11 @@ body {
 }
 
 /* JOBS */
+
+.jobs-app-container {
+  max-width: 100%;
+}
+
 .search-container{
   display: block;
   max-width: 700px;
@@ -150,6 +156,10 @@ body {
   flex-direction: row;
   padding-top: 1rem;
   gap: 1rem;
+}
+
+.no-ads-wrapper {
+  margin-left: 1rem;
 }
 
 /*JOBS PRESENTATION*/
@@ -334,6 +344,30 @@ body {
   flex-direction: column;
   margin-top: 2rem;
   margin-bottom: 2rem;
+}
+/* DIAGRAM */
+.bar-container {
+  margin-bottom: 0.3rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+.sc-digi-button-h .digi-button.sc-digi-button:hover {
+  color: var(--digi--color--background--primary) !important
+}
+
+.sc-digi-icon-table-h svg.sc-digi-icon-table:hover{
+  fill: var(--digi--color--background--primary) !important
+}
+
+
+.sc-digi-bar-chart svg .barGroup .bar{
+  fill: var(--digi--color--background--primary) !important
+}
+
+.sc-digi-bar-chart svg .barGroup .bar:hover{
+  fill: var(--digi--color--background--inverted-1) !important
+
 }
 
 /*FOOTER*/
