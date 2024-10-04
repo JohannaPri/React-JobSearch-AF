@@ -3,12 +3,12 @@ import { IActionJobHistorySearch } from "../reducers/jobHistorySearchReducer";
 import { IHistoricalSearchResult } from "../models/IHistoricalSearchResults";
 
 type JobContextType = {
-  jobs: IHistoricalSearchResult;
+  totalJobs: IHistoricalSearchResult;
   dispatch: Dispatch<IActionJobHistorySearch>;
 };
 
 export const JobsHistoryContext = createContext<JobContextType>({
-  jobs: {total: {value: 0}, positions: 0},
+  totalJobs: { total: { value: 0 }, positions: 0 },
   dispatch: () => {
     return;
   },

@@ -1,41 +1,19 @@
-/*
 import { DigiBarChart } from "@digi/arbetsformedlingen-react";
 
 import { ChartLineData } from "@digi/arbetsformedlingen/dist/types/interfaces";
 import { useContext } from "react";
 import { JobsHistoryContext } from "../contexts/jobsHistoryContext";
 import { BarChartVariation } from "@digi/arbetsformedlingen";
-import { IJobAd } from "../models/IJobAd";
 
 export const DiagramPresentation = () => {
-  const { jobs } = useContext(JobsHistoryContext);
+  const { totalJobs } = useContext(JobsHistoryContext);
 
-
-  const groupedByYear = jobs.hits.reduce(
-    (acc: { [key: string]: IJobAd[] }, current: IJobAd) => {
-      const year = current.publication_date?.split("-")[0]
-        ? new Date(current.publication_date).getFullYear()
-        : 0;
-      if (!acc[year]) {
-        acc[year] = [];
-      }
-      acc[year].push(current);
-      return acc;
-    },
-    {}
-  );
-
-  const stringYears = Object.keys(groupedByYear);
-  const numberYears = Object.keys(groupedByYear).map((year) => +year);
-  const values = numberYears.map((year) => groupedByYear[year].length);
-
-  console.log(values);
-
+  console.log(totalJobs);
   const chartData: ChartLineData = {
     data: {
-      xValues: numberYears,
-      series: [{ yValues: values, title: "Antal Jobb", colorToken: "black" }],
-      xValueNames: stringYears,
+      xValues: [],
+      series: [{ yValues: [], title: "Antal Jobb", colorToken: "black" }],
+      xValueNames: [],
     },
     x: "År",
     y: "Antal Jobb",
@@ -69,4 +47,3 @@ export const DiagramPresentation = () => {
     </>
   );
 };
-*/
