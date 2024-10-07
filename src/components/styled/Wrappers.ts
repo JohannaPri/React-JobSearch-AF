@@ -6,9 +6,8 @@ export const Main = styled.div`
 
 export const PaginatorWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  margin-top: 3rem;
-  margin-bottom: 2rem;
+  padding: var(--digi--layout-container--vertical-padding)
+    var(--digi--layout-container--gutter);
 `;
 
 export const DiagramWrapper = styled.div`
