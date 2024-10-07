@@ -7,24 +7,25 @@ import { BarChartVariation } from "@digi/arbetsformedlingen";
 
 export const DiagramPresentation = () => {
   const { totalJobs } = useContext(JobsHistoryContext);
+  console.log("sorted jobs", totalJobs);
+
+  if (!totalJobs || totalJobs.length === 0) {
+    return <div>No data available</div>;
+  }
 
   totalJobs.sort((a, b) => a.key - b.key);
 
-  console.log("sorted jobs", totalJobs);
-
-  const numberYears = totalJobs.map((k) => k.key);
-  const stringYears = totalJobs.map((k) => k.key.toString());
-  const totalHistory = totalJobs.map((k) => k.total.value);
-
-  console.log("numberYears", numberYears);
-
   const chartData: ChartLineData = {
     data: {
-      xValues: numberYears,
+      xValues: totalJobs.map((k) => k.key),
       series: [
-        { yValues: totalHistory, title: "Antal Jobb", colorToken: "black" },
+        {
+          yValues: totalJobs.map((k) => k.total.value),
+          title: "Antal Jobb",
+          colorToken: "black",
+        },
       ],
-      xValueNames: stringYears,
+      xValueNames: totalJobs.map((k) => k.key.toString()),
     },
     x: "År",
     y: "Antal Jobb",

@@ -55,7 +55,7 @@ export const InputSearchStatistics = () => {
     const searchedHistoricalJobs = await getHistoricalJobs(
       historicalSearchFilter
     );
-    console.log(searchedHistoricalJobs);
+    console.log("sökning", searchedHistoricalJobs);
     dispatch({
       type: ActionJobSearchType.SEARCH,
       payload: searchedHistoricalJobs,
