@@ -2,8 +2,9 @@ import { useReducer } from "react";
 import { InputSearchStatistics } from "../components/InputSearchStatistics";
 import { JobsHistoryContext } from "../contexts/jobsHistoryContext";
 import { DiagramPresentation } from "../components/DiagramPresentation";
-import { DiagramWrapper } from "../components/styled/Wrappers";
+
 import { jobHistorySearchReducer } from "../reducers/jobHistorySearchReducer";
+import { DigiLayoutContainer } from "@digi/arbetsformedlingen-react";
 
 export const StatisticsApp = () => {
   localStorage.clear();
@@ -19,11 +20,11 @@ export const StatisticsApp = () => {
     <div className="jobs-app-container">
       <JobsHistoryContext.Provider value={{ totalJobs, dispatch }}>
         <InputSearchStatistics />
-        {
-          <DiagramWrapper>
+        {totalJobs.length > 1 && (
+          <DigiLayoutContainer>
             <DiagramPresentation></DiagramPresentation>
-          </DiagramWrapper>
-        }
+          </DigiLayoutContainer>
+        )}
       </JobsHistoryContext.Provider>
     </div>
   );

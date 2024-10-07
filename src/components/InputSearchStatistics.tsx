@@ -43,8 +43,6 @@ export const InputSearchStatistics = () => {
       isNaN(historicalSearchFilter.dateFrom.getTime()) ||
       isNaN(historicalSearchFilter.dateTo.getTime())
     ) {
-      console.log("blev ingen sökning");
-
       setErrorMessage("Kontrollera att alla fält är korrekt ifyllda");
       return;
     }
@@ -55,7 +53,7 @@ export const InputSearchStatistics = () => {
     const searchedHistoricalJobs = await getHistoricalJobs(
       historicalSearchFilter
     );
-    console.log("sökning", searchedHistoricalJobs);
+
     dispatch({
       type: ActionJobSearchType.SEARCH,
       payload: searchedHistoricalJobs,

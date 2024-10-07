@@ -10,7 +10,7 @@ export const DiagramPresentation = () => {
   console.log("sorted jobs", totalJobs);
 
   if (!totalJobs || totalJobs.length === 0) {
-    return <div>No data available</div>;
+    return <div>Inga jobb matchade sökningen</div>;
   }
 
   totalJobs.sort((a, b) => a.key - b.key);
@@ -30,8 +30,6 @@ export const DiagramPresentation = () => {
     x: "År",
     y: "Antal Jobb",
     title: "Diagram",
-    subTitle: "diagram",
-    infoText: "diagram över historiska jobb",
     meta: {
       numberOfReferenceLines: 50,
       percentage: false,
