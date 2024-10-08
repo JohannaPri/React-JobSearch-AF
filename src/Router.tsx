@@ -7,32 +7,37 @@ import { Job } from "./components/Job";
 import { StatisticsApp } from "./pages/StatisticsApp";
 import { Statistic } from "./components/Statistic";
 
-export const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout></Layout>,
-    errorElement: <NotFound></NotFound>,
-    children: [
-      {
-        path: "/",
-        element: <Start></Start>,
-      },
-      {
-        path: "/searchjobs",
-        element: <JobsApp></JobsApp>,
-      },
-      {
-        path: "/searchjob/:id",
-        element: <Job></Job>,
-      },
-      {
-        path: "/searchstatistics",
-        element: <StatisticsApp></StatisticsApp>,
-      },
-      {
-        path: "/searchstatistic/:id",
-        element: <Statistic></Statistic>,
-      },
-    ],
-  },
-]);
+export const repo = "/Medieinstitutet/case-af-team-3-1/";
+
+export const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Layout></Layout>,
+      errorElement: <NotFound></NotFound>,
+      children: [
+        {
+          path: "/",
+          element: <Start></Start>,
+        },
+        {
+          path: "/searchjobs",
+          element: <JobsApp></JobsApp>,
+        },
+        {
+          path: "/searchjob/:id",
+          element: <Job></Job>,
+        },
+        {
+          path: "/searchstatistics",
+          element: <StatisticsApp></StatisticsApp>,
+        },
+        {
+          path: "/searchstatistic/:id",
+          element: <Statistic></Statistic>,
+        },
+      ],
+    },
+  ],
+  { basename: repo }
+);
