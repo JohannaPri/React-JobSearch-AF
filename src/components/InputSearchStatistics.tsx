@@ -40,8 +40,8 @@ export const InputSearchStatistics = () => {
 
     if (
       !historicalSearchFilter.searchText.trim() ||
-      !isNaN(historicalSearchFilter.dateFrom.getTime()) ||
-      !isNaN(historicalSearchFilter.dateTo.getTime())
+      isNaN(historicalSearchFilter.dateFrom.getTime()) ||
+      isNaN(historicalSearchFilter.dateTo.getTime())
     ) {
       setErrorMessage("Kontrollera att alla fält är korrekt ifyllda");
       return;
