@@ -4,42 +4,32 @@ import { ChartLineData } from "@digi/arbetsformedlingen/dist/types/interfaces";
 import { useContext } from "react";
 import { JobsHistoryContext } from "../contexts/jobsHistoryContext";
 import { BarChartVariation } from "@digi/arbetsformedlingen";
-import { IJobAd } from "../models/IJobAd";
 
 export const DiagramPresentation = () => {
-  const { jobs } = useContext(JobsHistoryContext);
+  const { totalJobs } = useContext(JobsHistoryContext);
+  console.log("sorted jobs", totalJobs);
 
-  const groupedByYear = jobs.hits.reduce(
-    (acc: { [key: string]: IJobAd[] }, current: IJobAd) => {
-      const year = current.publication_date?.split("-")[0]
-        ? new Date(current.publication_date).getFullYear()
-        : 0;
-      if (!acc[year]) {
-        acc[year] = [];
-      }
-      acc[year].push(current);
-      return acc;
-    },
-    {}
-  );
+  if (!totalJobs || totalJobs.length === 0) {
+    return <div>Inga jobb matchade sökningen</div>;
+  }
 
-  const stringYears = Object.keys(groupedByYear);
-  const numberYears = Object.keys(groupedByYear).map((year) => +year);
-  const values = numberYears.map((year) => groupedByYear[year].length);
-
-  console.log(values);
+  totalJobs.sort((a, b) => a.key - b.key);
 
   const chartData: ChartLineData = {
     data: {
-      xValues: numberYears,
-      series: [{ yValues: values, title: "Antal Jobb", colorToken: "black" }],
-      xValueNames: stringYears,
+      xValues: totalJobs.map((k) => k.key),
+      series: [
+        {
+          yValues: totalJobs.map((k) => k.total.value),
+          title: "Antal Jobb",
+          colorToken: "black",
+        },
+      ],
+      xValueNames: totalJobs.map((k) => k.key.toString()),
     },
     x: "År",
     y: "Antal Jobb",
     title: "Diagram",
-    subTitle: "diagram",
-    infoText: "diagram över historiska jobb",
     meta: {
       numberOfReferenceLines: 50,
       percentage: false,

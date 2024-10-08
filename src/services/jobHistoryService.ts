@@ -1,46 +1,57 @@
+
 import { get } from "./serviceBase";
-import { IJobSearchResults } from "../models/IJobSearchResult";
 import { IHistoricalSearchFilter } from "../models/IHistoricalSearchFilter";
+import { IHistoricalSearchResult } from "../models/IHistoricalSearchResults";
 
 const BASE_URL = "https://historical.api.jobtechdev.se/search?";
 
 export const getHistoricalJobs = async (
   userInput: IHistoricalSearchFilter
-): Promise<IJobSearchResults> => {
-  const queryParams: string[] = [];
+): Promise<IHistoricalSearchResult[]> => {
 
-  const formatDate = (date: Date): string => {
-    return date.toISOString().split("T")[0];
-  };
+  const years = [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023];
+  const yearFrom = userInput.dateFrom.getFullYear();
+  const yearTo = userInput.dateTo.getFullYear();
 
-  if (userInput.searchText) {
-    queryParams.push(`q=${encodeURIComponent(userInput.searchText)}`);
+  const finalData: IHistoricalSearchResult[] = [];
+
+  const filteredYears = years.filter(
+    (year) => year >= yearFrom && year <= yearTo
+  );
+
+ 
+  for (const year of filteredYears) {
+    const queryParams: string[] = [];
+
+    if (userInput.searchText) {
+      queryParams.push(`q=${encodeURIComponent(userInput.searchText)}`);
+    }
+    if (userInput.dateFrom) {
+      queryParams.push(
+        `historical-from=${encodeURIComponent(year)}T00%3A00%3A01`
+      );
+    }
+    if (userInput.dateTo) {
+      queryParams.push(
+        `historical-to=${encodeURIComponent(year + 1)}T00%3A00%3A01`
+      ); 
+    }
+
+    queryParams.push("limit=10");
+
+    const finalUrl = `${BASE_URL}${queryParams.join("&")}`;
+
+    await getData(year, finalUrl, finalData);
   }
 
-  if (userInput.dateFrom) {
-    const formattedDateFrom = formatDate(userInput.dateFrom);
-    queryParams.push(
-      `historical-from=${encodeURIComponent(formattedDateFrom)}T00%3A00%3A01`
-    );
-  }
-  if (userInput.dateTo) {
-    const formattedDateTo = formatDate(userInput.dateTo);
-    queryParams.push(
-      `historical-to=${encodeURIComponent(formattedDateTo)}T00%3A00%3A01`
-    );
-  }
+  return finalData;
+};
 
-  queryParams.push("limit=10");
-
-  const finalUrl = `${BASE_URL}${queryParams.join("&")}`;
-  //Konsol logg för att testa URL:en
-  //console.log("API URL:", finalUrl);
-
+const getData = async (year: number, finalUrl: string, finalData: IHistoricalSearchResult[]) => {
   try {
-    const response = await get<IJobSearchResults>(finalUrl);
-    return response;
+    const response = await get<IHistoricalSearchResult>(`${finalUrl}`);
+    finalData.push({ key: year, total: response.total, positions: response.positions });
   } catch (error) {
     console.log(error);
-    throw new Error("Failed to fetch historical jobs.");
   }
-};
+}

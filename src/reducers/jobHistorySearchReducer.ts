@@ -1,8 +1,8 @@
-import { IJobSearchResults } from "../models/IJobSearchResult";
+import { IHistoricalSearchResult } from "../models/IHistoricalSearchResults";
 
 export interface IActionJobHistorySearch {
   type: ActionJobSearchType;
-  payload: IJobSearchResults;
+  payload: IHistoricalSearchResult[];
 }
 
 export enum ActionJobSearchType {
@@ -10,9 +10,9 @@ export enum ActionJobSearchType {
 }
 
 export const jobHistorySearchReducer = (
-  jobs: IJobSearchResults,
+  jobs: IHistoricalSearchResult[],
   action: IActionJobHistorySearch
-): IJobSearchResults => {
+): IHistoricalSearchResult[] => {
   switch (action.type) {
     case ActionJobSearchType.SEARCH: {
       return action.payload;
