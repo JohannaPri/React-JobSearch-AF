@@ -9,6 +9,7 @@ import {
   DigiTypography,
 } from "@digi/arbetsformedlingen-react";
 import { Link } from "react-router-dom";
+import { repo } from "../Router";
 
 export const Start = () => {
   localStorage.clear();
@@ -49,7 +50,7 @@ export const Start = () => {
           afUnlazy
           afHeight="370"
           afWidth="370"
-          afSrc="/start-page-smaller.png"
+          afSrc={`${repo}/start-page-smaller.png`}
           afAlt="Arbetsförmedlingens logotyp som en fasadskyld"
         ></DigiMediaImage>{" "}
       </div>

@@ -38,6 +38,8 @@ export const InputSearch = () => {
     dispatch({ type: ActionJobSearchType.SEARCH, payload: searchedJobs });
 
     if (searchedJobs.hits.length === 0) {
+      console.log("no results");
+
       setNoResults(true);
     } else setNoResults(false);
   };
@@ -75,8 +77,8 @@ export const InputSearch = () => {
             <OtherFilter userFilter={userFilter}></OtherFilter>
           </div>
         </DigiLayoutBlock>
+        {noResults && <NoAds></NoAds>}
       </DigiLayoutContainer>
-      {noResults && <NoAds></NoAds>}
     </>
   );
 };

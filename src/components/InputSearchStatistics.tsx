@@ -43,8 +43,6 @@ export const InputSearchStatistics = () => {
       isNaN(historicalSearchFilter.dateFrom.getTime()) ||
       isNaN(historicalSearchFilter.dateTo.getTime())
     ) {
-      console.log("blev ingen sökning");
-
       setErrorMessage("Kontrollera att alla fält är korrekt ifyllda");
       return;
     }
@@ -55,12 +53,13 @@ export const InputSearchStatistics = () => {
     const searchedHistoricalJobs = await getHistoricalJobs(
       historicalSearchFilter
     );
+
     dispatch({
       type: ActionJobSearchType.SEARCH,
       payload: searchedHistoricalJobs,
     });
 
-    if (searchedHistoricalJobs.hits.length === 0) {
+    if (searchedHistoricalJobs.length === 0) {
       setNoResults(true);
     } else setNoResults(false);
 
@@ -147,8 +146,8 @@ export const InputSearchStatistics = () => {
             )}
           </div>
         </DigiLayoutBlock>
+        {noResults && <NoAds></NoAds>}
       </DigiLayoutContainer>
-      {noResults && <NoAds></NoAds>}
     </>
   );
 };
