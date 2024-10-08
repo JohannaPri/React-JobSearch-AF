@@ -21,6 +21,7 @@ import { OtherFilter } from "./OtherFilter";
 import { NoAds } from "./NoAds";
 import { UserFilterJobSearchContext } from "../contexts/UserFilterJobSearchContext";
 import { ActionUserFilterType } from "../reducers/UserFilterJobReducer";
+import { PaddingHeading } from "./styled/Wrappers";
 
 export const InputSearch = () => {
   const { dispatch } = useContext(JobsContext);
@@ -51,9 +52,9 @@ export const InputSearch = () => {
           afVariation={LayoutBlockVariation.TRANSPARENT}
         >
           <DigiTypography>
-            <div className="padding-heading">
+            <PaddingHeading>
               <h1>Sök på jobb</h1>
-            </div>
+            </PaddingHeading>
           </DigiTypography>
           <div className="search-container">
             <DigiFormInputSearch

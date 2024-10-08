@@ -93,7 +93,6 @@ body {
 }
 
 /* JOBS */
-
 .jobs-app-container {
   max-width: 100%;
 }
@@ -143,8 +142,7 @@ body {
 }
 
 .search-container button:hover {
-  background-color: var(--digi--color--background--secondary) !important;
-  
+  background-color: var(--digi--color--background--secondary) !important; 
 }
 
 .padding-heading {
@@ -212,17 +210,29 @@ body {
   font-weight: 600;
 }
 
-.historical-job-presentation {
-  display: flex;
-  flex-direction: row;
-  display: grid;
-  grid-template-columns: 3fr 1fr;
+.job-presentation-container {
+ display: flex;
+  flex-direction: row; 
+  flex-wrap: wrap;
+  justify-content: space-between;
   margin-bottom: 0.75rem;
   padding: 1rem;
 }
 
-.historical-job-presentation p {
+.job-presentation-container div:nth-child(0) {
+  width:350px;
+}
+
+.job-presentation-container div:nth-child(1) {
+  width:250px;
+}
+
+.job-presentation-container p {
   margin: 2px;
+}
+
+.historical-presentation-employer {
+  font-weight: 600;
 }
 
 .date-search-container {
@@ -232,9 +242,8 @@ body {
   margin-bottom: 1.5rem;
 }
 
-.publication-date-historical {
-  display: grid;
-  justify-content: flex-end;
+.publication-date-wrapper  {
+  display: flex;
 }
 
 .error-message {
@@ -262,7 +271,7 @@ body {
 
 .link-jobs-presentation {
   padding-bottom: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 600;
   letter-spacing: 0.02rem;
   max-width: 30rem;
@@ -273,9 +282,11 @@ body {
   color: var(--digi--form-filter--dropdown--background);
 }
 
+/*
 .historical-job-presentation img {
   width: 60px;
 }
+*/
 
 /*LOGO*/
 .digi-footer .digi-logo__img {
@@ -343,6 +354,7 @@ body {
 }
 /* DIAGRAM */
 .bar-container {
+  padding-left: 3rem;
   margin-bottom: 0.3rem;
   margin-top: 1rem;
   padding-top: 1rem;
@@ -351,12 +363,14 @@ body {
 .sc-digi-button-h .digi-button.sc-digi-button:hover {
   color: var(--digi--color--background--primary) !important
 }
-
-.sc-digi-icon-table-h svg.sc-digi-icon-table:hover{
+.digi-icon-table .sc-digi-icon-table {
+  fill: var(--digi--color--background--primary) !important
+}
+.sc-digi-icon-chart {
   fill: var(--digi--color--background--primary) !important
 }
 
-
+/* Diagram bar */
 .sc-digi-bar-chart svg .barGroup .bar{
   fill: var(--digi--color--background--primary) !important
 }
@@ -406,10 +420,16 @@ display: none;
     padding: 1.3rem;
     right: 1rem;
   }
-  [class="historical-job-presentation"] {
+  
+  [class=".job-presentation-container"] {
     width: 30rem;
   }
+
+  [class=".publication-date-wrapper"] {
+    padding-top: 10px;
+  }
 }
+
 
 /* MOBILE */
 @media only screen and (max-width: 767px) {
@@ -423,8 +443,12 @@ display: none;
     gap: 1rem;
   } 
 
-  [class="historical-job-presentation"] {
+  [class=".job-presentation-container"] {
     width: fit-content;
+  }
+
+  [class=".publication-date-wrapper"] {
+    padding-top: 10px;
   }
 
   [class="footerBrandName"] {
