@@ -46,7 +46,7 @@ export const DiagramPresentation = () => {
     <>
       <div
         className="bar-container"
-        style={{ width: "300px", height: "400px" }}
+        style={{ width: "625px", height: "400px" }}
       >
         <DigiBarChart
           afHeadingLevel="h2"

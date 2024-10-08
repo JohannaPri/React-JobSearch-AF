@@ -146,7 +146,7 @@ body {
 }
 
 .padding-heading {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 .filter-button {
@@ -219,8 +219,8 @@ body {
   padding: 1rem;
 }
 
-.job-presentation-container div:nth-child(0) {
-  width:350px;
+.left-jobs-presentation {
+  width:350px !important;
 }
 
 .job-presentation-container div:nth-child(1) {
@@ -233,6 +233,13 @@ body {
 
 .historical-presentation-employer {
   font-weight: 600;
+}
+
+.error-message-no-ads p {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2.5rem;
+  padding-bottom: 2rem;
 }
 
 .date-search-container {
@@ -352,20 +359,23 @@ body {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
+
 /* DIAGRAM */
 .bar-container {
   padding-left: 3rem;
-  margin-bottom: 0.3rem;
+  margin-bottom: 2rem;
   margin-top: 1rem;
   padding-top: 1rem;
 }
 
 .sc-digi-button-h .digi-button.sc-digi-button:hover {
-  color: var(--digi--color--background--primary) !important
+  color: var(--digi--color--background--primary) 
 }
+
 .digi-icon-table .sc-digi-icon-table {
   fill: var(--digi--color--background--primary) !important
 }
+
 .sc-digi-icon-chart {
   fill: var(--digi--color--background--primary) !important
 }
@@ -377,7 +387,6 @@ body {
 
 .sc-digi-bar-chart svg .barGroup .bar:hover{
   fill: var(--digi--color--background--inverted-1) !important
-
 }
 
 /*FOOTER*/
@@ -428,6 +437,9 @@ display: none;
   [class=".publication-date-wrapper"] {
     padding-top: 10px;
   }
+  [class="bar-container"] {
+    width: 600px !important;
+  }
 }
 
 
@@ -458,6 +470,14 @@ display: none;
   [class="footerLogo"] {
     padding: 1.5rem;
   }
+  [class="bar-container"] {
+    width: 300px !important;
+  }
+.left-jobs-presentation {
+  width:250px !important;
+  word-break: break-word;
+}
+
 }
 
 /** ANIMATIONS **/

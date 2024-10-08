@@ -28,7 +28,6 @@ export const Layout = () => {
         <DigiHeader
           afSystemName="JobbNavigator"
           afHideSystemName={false}
-          afMenuButtonText="Meny"
           afAriaLabel="Designsystemets header för Layout"
         >
           <a

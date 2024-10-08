@@ -7,7 +7,7 @@ export const NoAds = () => {
   return (
     <>
       <DigiLayoutContainer>
-        <div className="no-ads-wrapper">
+        <div className="error-message-no-ads">
           <DigiTypography>
             <p>Inga annonser matchade din sökning</p>
           </DigiTypography>

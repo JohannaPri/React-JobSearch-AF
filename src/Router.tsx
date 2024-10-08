@@ -5,7 +5,6 @@ import { Start } from "./pages/Start";
 import { JobsApp } from "./pages/JobsApp";
 import { Job } from "./components/Job";
 import { StatisticsApp } from "./pages/StatisticsApp";
-import { Statistic } from "./components/Statistic";
 
 export const repo = "/case-af-team-3-1/";
 
@@ -31,10 +30,6 @@ export const router = createBrowserRouter(
         {
           path: "/searchstatistics",
           element: <StatisticsApp></StatisticsApp>,
-        },
-        {
-          path: "/searchstatistic/:id",
-          element: <Statistic></Statistic>,
         },
       ],
     },
