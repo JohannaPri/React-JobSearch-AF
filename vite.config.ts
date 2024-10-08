@@ -7,5 +7,5 @@ export default defineConfig({
     exclude: ['@digi/arbetsformedlingen'],
   },
   plugins: [react()],
-  base: '/Medieinstitutet/case-af-team-3-1/'
+  base: '/case-af-team-3-1/'
 });

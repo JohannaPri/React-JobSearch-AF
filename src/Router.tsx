@@ -7,7 +7,7 @@ import { Job } from "./components/Job";
 import { StatisticsApp } from "./pages/StatisticsApp";
 import { Statistic } from "./components/Statistic";
 
-export const repo = "/Medieinstitutet/case-af-team-3-1/";
+export const repo = "/case-af-team-3-1/";
 
 export const router = createBrowserRouter(
   [
