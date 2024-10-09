@@ -7,7 +7,6 @@ import { BarChartVariation } from "@digi/arbetsformedlingen";
 
 export const DiagramPresentation = () => {
   const { totalJobs } = useContext(JobsHistoryContext);
-  console.log("sorted jobs", totalJobs);
 
   if (!totalJobs || totalJobs.length === 0) {
     return <div>Inga jobb matchade sökningen</div>;

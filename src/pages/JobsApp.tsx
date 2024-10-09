@@ -28,7 +28,6 @@ export const JobsApp = () => {
   });
 
   localStorage.setItem("jobs", JSON.stringify(jobs));
-  console.log(jobs);
 
   return (
     <DigiLayoutContainer>

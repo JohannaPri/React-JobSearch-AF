@@ -62,8 +62,6 @@ export const InputSearchStatistics = () => {
     if (searchedHistoricalJobs.length === 0) {
       setNoResults(true);
     } else setNoResults(false);
-
-    console.log("sökning gjord");
   };
 
   return (

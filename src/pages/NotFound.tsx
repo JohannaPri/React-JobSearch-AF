@@ -4,6 +4,7 @@ import {
   DigiLinkInternal,
 } from "@digi/arbetsformedlingen-react";
 import { NavLink } from "react-router-dom";
+import { repo } from "../Router";
 
 export const NotFound = () => {
   return (
@@ -22,7 +23,7 @@ export const NotFound = () => {
             <li>
               <DigiLinkInternal afHref="/" afVariation="small">
                 <div className="link-notfound">
-                <NavLink to={"/"}>Gå till startsidan</NavLink>
+                  <NavLink to={"/"}>Gå till startsidan</NavLink>
                 </div>
               </DigiLinkInternal>
             </li>
@@ -33,7 +34,7 @@ export const NotFound = () => {
         <img
           className="brokenCompass"
           height={300}
-          src="/not-found-compass.png"
+          src={`${repo}/not-found-compass.png`}
           alt=""
         />
       </div>
