@@ -12,7 +12,7 @@ The project required us to create an interactive and responsive job bank applica
 
 ## Link To Project
 
-Click the link below to access the project:
+**Click the link below to access the project:**
 
 https://medieinstitutet.github.io/case-af-team-3-1/
 
