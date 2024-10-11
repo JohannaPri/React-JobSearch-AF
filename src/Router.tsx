@@ -6,7 +6,7 @@ import { JobsApp } from "./pages/JobsApp";
 import { Job } from "./components/Job";
 import { StatisticsApp } from "./pages/StatisticsApp";
 
-export const repo = "/case-af-team-3-1/";
+export const repo = "/React-JobSearch-AF/";
 
 export const router = createBrowserRouter(
   [
