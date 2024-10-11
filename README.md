@@ -71,28 +71,6 @@ https://medieinstitutet.github.io/case-af-team-3-1/
 
 ---
 
-## 📷 Screenshots Of Project
-
-#### 
-![]()
-
-#### 
-![]()
-
-#### 
-![]()
-
-#### 
-![]() 
-
-#### 
-![]()
-
-#### 
-![]()
-
----
-
 #### Published: Year 2024
 
 ---
